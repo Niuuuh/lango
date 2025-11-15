@@ -1,0 +1,120 @@
+import 'dart:convert';
+
+import '../models/chat_api_payload.dart';
+import '../models/chat_api_response.dart';
+import 'chat_api.dart';
+
+class MockChatApi implements ChatApi {
+  @override
+  Future<ChatApiResponse> createResponse(ChatApiPayload payload) async {
+    await Future.delayed(Duration(milliseconds: 250));
+    final json = jsonDecode(mockResponse);
+    return ChatApiResponse.fromJson(json);
+  }
+}
+
+const mockResponse = r"""
+{
+    "id": "resp_009a4de2473fc8390069177c5ee6088190b704a595a61a9ee6",
+    "object": "response",
+    "created_at": 1763146847,
+    "status": "completed",
+    "background": false,
+    "billing": {
+        "payer": "developer"
+    },
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "model": "gpt-4o-2024-08-06",
+    "output": [
+        {
+            "id": "msg_009a4de2473fc8390069177c62078481908ba61131eb7e283d",
+            "type": "message",
+            "status": "completed",
+            "content": [
+                {
+                    "type": "output_text",
+                    "annotations": [],
+                    "logprobs": [],
+                    "text": "{\"steps\":[{\"explanation\":\"Start by isolating the term with the variable. Subtract 7 from both sides.\",\"output\":\"8x + 7 - 7 = -23 - 7\"},{\"explanation\":\"Simplify both sides of the equation.\",\"output\":\"8x = -30\"},{\"explanation\":\"Divide both sides by 8 to solve for x.\",\"output\":\"x = -30 / 8\"},{\"explanation\":\"Simplify the fraction by dividing both the numerator and the denominator by their greatest common divisor, which is 2.\",\"output\":\"x = -15 / 4\"}],\"final_answer\":\"x = -15/4\"}"
+                }
+            ],
+            "role": "assistant"
+        }
+    ],
+    "parallel_tool_calls": true,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+        "effort": null,
+        "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "store": true,
+    "temperature": 1.0,
+    "text": {
+        "format": {
+            "type": "json_schema",
+            "description": null,
+            "name": "math_response",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "steps": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "explanation": {
+                                    "type": "string"
+                                },
+                                "output": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "explanation",
+                                "output"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "final_answer": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "steps",
+                    "final_answer"
+                ],
+                "additionalProperties": false
+            },
+            "strict": true
+        },
+        "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+        "input_tokens": 95,
+        "input_tokens_details": {
+            "cached_tokens": 0
+        },
+        "output_tokens": 133,
+        "output_tokens_details": {
+            "reasoning_tokens": 0
+        },
+        "total_tokens": 228
+    },
+    "user": null,
+    "metadata": {}
+}
+""";
