@@ -5,7 +5,6 @@ import 'package:lango/features/chat/data/utils/chat_api_response_extension.dart'
 import 'package:lango/features/chat/domain/chat_json_schemes.dart';
 import 'package:lango/features/chat/domain/chat_prompts.dart';
 import 'package:lango/features/chat/domain/entities/chat_reply.dart';
-import 'package:lango/features/chat/domain/entities/message_role.dart';
 
 import '../../domain/entities/chat_message.dart';
 import '../data_sources/chat_api.dart';
@@ -18,7 +17,7 @@ class ChatRepository {
   ChatRepository({required ChatApi chatApi}) : _chatApi = chatApi;
 
   Future<ChatReply> reply(List<ChatMessage> messages) async {
-    assert(messages.isEmpty || messages.last.role == MessageRole.user,
+    assert(messages.isEmpty || messages.last is UserChatMessage,
         "The last message should be from the user.");
 
     final response = await _chatApi.createResponse(
@@ -40,11 +39,16 @@ class ChatRepository {
           ),
           for (final message in messages)
             ChatApiInputMessage(
-              role: switch (message.role) {
-                MessageRole.user => ChatApiRole.user,
-                MessageRole.assistant => ChatApiRole.assistant,
-              },
-              content: message.text,
+              role: message.map(
+                user: (_) => ChatApiRole.user,
+                assistant: (_) => ChatApiRole.assistant,
+              ),
+              content: message.map(
+                user: (userMessage) => userMessage.text,
+                assistant: (assistantMessage) => assistantMessage.segments
+                    .map((segment) => segment.text)
+                    .join(" "),
+              ),
             ),
         ],
         text: ChatApiText(

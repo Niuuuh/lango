@@ -4,16 +4,15 @@ import 'package:lango/features/chat/domain/entities/chat_reply.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/entities/message_segment.dart';
 import '../../domain/entities/message_type.dart';
-import '../../domain/entities/assistant_chat_message.dart';
 
 class MockChatRepository implements ChatRepository {
   @override
   Future<ChatReply> reply(List<ChatMessage> messages) async {
-    Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 3000));
     if (messages.isEmpty) {
       return ChatReply(
         messages: [
-          AssistantChatMessage(
+          ChatMessage.assistant(
             type: MessageType.action,
             segments: [
               MessageSegment(
@@ -22,7 +21,7 @@ class MockChatRepository implements ChatRepository {
               ),
             ],
           ),
-          AssistantChatMessage(
+          ChatMessage.assistant(
             type: MessageType.inCharacter,
             segments: [
               MessageSegment(text: "Hallo,", translation: "Hello,"),
@@ -36,7 +35,7 @@ class MockChatRepository implements ChatRepository {
               ),
             ],
           ),
-          AssistantChatMessage(
+          ChatMessage.assistant(
             type: MessageType.inCharacter,
             segments: [
               MessageSegment(text: "Wohin", translation: "Where"),
@@ -48,7 +47,7 @@ class MockChatRepository implements ChatRepository {
               MessageSegment(text: "könntest?", translation: "could?"),
             ],
           ),
-          AssistantChatMessage(
+          ChatMessage.assistant(
             type: MessageType.action,
             segments: [
               MessageSegment(
@@ -62,7 +61,7 @@ class MockChatRepository implements ChatRepository {
     } else {
       return ChatReply(
         messages: [
-          AssistantChatMessage(
+          ChatMessage.assistant(
             type: MessageType.inCharacter,
             segments: [
               MessageSegment(
@@ -87,7 +86,7 @@ class MockChatRepository implements ChatRepository {
               ),
             ],
           ),
-          AssistantChatMessage(
+          ChatMessage.assistant(
             type: MessageType.inCharacter,
             segments: [
               MessageSegment(

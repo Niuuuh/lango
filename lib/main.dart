@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lango/core/dependency_injection/service_locator.dart';
+import 'package:lango/features/chat/presentation/screens/chat_screen.dart';
 
 void main() {
   setupServiceLocator();
@@ -12,11 +13,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      home: ChatScreen(),
     );
   }
 }
