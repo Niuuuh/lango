@@ -15,6 +15,7 @@ _ChatApiResponse _$ChatApiResponseFromJson(Map<String, dynamic> json) =>
       output: (json['output'] as List<dynamic>?)
           ?.map((e) => ChatApiOutput.fromJson(e as Map<String, dynamic>))
           .toList(),
+      status: $enumDecodeNullable(_$ChatApiStatusEnumMap, json['status']),
     );
 
 Map<String, dynamic> _$ChatApiResponseToJson(_ChatApiResponse instance) =>
@@ -22,4 +23,14 @@ Map<String, dynamic> _$ChatApiResponseToJson(_ChatApiResponse instance) =>
       'id': instance.id,
       'error': instance.error,
       'output': instance.output,
+      'status': _$ChatApiStatusEnumMap[instance.status],
     };
+
+const _$ChatApiStatusEnumMap = {
+  ChatApiStatus.completed: 'completed',
+  ChatApiStatus.failed: 'failed',
+  ChatApiStatus.inProgress: 'in_progress',
+  ChatApiStatus.cancelled: 'cancelled',
+  ChatApiStatus.queued: 'queued',
+  ChatApiStatus.incomplete: 'incomplete',
+};

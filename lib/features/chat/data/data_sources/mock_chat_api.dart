@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import '../models/chat_api_payload.dart';
+import '../models/chat_api_input.dart';
 import '../models/chat_api_response.dart';
 import 'chat_api.dart';
 
 class MockChatApi implements ChatApi {
   @override
-  Future<ChatApiResponse> createResponse(ChatApiPayload payload) async {
+  Future<ChatApiResponse> createResponse(ChatApiInput input) async {
     await Future.delayed(Duration(milliseconds: 250));
     final json = jsonDecode(mockResponse);
     return ChatApiResponse.fromJson(json);

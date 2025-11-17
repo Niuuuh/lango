@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'chat_api_payload.dart';
+part of 'chat_api_input.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,28 +13,28 @@ part of 'chat_api_payload.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$ChatApiPayload implements DiagnosticableTreeMixin {
+mixin _$ChatApiInput implements DiagnosticableTreeMixin {
 
  String get model; List<ChatApiInputMessage> get input; ChatApiText? get text;
-/// Create a copy of ChatApiPayload
+/// Create a copy of ChatApiInput
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ChatApiPayloadCopyWith<ChatApiPayload> get copyWith => _$ChatApiPayloadCopyWithImpl<ChatApiPayload>(this as ChatApiPayload, _$identity);
+$ChatApiInputCopyWith<ChatApiInput> get copyWith => _$ChatApiInputCopyWithImpl<ChatApiInput>(this as ChatApiInput, _$identity);
 
-  /// Serializes this ChatApiPayload to a JSON map.
+  /// Serializes this ChatApiInput to a JSON map.
   Map<String, dynamic> toJson();
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
-    ..add(DiagnosticsProperty('type', 'ChatApiPayload'))
+    ..add(DiagnosticsProperty('type', 'ChatApiInput'))
     ..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('input', input))..add(DiagnosticsProperty('text', text));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatApiPayload&&(identical(other.model, model) || other.model == model)&&const DeepCollectionEquality().equals(other.input, input)&&(identical(other.text, text) || other.text == text));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatApiInput&&(identical(other.model, model) || other.model == model)&&const DeepCollectionEquality().equals(other.input, input)&&(identical(other.text, text) || other.text == text));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -43,15 +43,15 @@ int get hashCode => Object.hash(runtimeType,model,const DeepCollectionEquality()
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatApiPayload(model: $model, input: $input, text: $text)';
+  return 'ChatApiInput(model: $model, input: $input, text: $text)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ChatApiPayloadCopyWith<$Res>  {
-  factory $ChatApiPayloadCopyWith(ChatApiPayload value, $Res Function(ChatApiPayload) _then) = _$ChatApiPayloadCopyWithImpl;
+abstract mixin class $ChatApiInputCopyWith<$Res>  {
+  factory $ChatApiInputCopyWith(ChatApiInput value, $Res Function(ChatApiInput) _then) = _$ChatApiInputCopyWithImpl;
 @useResult
 $Res call({
  String model, List<ChatApiInputMessage> input, ChatApiText? text
@@ -62,14 +62,14 @@ $ChatApiTextCopyWith<$Res>? get text;
 
 }
 /// @nodoc
-class _$ChatApiPayloadCopyWithImpl<$Res>
-    implements $ChatApiPayloadCopyWith<$Res> {
-  _$ChatApiPayloadCopyWithImpl(this._self, this._then);
+class _$ChatApiInputCopyWithImpl<$Res>
+    implements $ChatApiInputCopyWith<$Res> {
+  _$ChatApiInputCopyWithImpl(this._self, this._then);
 
-  final ChatApiPayload _self;
-  final $Res Function(ChatApiPayload) _then;
+  final ChatApiInput _self;
+  final $Res Function(ChatApiInput) _then;
 
-/// Create a copy of ChatApiPayload
+/// Create a copy of ChatApiInput
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? model = null,Object? input = null,Object? text = freezed,}) {
   return _then(_self.copyWith(
@@ -79,7 +79,7 @@ as List<ChatApiInputMessage>,text: freezed == text ? _self.text : text // ignore
 as ChatApiText?,
   ));
 }
-/// Create a copy of ChatApiPayload
+/// Create a copy of ChatApiInput
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -95,8 +95,8 @@ $ChatApiTextCopyWith<$Res>? get text {
 }
 
 
-/// Adds pattern-matching-related methods to [ChatApiPayload].
-extension ChatApiPayloadPatterns on ChatApiPayload {
+/// Adds pattern-matching-related methods to [ChatApiInput].
+extension ChatApiInputPatterns on ChatApiInput {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -109,10 +109,10 @@ extension ChatApiPayloadPatterns on ChatApiPayload {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ChatApiPayload value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ChatApiInput value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ChatApiPayload() when $default != null:
+case _ChatApiInput() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -131,10 +131,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ChatApiPayload value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ChatApiInput value)  $default,){
 final _that = this;
 switch (_that) {
-case _ChatApiPayload():
+case _ChatApiInput():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -152,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ChatApiPayload value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ChatApiInput value)?  $default,){
 final _that = this;
 switch (_that) {
-case _ChatApiPayload() when $default != null:
+case _ChatApiInput() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -175,7 +175,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String model,  List<ChatApiInputMessage> input,  ChatApiText? text)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ChatApiPayload() when $default != null:
+case _ChatApiInput() when $default != null:
 return $default(_that.model,_that.input,_that.text);case _:
   return orElse();
 
@@ -196,7 +196,7 @@ return $default(_that.model,_that.input,_that.text);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String model,  List<ChatApiInputMessage> input,  ChatApiText? text)  $default,) {final _that = this;
 switch (_that) {
-case _ChatApiPayload():
+case _ChatApiInput():
 return $default(_that.model,_that.input,_that.text);case _:
   throw StateError('Unexpected subclass');
 
@@ -216,7 +216,7 @@ return $default(_that.model,_that.input,_that.text);case _:
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String model,  List<ChatApiInputMessage> input,  ChatApiText? text)?  $default,) {final _that = this;
 switch (_that) {
-case _ChatApiPayload() when $default != null:
+case _ChatApiInput() when $default != null:
 return $default(_that.model,_that.input,_that.text);case _:
   return null;
 
@@ -228,9 +228,9 @@ return $default(_that.model,_that.input,_that.text);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _ChatApiPayload with DiagnosticableTreeMixin implements ChatApiPayload {
-  const _ChatApiPayload({required this.model, required final  List<ChatApiInputMessage> input, this.text}): _input = input;
-  factory _ChatApiPayload.fromJson(Map<String, dynamic> json) => _$ChatApiPayloadFromJson(json);
+class _ChatApiInput with DiagnosticableTreeMixin implements ChatApiInput {
+  const _ChatApiInput({required this.model, required final  List<ChatApiInputMessage> input, this.text}): _input = input;
+  factory _ChatApiInput.fromJson(Map<String, dynamic> json) => _$ChatApiInputFromJson(json);
 
 @override final  String model;
  final  List<ChatApiInputMessage> _input;
@@ -242,26 +242,26 @@ class _ChatApiPayload with DiagnosticableTreeMixin implements ChatApiPayload {
 
 @override final  ChatApiText? text;
 
-/// Create a copy of ChatApiPayload
+/// Create a copy of ChatApiInput
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ChatApiPayloadCopyWith<_ChatApiPayload> get copyWith => __$ChatApiPayloadCopyWithImpl<_ChatApiPayload>(this, _$identity);
+_$ChatApiInputCopyWith<_ChatApiInput> get copyWith => __$ChatApiInputCopyWithImpl<_ChatApiInput>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$ChatApiPayloadToJson(this, );
+  return _$ChatApiInputToJson(this, );
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
-    ..add(DiagnosticsProperty('type', 'ChatApiPayload'))
+    ..add(DiagnosticsProperty('type', 'ChatApiInput'))
     ..add(DiagnosticsProperty('model', model))..add(DiagnosticsProperty('input', input))..add(DiagnosticsProperty('text', text));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatApiPayload&&(identical(other.model, model) || other.model == model)&&const DeepCollectionEquality().equals(other._input, _input)&&(identical(other.text, text) || other.text == text));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatApiInput&&(identical(other.model, model) || other.model == model)&&const DeepCollectionEquality().equals(other._input, _input)&&(identical(other.text, text) || other.text == text));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -270,15 +270,15 @@ int get hashCode => Object.hash(runtimeType,model,const DeepCollectionEquality()
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatApiPayload(model: $model, input: $input, text: $text)';
+  return 'ChatApiInput(model: $model, input: $input, text: $text)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ChatApiPayloadCopyWith<$Res> implements $ChatApiPayloadCopyWith<$Res> {
-  factory _$ChatApiPayloadCopyWith(_ChatApiPayload value, $Res Function(_ChatApiPayload) _then) = __$ChatApiPayloadCopyWithImpl;
+abstract mixin class _$ChatApiInputCopyWith<$Res> implements $ChatApiInputCopyWith<$Res> {
+  factory _$ChatApiInputCopyWith(_ChatApiInput value, $Res Function(_ChatApiInput) _then) = __$ChatApiInputCopyWithImpl;
 @override @useResult
 $Res call({
  String model, List<ChatApiInputMessage> input, ChatApiText? text
@@ -289,17 +289,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$ChatApiPayloadCopyWithImpl<$Res>
-    implements _$ChatApiPayloadCopyWith<$Res> {
-  __$ChatApiPayloadCopyWithImpl(this._self, this._then);
+class __$ChatApiInputCopyWithImpl<$Res>
+    implements _$ChatApiInputCopyWith<$Res> {
+  __$ChatApiInputCopyWithImpl(this._self, this._then);
 
-  final _ChatApiPayload _self;
-  final $Res Function(_ChatApiPayload) _then;
+  final _ChatApiInput _self;
+  final $Res Function(_ChatApiInput) _then;
 
-/// Create a copy of ChatApiPayload
+/// Create a copy of ChatApiInput
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? model = null,Object? input = null,Object? text = freezed,}) {
-  return _then(_ChatApiPayload(
+  return _then(_ChatApiInput(
 model: null == model ? _self.model : model // ignore: cast_nullable_to_non_nullable
 as String,input: null == input ? _self._input : input // ignore: cast_nullable_to_non_nullable
 as List<ChatApiInputMessage>,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
@@ -307,7 +307,7 @@ as ChatApiText?,
   ));
 }
 
-/// Create a copy of ChatApiPayload
+/// Create a copy of ChatApiInput
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')

@@ -6,14 +6,14 @@ import 'package:lango/features/chat/data/data_sources/mock_chat_api.dart';
 import 'package:lango/features/chat/data/models/chat_api_content.dart';
 import 'package:lango/features/chat/data/models/chat_api_format.dart';
 import 'package:lango/features/chat/data/models/chat_api_input_message.dart';
-import 'package:lango/features/chat/data/models/chat_api_payload.dart';
+import 'package:lango/features/chat/data/models/chat_api_input.dart';
 import 'package:lango/features/chat/data/models/chat_api_role.dart';
 import 'package:lango/features/chat/data/models/chat_api_text.dart';
 
 void main() {
   test('createResponse with MockChatApi', () {
     final mockApi = MockChatApi();
-    final payload = ChatApiPayload(
+    final payload = ChatApiInput(
       model: ChatApiConstants.model,
       input: [
         ChatApiInputMessage(

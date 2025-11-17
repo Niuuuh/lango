@@ -11,11 +11,18 @@ part of 'chat_api_output.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+ChatApiOutput _$ChatApiOutputFromJson(
+  Map<String, dynamic> json
+) {
+    return ChatApiOutputMessage.fromJson(
+      json
+    );
+}
 
 /// @nodoc
 mixin _$ChatApiOutput implements DiagnosticableTreeMixin {
 
- String get id; String get type; String get status; List<ChatApiContent> get content; ChatApiRole get role;
+ String get id; ChatApiStatus get status; List<ChatApiContent> get content; ChatApiRole get role;
 /// Create a copy of ChatApiOutput
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +36,21 @@ $ChatApiOutputCopyWith<ChatApiOutput> get copyWith => _$ChatApiOutputCopyWithImp
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChatApiOutput'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('type', type))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('content', content))..add(DiagnosticsProperty('role', role));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('content', content))..add(DiagnosticsProperty('role', role));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatApiOutput&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.content, content)&&(identical(other.role, role) || other.role == role));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatApiOutput&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.content, content)&&(identical(other.role, role) || other.role == role));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,type,status,const DeepCollectionEquality().hash(content),role);
+int get hashCode => Object.hash(runtimeType,id,status,const DeepCollectionEquality().hash(content),role);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatApiOutput(id: $id, type: $type, status: $status, content: $content, role: $role)';
+  return 'ChatApiOutput(id: $id, status: $status, content: $content, role: $role)';
 }
 
 
@@ -54,7 +61,7 @@ abstract mixin class $ChatApiOutputCopyWith<$Res>  {
   factory $ChatApiOutputCopyWith(ChatApiOutput value, $Res Function(ChatApiOutput) _then) = _$ChatApiOutputCopyWithImpl;
 @useResult
 $Res call({
- String id, String type, String status, List<ChatApiContent> content, ChatApiRole role
+ String id, ChatApiStatus status, List<ChatApiContent> content, ChatApiRole role
 });
 
 
@@ -71,12 +78,11 @@ class _$ChatApiOutputCopyWithImpl<$Res>
 
 /// Create a copy of ChatApiOutput
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? type = null,Object? status = null,Object? content = null,Object? role = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = null,Object? content = null,Object? role = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as String,content: null == content ? _self.content : content // ignore: cast_nullable_to_non_nullable
+as ChatApiStatus,content: null == content ? _self.content : content // ignore: cast_nullable_to_non_nullable
 as List<ChatApiContent>,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as ChatApiRole,
   ));
@@ -99,11 +105,11 @@ extension ChatApiOutputPatterns on ChatApiOutput {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ChatApiOutput value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChatApiOutputMessage value)?  message,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ChatApiOutput() when $default != null:
-return $default(_that);case _:
+case ChatApiOutputMessage() when message != null:
+return message(_that);case _:
   return orElse();
 
 }
@@ -121,11 +127,11 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ChatApiOutput value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChatApiOutputMessage value)  message,}){
 final _that = this;
 switch (_that) {
-case _ChatApiOutput():
-return $default(_that);case _:
+case ChatApiOutputMessage():
+return message(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -142,11 +148,11 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ChatApiOutput value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChatApiOutputMessage value)?  message,}){
 final _that = this;
 switch (_that) {
-case _ChatApiOutput() when $default != null:
-return $default(_that);case _:
+case ChatApiOutputMessage() when message != null:
+return message(_that);case _:
   return null;
 
 }
@@ -163,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String type,  String status,  List<ChatApiContent> content,  ChatApiRole role)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String id,  ChatApiStatus status,  List<ChatApiContent> content,  ChatApiRole role)?  message,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ChatApiOutput() when $default != null:
-return $default(_that.id,_that.type,_that.status,_that.content,_that.role);case _:
+case ChatApiOutputMessage() when message != null:
+return message(_that.id,_that.status,_that.content,_that.role);case _:
   return orElse();
 
 }
@@ -184,10 +190,10 @@ return $default(_that.id,_that.type,_that.status,_that.content,_that.role);case 
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String type,  String status,  List<ChatApiContent> content,  ChatApiRole role)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String id,  ChatApiStatus status,  List<ChatApiContent> content,  ChatApiRole role)  message,}) {final _that = this;
 switch (_that) {
-case _ChatApiOutput():
-return $default(_that.id,_that.type,_that.status,_that.content,_that.role);case _:
+case ChatApiOutputMessage():
+return message(_that.id,_that.status,_that.content,_that.role);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -204,10 +210,10 @@ return $default(_that.id,_that.type,_that.status,_that.content,_that.role);case 
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String type,  String status,  List<ChatApiContent> content,  ChatApiRole role)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String id,  ChatApiStatus status,  List<ChatApiContent> content,  ChatApiRole role)?  message,}) {final _that = this;
 switch (_that) {
-case _ChatApiOutput() when $default != null:
-return $default(_that.id,_that.type,_that.status,_that.content,_that.role);case _:
+case ChatApiOutputMessage() when message != null:
+return message(_that.id,_that.status,_that.content,_that.role);case _:
   return null;
 
 }
@@ -218,13 +224,12 @@ return $default(_that.id,_that.type,_that.status,_that.content,_that.role);case 
 /// @nodoc
 @JsonSerializable()
 
-class _ChatApiOutput with DiagnosticableTreeMixin implements ChatApiOutput {
-  const _ChatApiOutput({required this.id, required this.type, required this.status, required final  List<ChatApiContent> content, required this.role}): _content = content;
-  factory _ChatApiOutput.fromJson(Map<String, dynamic> json) => _$ChatApiOutputFromJson(json);
+class ChatApiOutputMessage with DiagnosticableTreeMixin implements ChatApiOutput {
+  const ChatApiOutputMessage({required this.id, required this.status, required final  List<ChatApiContent> content, required this.role}): _content = content;
+  factory ChatApiOutputMessage.fromJson(Map<String, dynamic> json) => _$ChatApiOutputMessageFromJson(json);
 
 @override final  String id;
-@override final  String type;
-@override final  String status;
+@override final  ChatApiStatus status;
  final  List<ChatApiContent> _content;
 @override List<ChatApiContent> get content {
   if (_content is EqualUnmodifiableListView) return _content;
@@ -238,42 +243,42 @@ class _ChatApiOutput with DiagnosticableTreeMixin implements ChatApiOutput {
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ChatApiOutputCopyWith<_ChatApiOutput> get copyWith => __$ChatApiOutputCopyWithImpl<_ChatApiOutput>(this, _$identity);
+$ChatApiOutputMessageCopyWith<ChatApiOutputMessage> get copyWith => _$ChatApiOutputMessageCopyWithImpl<ChatApiOutputMessage>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$ChatApiOutputToJson(this, );
+  return _$ChatApiOutputMessageToJson(this, );
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
-    ..add(DiagnosticsProperty('type', 'ChatApiOutput'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('type', type))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('content', content))..add(DiagnosticsProperty('role', role));
+    ..add(DiagnosticsProperty('type', 'ChatApiOutput.message'))
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('content', content))..add(DiagnosticsProperty('role', role));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatApiOutput&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._content, _content)&&(identical(other.role, role) || other.role == role));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatApiOutputMessage&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._content, _content)&&(identical(other.role, role) || other.role == role));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,type,status,const DeepCollectionEquality().hash(_content),role);
+int get hashCode => Object.hash(runtimeType,id,status,const DeepCollectionEquality().hash(_content),role);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatApiOutput(id: $id, type: $type, status: $status, content: $content, role: $role)';
+  return 'ChatApiOutput.message(id: $id, status: $status, content: $content, role: $role)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ChatApiOutputCopyWith<$Res> implements $ChatApiOutputCopyWith<$Res> {
-  factory _$ChatApiOutputCopyWith(_ChatApiOutput value, $Res Function(_ChatApiOutput) _then) = __$ChatApiOutputCopyWithImpl;
+abstract mixin class $ChatApiOutputMessageCopyWith<$Res> implements $ChatApiOutputCopyWith<$Res> {
+  factory $ChatApiOutputMessageCopyWith(ChatApiOutputMessage value, $Res Function(ChatApiOutputMessage) _then) = _$ChatApiOutputMessageCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String type, String status, List<ChatApiContent> content, ChatApiRole role
+ String id, ChatApiStatus status, List<ChatApiContent> content, ChatApiRole role
 });
 
 
@@ -281,21 +286,20 @@ $Res call({
 
 }
 /// @nodoc
-class __$ChatApiOutputCopyWithImpl<$Res>
-    implements _$ChatApiOutputCopyWith<$Res> {
-  __$ChatApiOutputCopyWithImpl(this._self, this._then);
+class _$ChatApiOutputMessageCopyWithImpl<$Res>
+    implements $ChatApiOutputMessageCopyWith<$Res> {
+  _$ChatApiOutputMessageCopyWithImpl(this._self, this._then);
 
-  final _ChatApiOutput _self;
-  final $Res Function(_ChatApiOutput) _then;
+  final ChatApiOutputMessage _self;
+  final $Res Function(ChatApiOutputMessage) _then;
 
 /// Create a copy of ChatApiOutput
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? type = null,Object? status = null,Object? content = null,Object? role = null,}) {
-  return _then(_ChatApiOutput(
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = null,Object? content = null,Object? role = null,}) {
+  return _then(ChatApiOutputMessage(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as String,content: null == content ? _self._content : content // ignore: cast_nullable_to_non_nullable
+as ChatApiStatus,content: null == content ? _self._content : content // ignore: cast_nullable_to_non_nullable
 as List<ChatApiContent>,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as ChatApiRole,
   ));

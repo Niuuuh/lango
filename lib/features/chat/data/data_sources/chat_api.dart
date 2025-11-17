@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:lango/features/chat/data/models/chat_api_payload.dart';
+import 'package:lango/features/chat/data/models/chat_api_input.dart';
 
 import '../models/chat_api_response.dart';
 import 'chat_api_constants.dart';
@@ -12,16 +12,16 @@ class ChatApi {
       baseUrl: ChatApiConstants.baseUrl,
       headers: {
         "Content-Type": "application/json",
-        "Authorization": ChatApiConstants.apiKey,
+        "Authorization": "Bearer ${ChatApiConstants.apiKey}",
       },
     ));
   }
 
-  Future<ChatApiResponse> createResponse(ChatApiPayload payload) async {
+  Future<ChatApiResponse> createResponse(ChatApiInput input) async {
     try {
       final response = await _dio.post(
         ChatApiConstants.responsesEndpoint,
-        data: payload.toJson(),
+        data: input.toJson(),
       );
       return ChatApiResponse.fromJson(response.data);
     } on DioException catch (e) {

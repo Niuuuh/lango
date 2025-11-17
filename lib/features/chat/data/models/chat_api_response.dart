@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'chat_api_error.dart';
 import 'chat_api_output.dart';
+import 'chat_api_status.dart';
 
 part 'chat_api_response.freezed.dart';
 part 'chat_api_response.g.dart';
@@ -13,7 +14,7 @@ abstract class ChatApiResponse with _$ChatApiResponse {
     String? id,
     ChatApiError? error,
     List<ChatApiOutput>? output,
-
+    ChatApiStatus? status,
   }) = _ChatApiResponse;
 
   factory ChatApiResponse.fromJson(Map<String, Object?> json) =>

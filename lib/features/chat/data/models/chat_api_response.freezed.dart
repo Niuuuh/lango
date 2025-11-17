@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChatApiResponse implements DiagnosticableTreeMixin {
 
- String? get id; ChatApiError? get error; List<ChatApiOutput>? get output;
+ String? get id; ChatApiError? get error; List<ChatApiOutput>? get output; ChatApiStatus? get status;
 /// Create a copy of ChatApiResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +29,21 @@ $ChatApiResponseCopyWith<ChatApiResponse> get copyWith => _$ChatApiResponseCopyW
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChatApiResponse'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('error', error))..add(DiagnosticsProperty('output', output));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('error', error))..add(DiagnosticsProperty('output', output))..add(DiagnosticsProperty('status', status));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatApiResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other.output, output));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatApiResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other.output, output)&&(identical(other.status, status) || other.status == status));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,error,const DeepCollectionEquality().hash(output));
+int get hashCode => Object.hash(runtimeType,id,error,const DeepCollectionEquality().hash(output),status);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatApiResponse(id: $id, error: $error, output: $output)';
+  return 'ChatApiResponse(id: $id, error: $error, output: $output, status: $status)';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $ChatApiResponseCopyWith<$Res>  {
   factory $ChatApiResponseCopyWith(ChatApiResponse value, $Res Function(ChatApiResponse) _then) = _$ChatApiResponseCopyWithImpl;
 @useResult
 $Res call({
- String? id, ChatApiError? error, List<ChatApiOutput>? output
+ String? id, ChatApiError? error, List<ChatApiOutput>? output, ChatApiStatus? status
 });
 
 
@@ -71,12 +71,13 @@ class _$ChatApiResponseCopyWithImpl<$Res>
 
 /// Create a copy of ChatApiResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? error = freezed,Object? output = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? error = freezed,Object? output = freezed,Object? status = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ChatApiError?,output: freezed == output ? _self.output : output // ignore: cast_nullable_to_non_nullable
-as List<ChatApiOutput>?,
+as List<ChatApiOutput>?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as ChatApiStatus?,
   ));
 }
 /// Create a copy of ChatApiResponse
@@ -173,10 +174,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  ChatApiError? error,  List<ChatApiOutput>? output)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  ChatApiError? error,  List<ChatApiOutput>? output,  ChatApiStatus? status)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChatApiResponse() when $default != null:
-return $default(_that.id,_that.error,_that.output);case _:
+return $default(_that.id,_that.error,_that.output,_that.status);case _:
   return orElse();
 
 }
@@ -194,10 +195,10 @@ return $default(_that.id,_that.error,_that.output);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  ChatApiError? error,  List<ChatApiOutput>? output)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  ChatApiError? error,  List<ChatApiOutput>? output,  ChatApiStatus? status)  $default,) {final _that = this;
 switch (_that) {
 case _ChatApiResponse():
-return $default(_that.id,_that.error,_that.output);case _:
+return $default(_that.id,_that.error,_that.output,_that.status);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -214,10 +215,10 @@ return $default(_that.id,_that.error,_that.output);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  ChatApiError? error,  List<ChatApiOutput>? output)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  ChatApiError? error,  List<ChatApiOutput>? output,  ChatApiStatus? status)?  $default,) {final _that = this;
 switch (_that) {
 case _ChatApiResponse() when $default != null:
-return $default(_that.id,_that.error,_that.output);case _:
+return $default(_that.id,_that.error,_that.output,_that.status);case _:
   return null;
 
 }
@@ -229,7 +230,7 @@ return $default(_that.id,_that.error,_that.output);case _:
 @JsonSerializable()
 
 class _ChatApiResponse with DiagnosticableTreeMixin implements ChatApiResponse {
-  const _ChatApiResponse({this.id, this.error, final  List<ChatApiOutput>? output}): _output = output;
+  const _ChatApiResponse({this.id, this.error, final  List<ChatApiOutput>? output, this.status}): _output = output;
   factory _ChatApiResponse.fromJson(Map<String, dynamic> json) => _$ChatApiResponseFromJson(json);
 
 @override final  String? id;
@@ -243,6 +244,7 @@ class _ChatApiResponse with DiagnosticableTreeMixin implements ChatApiResponse {
   return EqualUnmodifiableListView(value);
 }
 
+@override final  ChatApiStatus? status;
 
 /// Create a copy of ChatApiResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -258,21 +260,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChatApiResponse'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('error', error))..add(DiagnosticsProperty('output', output));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('error', error))..add(DiagnosticsProperty('output', output))..add(DiagnosticsProperty('status', status));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatApiResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other._output, _output));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatApiResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other._output, _output)&&(identical(other.status, status) || other.status == status));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,error,const DeepCollectionEquality().hash(_output));
+int get hashCode => Object.hash(runtimeType,id,error,const DeepCollectionEquality().hash(_output),status);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatApiResponse(id: $id, error: $error, output: $output)';
+  return 'ChatApiResponse(id: $id, error: $error, output: $output, status: $status)';
 }
 
 
@@ -283,7 +285,7 @@ abstract mixin class _$ChatApiResponseCopyWith<$Res> implements $ChatApiResponse
   factory _$ChatApiResponseCopyWith(_ChatApiResponse value, $Res Function(_ChatApiResponse) _then) = __$ChatApiResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, ChatApiError? error, List<ChatApiOutput>? output
+ String? id, ChatApiError? error, List<ChatApiOutput>? output, ChatApiStatus? status
 });
 
 
@@ -300,12 +302,13 @@ class __$ChatApiResponseCopyWithImpl<$Res>
 
 /// Create a copy of ChatApiResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? error = freezed,Object? output = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? error = freezed,Object? output = freezed,Object? status = freezed,}) {
   return _then(_ChatApiResponse(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ChatApiError?,output: freezed == output ? _self._output : output // ignore: cast_nullable_to_non_nullable
-as List<ChatApiOutput>?,
+as List<ChatApiOutput>?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as ChatApiStatus?,
   ));
 }
 

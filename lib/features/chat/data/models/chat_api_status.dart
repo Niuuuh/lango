@@ -1,7 +1,13 @@
-abstract class ChatApiStatus {
-  static const queued = "queued";
-  static const inProgress = "in_progress";
-  static const failed = "failed";
-  static const completed = "completed";
-  static const canceled = "canceled";
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'chat_api_status.g.dart';
+
+@JsonEnum(alwaysCreate: true, fieldRename: FieldRename.snake)
+enum ChatApiStatus {
+  completed,
+  failed,
+  inProgress,
+  cancelled,
+  queued,
+  incomplete,
 }

@@ -20,8 +20,8 @@ Map<String, dynamic> _$ChatApiInputMessageToJson(
 };
 
 const _$ChatApiRoleEnumMap = {
-  ChatApiRole.user: 'user',
-  ChatApiRole.assistant: 'assistant',
   ChatApiRole.system: 'system',
   ChatApiRole.developer: 'developer',
+  ChatApiRole.user: 'user',
+  ChatApiRole.assistant: 'assistant',
 };

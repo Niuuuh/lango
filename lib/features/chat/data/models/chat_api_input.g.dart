@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chat_api_payload.dart';
+part of 'chat_api_input.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ChatApiPayload _$ChatApiPayloadFromJson(Map<String, dynamic> json) =>
-    _ChatApiPayload(
+_ChatApiInput _$ChatApiInputFromJson(Map<String, dynamic> json) =>
+    _ChatApiInput(
       model: json['model'] as String,
       input: (json['input'] as List<dynamic>)
           .map((e) => ChatApiInputMessage.fromJson(e as Map<String, dynamic>))
@@ -17,7 +17,7 @@ _ChatApiPayload _$ChatApiPayloadFromJson(Map<String, dynamic> json) =>
           : ChatApiText.fromJson(json['text'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$ChatApiPayloadToJson(_ChatApiPayload instance) =>
+Map<String, dynamic> _$ChatApiInputToJson(_ChatApiInput instance) =>
     <String, dynamic>{
       'model': instance.model,
       'input': instance.input,
