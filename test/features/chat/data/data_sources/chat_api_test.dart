@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lango/features/chat/data/data_sources/chat_api_constants.dart';
 import 'package:lango/features/chat/data/data_sources/mock_chat_api.dart';
 import 'package:lango/features/chat/data/models/chat_api_content.dart';
 import 'package:lango/features/chat/data/models/chat_api_format.dart';
 import 'package:lango/features/chat/data/models/chat_api_input_message.dart';
 import 'package:lango/features/chat/data/models/chat_api_input.dart';
+import 'package:lango/features/chat/data/models/chat_api_model.dart';
 import 'package:lango/features/chat/data/models/chat_api_role.dart';
 import 'package:lango/features/chat/data/models/chat_api_text.dart';
 
@@ -14,7 +14,7 @@ void main() {
   test('createResponse with MockChatApi', () {
     final mockApi = MockChatApi();
     final payload = ChatApiInput(
-      model: ChatApiConstants.model,
+      model: ChatApiModel.gpt4o,
       input: [
         ChatApiInputMessage(
           role: ChatApiRole.system,

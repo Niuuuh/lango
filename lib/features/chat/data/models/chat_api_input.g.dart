@@ -8,7 +8,7 @@ part of 'chat_api_input.dart';
 
 _ChatApiInput _$ChatApiInputFromJson(Map<String, dynamic> json) =>
     _ChatApiInput(
-      model: json['model'] as String,
+      model: $enumDecode(_$ChatApiModelEnumMap, json['model']),
       input: (json['input'] as List<dynamic>)
           .map((e) => ChatApiInputMessage.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -19,7 +19,12 @@ _ChatApiInput _$ChatApiInputFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ChatApiInputToJson(_ChatApiInput instance) =>
     <String, dynamic>{
-      'model': instance.model,
+      'model': _$ChatApiModelEnumMap[instance.model]!,
       'input': instance.input,
       'text': instance.text,
     };
+
+const _$ChatApiModelEnumMap = {
+  ChatApiModel.gpt4oMini: 'gpt-4o-mini',
+  ChatApiModel.gpt4o: 'gpt-4o',
+};

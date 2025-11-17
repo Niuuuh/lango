@@ -8,19 +8,24 @@ part of 'chat_message.dart';
 
 _ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) => _ChatMessage(
   type: $enumDecode(_$MessageTypeEnumMap, json['type']),
-  segments: (json['segments'] as List<dynamic>)
-      .map((e) => MessageSegment.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  role: $enumDecode(_$MessageRoleEnumMap, json['role']),
+  text: json['text'] as String,
 );
 
 Map<String, dynamic> _$ChatMessageToJson(_ChatMessage instance) =>
     <String, dynamic>{
       'type': _$MessageTypeEnumMap[instance.type]!,
-      'segments': instance.segments,
+      'role': _$MessageRoleEnumMap[instance.role]!,
+      'text': instance.text,
     };
 
 const _$MessageTypeEnumMap = {
   MessageType.action: 'action',
   MessageType.inCharacter: 'in_character',
   MessageType.outOfCharacter: 'out_of_character',
+};
+
+const _$MessageRoleEnumMap = {
+  MessageRole.user: 'user',
+  MessageRole.assistant: 'assistant',
 };

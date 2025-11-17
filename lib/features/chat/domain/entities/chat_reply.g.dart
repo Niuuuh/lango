@@ -8,7 +8,7 @@ part of 'chat_reply.dart';
 
 _ChatReply _$ChatReplyFromJson(Map<String, dynamic> json) => _ChatReply(
   messages: (json['messages'] as List<dynamic>)
-      .map((e) => ChatMessage.fromJson(e as Map<String, dynamic>))
+      .map((e) => AssistantChatMessage.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 

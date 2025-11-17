@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChatApiInput implements DiagnosticableTreeMixin {
 
- String get model; List<ChatApiInputMessage> get input; ChatApiText? get text;
+ ChatApiModel get model; List<ChatApiInputMessage> get input; ChatApiText? get text;
 /// Create a copy of ChatApiInput
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -54,7 +54,7 @@ abstract mixin class $ChatApiInputCopyWith<$Res>  {
   factory $ChatApiInputCopyWith(ChatApiInput value, $Res Function(ChatApiInput) _then) = _$ChatApiInputCopyWithImpl;
 @useResult
 $Res call({
- String model, List<ChatApiInputMessage> input, ChatApiText? text
+ ChatApiModel model, List<ChatApiInputMessage> input, ChatApiText? text
 });
 
 
@@ -74,7 +74,7 @@ class _$ChatApiInputCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? model = null,Object? input = null,Object? text = freezed,}) {
   return _then(_self.copyWith(
 model: null == model ? _self.model : model // ignore: cast_nullable_to_non_nullable
-as String,input: null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as ChatApiModel,input: null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
 as List<ChatApiInputMessage>,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as ChatApiText?,
   ));
@@ -173,7 +173,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String model,  List<ChatApiInputMessage> input,  ChatApiText? text)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ChatApiModel model,  List<ChatApiInputMessage> input,  ChatApiText? text)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChatApiInput() when $default != null:
 return $default(_that.model,_that.input,_that.text);case _:
@@ -194,7 +194,7 @@ return $default(_that.model,_that.input,_that.text);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String model,  List<ChatApiInputMessage> input,  ChatApiText? text)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ChatApiModel model,  List<ChatApiInputMessage> input,  ChatApiText? text)  $default,) {final _that = this;
 switch (_that) {
 case _ChatApiInput():
 return $default(_that.model,_that.input,_that.text);case _:
@@ -214,7 +214,7 @@ return $default(_that.model,_that.input,_that.text);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String model,  List<ChatApiInputMessage> input,  ChatApiText? text)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ChatApiModel model,  List<ChatApiInputMessage> input,  ChatApiText? text)?  $default,) {final _that = this;
 switch (_that) {
 case _ChatApiInput() when $default != null:
 return $default(_that.model,_that.input,_that.text);case _:
@@ -232,7 +232,7 @@ class _ChatApiInput with DiagnosticableTreeMixin implements ChatApiInput {
   const _ChatApiInput({required this.model, required final  List<ChatApiInputMessage> input, this.text}): _input = input;
   factory _ChatApiInput.fromJson(Map<String, dynamic> json) => _$ChatApiInputFromJson(json);
 
-@override final  String model;
+@override final  ChatApiModel model;
  final  List<ChatApiInputMessage> _input;
 @override List<ChatApiInputMessage> get input {
   if (_input is EqualUnmodifiableListView) return _input;
@@ -281,7 +281,7 @@ abstract mixin class _$ChatApiInputCopyWith<$Res> implements $ChatApiInputCopyWi
   factory _$ChatApiInputCopyWith(_ChatApiInput value, $Res Function(_ChatApiInput) _then) = __$ChatApiInputCopyWithImpl;
 @override @useResult
 $Res call({
- String model, List<ChatApiInputMessage> input, ChatApiText? text
+ ChatApiModel model, List<ChatApiInputMessage> input, ChatApiText? text
 });
 
 
@@ -301,7 +301,7 @@ class __$ChatApiInputCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? model = null,Object? input = null,Object? text = freezed,}) {
   return _then(_ChatApiInput(
 model: null == model ? _self.model : model // ignore: cast_nullable_to_non_nullable
-as String,input: null == input ? _self._input : input // ignore: cast_nullable_to_non_nullable
+as ChatApiModel,input: null == input ? _self._input : input // ignore: cast_nullable_to_non_nullable
 as List<ChatApiInputMessage>,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as ChatApiText?,
   ));
