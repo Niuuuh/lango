@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lango/features/chat/presentation/bloc/chat_bloc.dart';
 
-import '../../../../core/dependency_injection/service_locator.dart';
+import '../../../../app/service_locator.dart';
 import '../bloc/chat_event.dart';
-import '../bloc/chat_state.dart';
 import '../widgets/chat_list_view.dart';
 import '../widgets/input_bar.dart';
 

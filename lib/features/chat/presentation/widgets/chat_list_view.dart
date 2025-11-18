@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lango/features/chat/domain/entities/chat_message.dart';
@@ -36,6 +37,11 @@ class _ChatListViewState extends State<ChatListView> {
       listener: (context, state) {
         if (state is ChatSuccess) {
           _scrollToBottom();
+        } else if (state is ChatFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error sending message.')),
+          );
+          if (kDebugMode) throw state.error;
         }
       },
       builder: (context, state) {

@@ -1,3 +1,4 @@
+import 'package:lango/features/chat/data/data_sources/chat_api.dart';
 import 'package:lango/features/chat/data/repository/chat_repository.dart';
 import 'package:lango/features/chat/domain/entities/chat_reply.dart';
 
@@ -6,6 +7,9 @@ import '../../domain/entities/message_segment.dart';
 import '../../domain/entities/message_type.dart';
 
 class MockChatRepository implements ChatRepository {
+  @override
+  ChatApi get chatApi => throw UnimplementedError();
+
   @override
   Future<ChatReply> reply(List<ChatMessage> messages) async {
     await Future.delayed(const Duration(milliseconds: 3000));

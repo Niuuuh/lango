@@ -12,15 +12,15 @@ import '../models/chat_api_input_message.dart';
 import '../models/chat_api_model.dart';
 
 class ChatRepository {
-  final ChatApi _chatApi;
+  final ChatApi chatApi;
 
-  ChatRepository({required ChatApi chatApi}) : _chatApi = chatApi;
+  ChatRepository({required this.chatApi});
 
   Future<ChatReply> reply(List<ChatMessage> messages) async {
     assert(messages.isEmpty || messages.last is UserChatMessage,
         "The last message should be from the user.");
 
-    final response = await _chatApi.createResponse(
+    final response = await chatApi.createResponse(
       ChatApiInput(
         model: ChatApiModel.gpt4o,
         input: [
