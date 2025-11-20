@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lango/app/router.dart';
 import 'package:lango/core/utils/context_extension.dart';
 import 'package:lango/features/history/presentation/cubit/chat_history_cubit.dart';
 import 'package:lango/features/history/presentation/cubit/chat_history_state.dart';
@@ -27,7 +28,7 @@ class ChatHistoryList extends StatelessWidget {
             final entry = entries[index];
             return ListTile(
               title: Text(entry.date.toIso8601String()),
-              onTap: () {},
+              onTap: () => context.goToHistory(topic, entry),
             );
           },
         );
