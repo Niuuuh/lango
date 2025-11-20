@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChatReply implements DiagnosticableTreeMixin {
 
- List<ChatMessage> get messages;
+ ChatStage get stage; List<ChatMessage> get messages;
 /// Create a copy of ChatReply
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +29,21 @@ $ChatReplyCopyWith<ChatReply> get copyWith => _$ChatReplyCopyWithImpl<ChatReply>
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChatReply'))
-    ..add(DiagnosticsProperty('messages', messages));
+    ..add(DiagnosticsProperty('stage', stage))..add(DiagnosticsProperty('messages', messages));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatReply&&const DeepCollectionEquality().equals(other.messages, messages));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatReply&&(identical(other.stage, stage) || other.stage == stage)&&const DeepCollectionEquality().equals(other.messages, messages));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(messages));
+int get hashCode => Object.hash(runtimeType,stage,const DeepCollectionEquality().hash(messages));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatReply(messages: $messages)';
+  return 'ChatReply(stage: $stage, messages: $messages)';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $ChatReplyCopyWith<$Res>  {
   factory $ChatReplyCopyWith(ChatReply value, $Res Function(ChatReply) _then) = _$ChatReplyCopyWithImpl;
 @useResult
 $Res call({
- List<ChatMessage> messages
+ ChatStage stage, List<ChatMessage> messages
 });
 
 
@@ -71,9 +71,10 @@ class _$ChatReplyCopyWithImpl<$Res>
 
 /// Create a copy of ChatReply
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? messages = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? stage = null,Object? messages = null,}) {
   return _then(_self.copyWith(
-messages: null == messages ? _self.messages : messages // ignore: cast_nullable_to_non_nullable
+stage: null == stage ? _self.stage : stage // ignore: cast_nullable_to_non_nullable
+as ChatStage,messages: null == messages ? _self.messages : messages // ignore: cast_nullable_to_non_nullable
 as List<ChatMessage>,
   ));
 }
@@ -159,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ChatMessage> messages)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ChatStage stage,  List<ChatMessage> messages)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChatReply() when $default != null:
-return $default(_that.messages);case _:
+return $default(_that.stage,_that.messages);case _:
   return orElse();
 
 }
@@ -180,10 +181,10 @@ return $default(_that.messages);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ChatMessage> messages)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ChatStage stage,  List<ChatMessage> messages)  $default,) {final _that = this;
 switch (_that) {
 case _ChatReply():
-return $default(_that.messages);case _:
+return $default(_that.stage,_that.messages);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +201,10 @@ return $default(_that.messages);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ChatMessage> messages)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ChatStage stage,  List<ChatMessage> messages)?  $default,) {final _that = this;
 switch (_that) {
 case _ChatReply() when $default != null:
-return $default(_that.messages);case _:
+return $default(_that.stage,_that.messages);case _:
   return null;
 
 }
@@ -215,9 +216,10 @@ return $default(_that.messages);case _:
 @JsonSerializable()
 
 class _ChatReply with DiagnosticableTreeMixin implements ChatReply {
-  const _ChatReply({required final  List<ChatMessage> messages}): _messages = messages;
+  const _ChatReply({required this.stage, required final  List<ChatMessage> messages}): _messages = messages;
   factory _ChatReply.fromJson(Map<String, dynamic> json) => _$ChatReplyFromJson(json);
 
+@override final  ChatStage stage;
  final  List<ChatMessage> _messages;
 @override List<ChatMessage> get messages {
   if (_messages is EqualUnmodifiableListView) return _messages;
@@ -240,21 +242,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChatReply'))
-    ..add(DiagnosticsProperty('messages', messages));
+    ..add(DiagnosticsProperty('stage', stage))..add(DiagnosticsProperty('messages', messages));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatReply&&const DeepCollectionEquality().equals(other._messages, _messages));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatReply&&(identical(other.stage, stage) || other.stage == stage)&&const DeepCollectionEquality().equals(other._messages, _messages));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_messages));
+int get hashCode => Object.hash(runtimeType,stage,const DeepCollectionEquality().hash(_messages));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatReply(messages: $messages)';
+  return 'ChatReply(stage: $stage, messages: $messages)';
 }
 
 
@@ -265,7 +267,7 @@ abstract mixin class _$ChatReplyCopyWith<$Res> implements $ChatReplyCopyWith<$Re
   factory _$ChatReplyCopyWith(_ChatReply value, $Res Function(_ChatReply) _then) = __$ChatReplyCopyWithImpl;
 @override @useResult
 $Res call({
- List<ChatMessage> messages
+ ChatStage stage, List<ChatMessage> messages
 });
 
 
@@ -282,9 +284,10 @@ class __$ChatReplyCopyWithImpl<$Res>
 
 /// Create a copy of ChatReply
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? messages = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? stage = null,Object? messages = null,}) {
   return _then(_ChatReply(
-messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
+stage: null == stage ? _self.stage : stage // ignore: cast_nullable_to_non_nullable
+as ChatStage,messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
 as List<ChatMessage>,
   ));
 }

@@ -1,14 +1,27 @@
 import 'package:bloc/bloc.dart';
 import 'package:lango/features/chat/data/repository/chat_repository.dart';
+import 'package:lango/features/chat/domain/entities/chat_stage.dart';
 
+import '../../../history/data/respository/history_repository.dart';
+import '../../../language/domain/entities/language.dart';
+import '../../../topics/domain/topic.dart';
+import '../../../history/domain/entities/chat_history_entry.dart';
 import '../../domain/entities/chat_message.dart';
 import 'chat_event.dart';
 import 'chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final ChatRepository chatRepository;
+  final HistoryRepository historyRepository;
+  final Language language;
+  final Topic topic;
 
-  ChatBloc({required this.chatRepository}) : super(const ChatState.initial()) {
+  ChatBloc({
+    required this.chatRepository,
+    required this.historyRepository,
+    required this.language,
+    required this.topic,
+  }) : super(const ChatState.initial()) {
     on<ChatStarted>(_onChatStarted);
     on<ChatMessageSent>(_onChatMessageSent);
   }
@@ -25,13 +38,28 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   Future<void> _replyToMessages(List<ChatMessage> messages, Emitter<ChatState> emit) async {
     try {
-      emit(ChatState.loading(messages));
-      final reply = await chatRepository.reply(messages);
+      emit(ChatState.loading(messages: messages));
+      final reply = await chatRepository.replyMessages(messages);
       final updatedMessages = [...messages, ...reply.messages];
-      emit(ChatState.success(updatedMessages));
+      if (reply.stage == ChatStage.closing) {
+        await _createHistoryEntry(updatedMessages);
+        emit(ChatState.closing(messages: updatedMessages));
+      } else {
+        emit(ChatState.success(messages: updatedMessages));
+      }
     } catch (e) {
       final error = e is Exception ? e : Exception('Unknown error: $e');
-      emit(ChatState.failure(state.messages, error));
+      emit(ChatState.failure(messages: state.messages, error: error));
     }
+  }
+
+  Future<void> _createHistoryEntry(List<ChatMessage> messages) async {
+    final entry = ChatHistoryEntry(
+      languageId: language.name,
+      topicId: topic.id,
+      date: DateTime.now(),
+      messages: messages,
+    );
+    await historyRepository.createHistoryEntry(entry);
   }
 }

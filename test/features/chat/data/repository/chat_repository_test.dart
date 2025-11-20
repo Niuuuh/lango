@@ -6,7 +6,7 @@ import 'package:lango/features/chat/domain/entities/message_type.dart';
 void main() {
   test("assistant starts roleplay with an action and in-character message", () async {
     final chatRepository = MockChatRepository();
-    final reply = await chatRepository.reply([]);
+    final reply = await chatRepository.replyMessages([]);
     expect(reply.messages, isNotEmpty);
     expect(reply.messages, everyElement(isA<AssistantChatMessage>()));
     final assistantMessages = reply.messages.cast<AssistantChatMessage>();

@@ -1,5 +1,6 @@
 import 'package:lango/features/chat/data/models/chat_api_format.dart';
 
+import 'entities/chat_stage.dart';
 import 'entities/message_type.dart';
 
 abstract class ChatJsonSchemes {
@@ -10,6 +11,10 @@ abstract class ChatJsonSchemes {
     schema: {
       "type": "object",
       "properties": {
+        "stage": {
+          "type": "string",
+          "enum": [...ChatStage.values.map((e) => "$e")],
+        },
         "messages": {
           "type": "array",
           "items": {
@@ -41,7 +46,7 @@ abstract class ChatJsonSchemes {
           },
         },
       },
-      "required": ["messages"],
+      "required": ["stage", "messages"],
       "additionalProperties": false,
     },
   );

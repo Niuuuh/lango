@@ -7,6 +7,7 @@ import 'package:lango/features/language/presentation/screens/languages_screen.da
 import '../core/presentation/screens/splash_screen.dart';
 import '../features/chat/presentation/screens/chat_screen.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
+import '../features/topics/domain/topic.dart';
 import '../features/topics/presentation/bloc/selected_topic_cubit.dart';
 import '../features/topics/presentation/screens/topic_screen.dart';
 import '../features/topics/presentation/screens/topics_screen.dart';
@@ -36,8 +37,12 @@ extension RoutingHelper on BuildContext {
     goNamed(Routes.topic.name, pathParameters: {'topicId': topicId});
   }
 
-  void goToChat(String topicId) {
-    goNamed(Routes.chat.name, pathParameters: {'topicId': topicId});
+  void goToChat(Topic topic) {
+    goNamed(
+      Routes.chat.name,
+      pathParameters: {'topicId': topic.id},
+      extra: topic,
+    );
   }
 }
 
@@ -78,7 +83,16 @@ class AppRouter {
               GoRoute(
                 name: Routes.chat.name,
                 path: 'chat',
-                builder: (context, state) => const ChatScreen(),
+                redirect: (context, state) {
+                  if (state.extra is! Topic) {
+                    return '/topics';
+                  }
+                  return null;
+                },
+                builder: (context, state) {
+                  final topic = state.extra as Topic;
+                  return ChatScreen(topic: topic);
+                },
               ),
             ],
           ),

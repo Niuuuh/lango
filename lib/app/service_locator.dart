@@ -13,7 +13,12 @@ import '../core/data/data_sources/preferences_api.dart';
 import '../core/presentation/cubit/user_cubit.dart';
 import '../features/chat/data/data_sources/chat_api.dart';
 import '../features/chat/data/repository/mock_chat_repository.dart';
+import '../features/history/data/respository/mock_history_repository.dart';
+import '../features/history/presentation/cubit/chat_history_cubit.dart';
+import '../features/history/data/respository/history_repository.dart';
+import '../features/language/domain/entities/language.dart';
 import '../features/onboarding/presentation/bloc/onboarding_cubit.dart';
+import '../features/topics/domain/topic.dart';
 import '../features/topics/presentation/bloc/selected_topic_cubit.dart';
 import '../features/topics/presentation/bloc/topics_cubit.dart';
 
@@ -27,10 +32,20 @@ void setupServiceLocator() {
   getIt.registerFactory(() => TypingBloc());
   getIt.registerLazySingleton(() => MockChatApi() ?? ChatApi());
   getIt.registerLazySingleton(() => MockChatRepository() ?? ChatRepository(chatApi: getIt()));
-  getIt.registerFactory(() => ChatBloc(chatRepository: getIt()));
+  getIt.registerFactoryParam((Language language, Topic topic) => ChatBloc(
+    chatRepository: getIt(),
+    historyRepository: getIt(),
+    language: language,
+    topic: topic,
+  ));
   getIt.registerLazySingleton(() => PreferencesApi());
   getIt.registerLazySingleton(() => MockTopicRepository() ?? TopicRepository(preferencesApi: getIt()));
   getIt.registerLazySingleton(() => TopicsCubit(topicRepository: getIt()));
-  getIt.registerFactoryParam((String id, _) => SelectedTopicCubit(topicsCubit: getIt(), topicId: id));
+  getIt.registerFactoryParam((String topicId, _) => SelectedTopicCubit(
+    topicsCubit: getIt(),
+    topicId: topicId,
+  ));
+  getIt.registerLazySingleton(() => MockHistoryRepository() ?? HistoryRepository(preferencesApi: getIt()));
+  getIt.registerLazySingleton(() => ChatHistoryCubit(historyRepository: getIt()));
   getIt.registerFactory(() => LanguageSearchCubit());
 }

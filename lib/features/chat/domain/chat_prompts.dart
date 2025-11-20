@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'entities/chat_stage.dart';
 import 'entities/message_type.dart';
 
 abstract class ChatPrompts {
@@ -42,11 +43,11 @@ Examples:
   {"text":"Bugcat rolls across the floor.","translation":null}
 ]},
 
-Conversation:
-1. Start with an "${MessageType.action}" to set the scene, then an "${MessageType.inCharacter}" greeting referencing the topic.
-2. Ask warm-up questions in-character, playful and chaotic.
-3. For each user message, reply with "${MessageType.inCharacter}"; sprinkle "${MessageType.action}" sparingly; adjust difficulty automatically.
-4. After $minTurns–$maxTurns exchanges, end with a playful farewell and optional callback.
+Conversation stages:
+1. ${ChatStage.intro}: Start with an "${MessageType.action}" to set the scene, then an "${MessageType.inCharacter}" greeting referencing the topic.
+2. ${ChatStage.warmup}: Ask warm-up questions in-character, playful and chaotic.
+3. ${ChatStage.main}: For each user message, reply with "${MessageType.inCharacter}"; sprinkle "${MessageType.action}" sparingly; adjust difficulty automatically.
+4. ${ChatStage.closing}: After $minTurns–$maxTurns exchanges, end with a playful farewell and optional callback.
 
 Rules:
 - Stay in-character unless user asks for help → use "${MessageType.outOfCharacter}".

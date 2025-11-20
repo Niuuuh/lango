@@ -7,10 +7,21 @@ part of 'chat_reply.dart';
 // **************************************************************************
 
 _ChatReply _$ChatReplyFromJson(Map<String, dynamic> json) => _ChatReply(
+  stage: $enumDecode(_$ChatStageEnumMap, json['stage']),
   messages: (json['messages'] as List<dynamic>)
       .map((e) => ChatMessage.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
 Map<String, dynamic> _$ChatReplyToJson(_ChatReply instance) =>
-    <String, dynamic>{'messages': instance.messages};
+    <String, dynamic>{
+      'stage': _$ChatStageEnumMap[instance.stage]!,
+      'messages': instance.messages,
+    };
+
+const _$ChatStageEnumMap = {
+  ChatStage.intro: 'intro',
+  ChatStage.warmup: 'warmup',
+  ChatStage.main: 'main',
+  ChatStage.closing: 'closing',
+};

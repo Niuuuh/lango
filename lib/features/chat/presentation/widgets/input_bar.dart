@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../bloc/chat_bloc.dart';
 import '../bloc/chat_event.dart';
@@ -30,6 +31,13 @@ class _InputBarState extends State<InputBar> {
         }
       },
       builder: (context, state) {
+        if (state is ChatClosing) {
+          return ElevatedButton(
+            onPressed: () => context.pop(),
+            child: Text("Continue"),
+          );
+        }
+        final canSubmit = state is ChatSuccess || state is ChatFailure;
         return TextField(
           controller: _controller,
           decoration: InputDecoration(
@@ -40,7 +48,7 @@ class _InputBarState extends State<InputBar> {
           ),
           textInputAction: TextInputAction.send,
           keyboardType: TextInputType.text,
-          onSubmitted: state is ChatSuccess ? _onSubmitted : null,
+          onSubmitted: canSubmit ? _onSubmitted : null,
         );
       }
     );

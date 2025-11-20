@@ -14,30 +14,61 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChatState {
 
-
+ List<ChatMessage> get messages;
+/// Create a copy of ChatState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChatStateCopyWith<ChatState> get copyWith => _$ChatStateCopyWithImpl<ChatState>(this as ChatState, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatState&&const DeepCollectionEquality().equals(other.messages, messages));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(messages));
 
 @override
 String toString() {
-  return 'ChatState()';
+  return 'ChatState(messages: $messages)';
 }
 
 
 }
 
 /// @nodoc
-class $ChatStateCopyWith<$Res>  {
-$ChatStateCopyWith(ChatState _, $Res Function(ChatState) __);
+abstract mixin class $ChatStateCopyWith<$Res>  {
+  factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) _then) = _$ChatStateCopyWithImpl;
+@useResult
+$Res call({
+ List<ChatMessage> messages
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChatStateCopyWithImpl<$Res>
+    implements $ChatStateCopyWith<$Res> {
+  _$ChatStateCopyWithImpl(this._self, this._then);
+
+  final ChatState _self;
+  final $Res Function(ChatState) _then;
+
+/// Create a copy of ChatState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? messages = null,}) {
+  return _then(_self.copyWith(
+messages: null == messages ? _self.messages : messages // ignore: cast_nullable_to_non_nullable
+as List<ChatMessage>,
+  ));
+}
+
 }
 
 
@@ -55,13 +86,14 @@ extension ChatStatePatterns on ChatState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChatInitial value)?  initial,TResult Function( ChatLoading value)?  loading,TResult Function( ChatSuccess value)?  success,TResult Function( ChatFailure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChatInitial value)?  initial,TResult Function( ChatLoading value)?  loading,TResult Function( ChatSuccess value)?  success,TResult Function( ChatClosing value)?  closing,TResult Function( ChatFailure value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChatInitial() when initial != null:
 return initial(_that);case ChatLoading() when loading != null:
 return loading(_that);case ChatSuccess() when success != null:
-return success(_that);case ChatFailure() when failure != null:
+return success(_that);case ChatClosing() when closing != null:
+return closing(_that);case ChatFailure() when failure != null:
 return failure(_that);case _:
   return orElse();
 
@@ -80,13 +112,14 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChatInitial value)  initial,required TResult Function( ChatLoading value)  loading,required TResult Function( ChatSuccess value)  success,required TResult Function( ChatFailure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChatInitial value)  initial,required TResult Function( ChatLoading value)  loading,required TResult Function( ChatSuccess value)  success,required TResult Function( ChatClosing value)  closing,required TResult Function( ChatFailure value)  failure,}){
 final _that = this;
 switch (_that) {
 case ChatInitial():
 return initial(_that);case ChatLoading():
 return loading(_that);case ChatSuccess():
-return success(_that);case ChatFailure():
+return success(_that);case ChatClosing():
+return closing(_that);case ChatFailure():
 return failure(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -101,13 +134,14 @@ return failure(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChatInitial value)?  initial,TResult? Function( ChatLoading value)?  loading,TResult? Function( ChatSuccess value)?  success,TResult? Function( ChatFailure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChatInitial value)?  initial,TResult? Function( ChatLoading value)?  loading,TResult? Function( ChatSuccess value)?  success,TResult? Function( ChatClosing value)?  closing,TResult? Function( ChatFailure value)?  failure,}){
 final _that = this;
 switch (_that) {
 case ChatInitial() when initial != null:
 return initial(_that);case ChatLoading() when loading != null:
 return loading(_that);case ChatSuccess() when success != null:
-return success(_that);case ChatFailure() when failure != null:
+return success(_that);case ChatClosing() when closing != null:
+return closing(_that);case ChatFailure() when failure != null:
 return failure(_that);case _:
   return null;
 
@@ -125,12 +159,13 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( List<ChatMessage> messages)?  loading,TResult Function( List<ChatMessage> messages)?  success,TResult Function( List<ChatMessage> messages,  Exception error)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<ChatMessage> messages)?  initial,TResult Function( List<ChatMessage> messages)?  loading,TResult Function( List<ChatMessage> messages)?  success,TResult Function( List<ChatMessage> messages)?  closing,TResult Function( List<ChatMessage> messages,  Exception error)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChatInitial() when initial != null:
-return initial();case ChatLoading() when loading != null:
+return initial(_that.messages);case ChatLoading() when loading != null:
 return loading(_that.messages);case ChatSuccess() when success != null:
-return success(_that.messages);case ChatFailure() when failure != null:
+return success(_that.messages);case ChatClosing() when closing != null:
+return closing(_that.messages);case ChatFailure() when failure != null:
 return failure(_that.messages,_that.error);case _:
   return orElse();
 
@@ -149,12 +184,13 @@ return failure(_that.messages,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( List<ChatMessage> messages)  loading,required TResult Function( List<ChatMessage> messages)  success,required TResult Function( List<ChatMessage> messages,  Exception error)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<ChatMessage> messages)  initial,required TResult Function( List<ChatMessage> messages)  loading,required TResult Function( List<ChatMessage> messages)  success,required TResult Function( List<ChatMessage> messages)  closing,required TResult Function( List<ChatMessage> messages,  Exception error)  failure,}) {final _that = this;
 switch (_that) {
 case ChatInitial():
-return initial();case ChatLoading():
+return initial(_that.messages);case ChatLoading():
 return loading(_that.messages);case ChatSuccess():
-return success(_that.messages);case ChatFailure():
+return success(_that.messages);case ChatClosing():
+return closing(_that.messages);case ChatFailure():
 return failure(_that.messages,_that.error);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -169,12 +205,13 @@ return failure(_that.messages,_that.error);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( List<ChatMessage> messages)?  loading,TResult? Function( List<ChatMessage> messages)?  success,TResult? Function( List<ChatMessage> messages,  Exception error)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<ChatMessage> messages)?  initial,TResult? Function( List<ChatMessage> messages)?  loading,TResult? Function( List<ChatMessage> messages)?  success,TResult? Function( List<ChatMessage> messages)?  closing,TResult? Function( List<ChatMessage> messages,  Exception error)?  failure,}) {final _that = this;
 switch (_that) {
 case ChatInitial() when initial != null:
-return initial();case ChatLoading() when loading != null:
+return initial(_that.messages);case ChatLoading() when loading != null:
 return loading(_that.messages);case ChatSuccess() when success != null:
-return success(_that.messages);case ChatFailure() when failure != null:
+return success(_that.messages);case ChatClosing() when closing != null:
+return closing(_that.messages);case ChatFailure() when failure != null:
 return failure(_that.messages,_that.error);case _:
   return null;
 
@@ -186,44 +223,12 @@ return failure(_that.messages,_that.error);case _:
 /// @nodoc
 
 
-class ChatInitial extends ChatState {
-  const ChatInitial(): super._();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatInitial);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ChatState.initial()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class ChatLoading extends ChatState {
-  const ChatLoading(final  List<ChatMessage> messages): _messages = messages,super._();
+class ChatInitial implements ChatState {
+  const ChatInitial({final  List<ChatMessage> messages = const []}): _messages = messages;
   
 
  final  List<ChatMessage> _messages;
- List<ChatMessage> get messages {
+@override@JsonKey() List<ChatMessage> get messages {
   if (_messages is EqualUnmodifiableListView) return _messages;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_messages);
@@ -232,7 +237,79 @@ class ChatLoading extends ChatState {
 
 /// Create a copy of ChatState
 /// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChatInitialCopyWith<ChatInitial> get copyWith => _$ChatInitialCopyWithImpl<ChatInitial>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatInitial&&const DeepCollectionEquality().equals(other._messages, _messages));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_messages));
+
+@override
+String toString() {
+  return 'ChatState.initial(messages: $messages)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChatInitialCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
+  factory $ChatInitialCopyWith(ChatInitial value, $Res Function(ChatInitial) _then) = _$ChatInitialCopyWithImpl;
+@override @useResult
+$Res call({
+ List<ChatMessage> messages
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChatInitialCopyWithImpl<$Res>
+    implements $ChatInitialCopyWith<$Res> {
+  _$ChatInitialCopyWithImpl(this._self, this._then);
+
+  final ChatInitial _self;
+  final $Res Function(ChatInitial) _then;
+
+/// Create a copy of ChatState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? messages = null,}) {
+  return _then(ChatInitial(
+messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
+as List<ChatMessage>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ChatLoading implements ChatState {
+  const ChatLoading({required final  List<ChatMessage> messages}): _messages = messages;
+  
+
+ final  List<ChatMessage> _messages;
+@override List<ChatMessage> get messages {
+  if (_messages is EqualUnmodifiableListView) return _messages;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_messages);
+}
+
+
+/// Create a copy of ChatState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ChatLoadingCopyWith<ChatLoading> get copyWith => _$ChatLoadingCopyWithImpl<ChatLoading>(this, _$identity);
 
@@ -258,7 +335,7 @@ String toString() {
 /// @nodoc
 abstract mixin class $ChatLoadingCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
   factory $ChatLoadingCopyWith(ChatLoading value, $Res Function(ChatLoading) _then) = _$ChatLoadingCopyWithImpl;
-@useResult
+@override @useResult
 $Res call({
  List<ChatMessage> messages
 });
@@ -277,9 +354,9 @@ class _$ChatLoadingCopyWithImpl<$Res>
 
 /// Create a copy of ChatState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? messages = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? messages = null,}) {
   return _then(ChatLoading(
-null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
+messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
 as List<ChatMessage>,
   ));
 }
@@ -290,12 +367,12 @@ as List<ChatMessage>,
 /// @nodoc
 
 
-class ChatSuccess extends ChatState {
-  const ChatSuccess(final  List<ChatMessage> messages): _messages = messages,super._();
+class ChatSuccess implements ChatState {
+  const ChatSuccess({required final  List<ChatMessage> messages}): _messages = messages;
   
 
  final  List<ChatMessage> _messages;
- List<ChatMessage> get messages {
+@override List<ChatMessage> get messages {
   if (_messages is EqualUnmodifiableListView) return _messages;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_messages);
@@ -304,7 +381,7 @@ class ChatSuccess extends ChatState {
 
 /// Create a copy of ChatState
 /// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
+@override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ChatSuccessCopyWith<ChatSuccess> get copyWith => _$ChatSuccessCopyWithImpl<ChatSuccess>(this, _$identity);
 
@@ -330,7 +407,7 @@ String toString() {
 /// @nodoc
 abstract mixin class $ChatSuccessCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
   factory $ChatSuccessCopyWith(ChatSuccess value, $Res Function(ChatSuccess) _then) = _$ChatSuccessCopyWithImpl;
-@useResult
+@override @useResult
 $Res call({
  List<ChatMessage> messages
 });
@@ -349,9 +426,9 @@ class _$ChatSuccessCopyWithImpl<$Res>
 
 /// Create a copy of ChatState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? messages = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? messages = null,}) {
   return _then(ChatSuccess(
-null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
+messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
 as List<ChatMessage>,
   ));
 }
@@ -362,12 +439,84 @@ as List<ChatMessage>,
 /// @nodoc
 
 
-class ChatFailure extends ChatState {
-  const ChatFailure(final  List<ChatMessage> messages, this.error): _messages = messages,super._();
+class ChatClosing implements ChatState {
+  const ChatClosing({required final  List<ChatMessage> messages}): _messages = messages;
   
 
  final  List<ChatMessage> _messages;
- List<ChatMessage> get messages {
+@override List<ChatMessage> get messages {
+  if (_messages is EqualUnmodifiableListView) return _messages;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_messages);
+}
+
+
+/// Create a copy of ChatState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChatClosingCopyWith<ChatClosing> get copyWith => _$ChatClosingCopyWithImpl<ChatClosing>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatClosing&&const DeepCollectionEquality().equals(other._messages, _messages));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_messages));
+
+@override
+String toString() {
+  return 'ChatState.closing(messages: $messages)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChatClosingCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
+  factory $ChatClosingCopyWith(ChatClosing value, $Res Function(ChatClosing) _then) = _$ChatClosingCopyWithImpl;
+@override @useResult
+$Res call({
+ List<ChatMessage> messages
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChatClosingCopyWithImpl<$Res>
+    implements $ChatClosingCopyWith<$Res> {
+  _$ChatClosingCopyWithImpl(this._self, this._then);
+
+  final ChatClosing _self;
+  final $Res Function(ChatClosing) _then;
+
+/// Create a copy of ChatState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? messages = null,}) {
+  return _then(ChatClosing(
+messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
+as List<ChatMessage>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ChatFailure implements ChatState {
+  const ChatFailure({required final  List<ChatMessage> messages, required this.error}): _messages = messages;
+  
+
+ final  List<ChatMessage> _messages;
+@override List<ChatMessage> get messages {
   if (_messages is EqualUnmodifiableListView) return _messages;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_messages);
@@ -377,7 +526,7 @@ class ChatFailure extends ChatState {
 
 /// Create a copy of ChatState
 /// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
+@override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ChatFailureCopyWith<ChatFailure> get copyWith => _$ChatFailureCopyWithImpl<ChatFailure>(this, _$identity);
 
@@ -403,7 +552,7 @@ String toString() {
 /// @nodoc
 abstract mixin class $ChatFailureCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
   factory $ChatFailureCopyWith(ChatFailure value, $Res Function(ChatFailure) _then) = _$ChatFailureCopyWithImpl;
-@useResult
+@override @useResult
 $Res call({
  List<ChatMessage> messages, Exception error
 });
@@ -422,10 +571,10 @@ class _$ChatFailureCopyWithImpl<$Res>
 
 /// Create a copy of ChatState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? messages = null,Object? error = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? messages = null,Object? error = null,}) {
   return _then(ChatFailure(
-null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
-as List<ChatMessage>,null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
+as List<ChatMessage>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as Exception,
   ));
 }

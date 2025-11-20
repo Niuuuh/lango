@@ -16,7 +16,7 @@ class ChatRepository {
 
   ChatRepository({required this.chatApi});
 
-  Future<ChatReply> reply(List<ChatMessage> messages) async {
+  Future<ChatReply> replyMessages(List<ChatMessage> messages) async {
     assert(messages.isEmpty || messages.last is UserChatMessage,
         "The last message should be from the user.");
 
