@@ -6,6 +6,7 @@ import 'package:lango/core/utils/string_utils.dart';
 
 import '../bloc/language_search_cubit.dart';
 import '../bloc/language_search_state.dart';
+import 'language_icon.dart';
 
 class LanguageList extends StatelessWidget {
   const LanguageList({super.key});
@@ -19,7 +20,7 @@ class LanguageList extends StatelessWidget {
           itemBuilder: (context, index) {
             final language = state.result[index];
             return ListTile(
-              leading: Text(language.emoji, style: const TextStyle(fontSize: 24)),
+              leading: LanguageIcon(language: language),
               title: Text(language.name.toSentenceCase()),
               onTap: () async {
                 await context.read<UserCubit>().updateLanguage(language);

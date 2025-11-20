@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:lango/app/service_locator.dart';
 import 'package:lango/features/language/presentation/screens/languages_screen.dart';
 
-import '../core/presentation/cubit/user_cubit.dart';
 import '../core/presentation/screens/splash_screen.dart';
 import '../features/chat/presentation/screens/chat_screen.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -57,7 +56,7 @@ class AppRouter {
       ),
       GoRoute(
         name: Routes.languages.name,
-        path: '/language',
+        path: '/languages',
         builder: (context, state) => const LanguagesScreen(),
       ),
       GoRoute(

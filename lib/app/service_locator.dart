@@ -22,7 +22,7 @@ final getIt = GetIt.instance;
 void setupServiceLocator() {
   getIt.registerLazySingleton(() => AppRouter());
   getIt.registerLazySingleton(() => UserRepository(preferencesApi: getIt()));
-  getIt.registerFactory(() => UserCubit(userRepository: getIt()));
+  getIt.registerLazySingleton(() => UserCubit(userRepository: getIt()));
   getIt.registerFactory(() => OnboardingCubit(userCubit: getIt()));
   getIt.registerFactory(() => TypingBloc());
   getIt.registerLazySingleton(() => MockChatApi() ?? ChatApi());

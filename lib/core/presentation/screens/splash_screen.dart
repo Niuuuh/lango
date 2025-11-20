@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       body: SafeArea(
         child: BlocListener<UserCubit, UserState>(
           listener: (context, state) {
-            state.maybeWhen(
+            state.whenOrNull(
               success: (user) {
                 if (user.targetLanguage == null) {
                   context.goToLanguages();
@@ -23,7 +23,6 @@ class SplashScreen extends StatelessWidget {
                 }
               },
               failure: (message) => context.goToOnboarding(),
-              orElse: () {},
             );
           },
           child: SizedBox.shrink(),
