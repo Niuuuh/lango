@@ -1,16 +1,15 @@
-import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+enum Topic {
+  science(title: 'Science', description: 'Explore the wonders of science.'),
+  history(title: 'History', description: 'Dive into historical events and figures.'),
+  art(title: 'Art', description: 'Discover famous artworks and artists.'),
+  technology(title: 'Technology', description: 'Stay updated with the latest tech trends.'),
+  travel(title: 'Travel', description: 'Share travel experiences and tips.');
 
-part 'topic.freezed.dart';
-part 'topic.g.dart';
+  const Topic({
+    required this.title,
+    this.description,
+  });
 
-@freezed
-abstract class Topic with _$Topic {
-  const factory Topic({
-    required String id,
-    required String name,
-    required String? description,
-  }) = _Topic;
-
-  factory Topic.fromJson(Map<String, dynamic> json) => _$TopicFromJson(json);
+  final String title;
+  final String? description;
 }

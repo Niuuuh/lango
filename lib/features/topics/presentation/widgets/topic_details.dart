@@ -13,7 +13,7 @@ class TopicDetails extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          topic.name,
+          topic.title,
           style: textTheme.headlineMedium,
         ),
         if (topic.description != null)

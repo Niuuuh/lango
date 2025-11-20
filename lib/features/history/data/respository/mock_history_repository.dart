@@ -5,6 +5,7 @@ import '../../../../core/data/data_sources/preferences_api.dart';
 
 import '../../../chat/data/data_sources/mock_messages.dart';
 import '../../../language/domain/entities/language.dart';
+import '../../../topics/domain/topic.dart';
 import '../../domain/entities/chat_history.dart';
 import '../../domain/entities/chat_history_entry.dart';
 
@@ -15,7 +16,7 @@ class MockHistoryRepository implements HistoryRepository {
     entries: [
       ChatHistoryEntry(
         languageId: Language.german.name,
-        topicId: '3',
+        topicId: Topic.art.name,
         date: DateTime.parse('2025-11-20 14:30:00'),
         messages: MockMessages.messages,
       ),

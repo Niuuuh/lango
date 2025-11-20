@@ -56,7 +56,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   Future<void> _createHistoryEntry(List<ChatMessage> messages) async {
     final entry = ChatHistoryEntry(
       languageId: language.name,
-      topicId: topic.id,
+      topicId: topic.name,
       date: DateTime.now(),
       messages: messages,
     );

@@ -37,7 +37,7 @@ class ChatHistoryCubit extends Cubit<ChatHistoryState> {
 
     final history = (state as ChatHistorySuccess).history;
     return history.entries.where(
-      (entry) => entry.languageId == language.name && entry.topicId == topic.id,
+      (entry) => entry.languageId == language.name && entry.topicId == topic.name,
     ).toList();
   }
 

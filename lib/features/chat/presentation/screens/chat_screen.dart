@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lango/core/presentation/cubit/user_state.dart';
+import 'package:lango/core/utils/context_extension.dart';
 import 'package:lango/features/chat/presentation/bloc/chat_bloc.dart';
 
 import '../../../../app/service_locator.dart';
@@ -18,9 +19,7 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final language = context.select<UserCubit, Language>((cubit) {
-      return cubit.state.whenOrNull(success: (user) => user.targetLanguage)!;
-    });
+    final language = context.targetLanguage!;
     return BlocProvider(
       create: (context) {
         return getIt<ChatBloc>(param1: language, param2: topic)..add(const ChatStarted());

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/core/presentation/cubit/user_state.dart';
+import 'package:lango/core/utils/context_extension.dart';
 import 'package:lango/features/history/presentation/cubit/chat_history_cubit.dart';
 import 'package:lango/features/history/presentation/cubit/chat_history_state.dart';
 
-import '../../../../core/presentation/cubit/user_cubit.dart';
-import '../../../language/domain/entities/language.dart';
 import '../../../topics/domain/topic.dart';
 import '../../domain/entities/chat_history_entry.dart';
 
@@ -16,9 +14,7 @@ class ChatHistoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final language = context.select<UserCubit, Language>((cubit) {
-      return cubit.state.whenOrNull(success: (user) => user.targetLanguage)!;
-    });
+    final language = context.targetLanguage!;
     final state = context.watch<ChatHistoryCubit>().state;
     return state.maybeWhen(
       success: (history) {

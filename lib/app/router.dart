@@ -8,7 +8,7 @@ import '../core/presentation/screens/splash_screen.dart';
 import '../features/chat/presentation/screens/chat_screen.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../features/topics/domain/topic.dart';
-import '../features/topics/presentation/bloc/selected_topic_cubit.dart';
+import '../features/topics/presentation/bloc/topic_cubit.dart';
 import '../features/topics/presentation/screens/topic_screen.dart';
 import '../features/topics/presentation/screens/topics_screen.dart';
 
@@ -33,14 +33,14 @@ extension RoutingHelper on BuildContext {
     goNamed(Routes.topics.name);
   }
 
-  void goToTopic(String topicId) {
-    goNamed(Routes.topic.name, pathParameters: {'topicId': topicId});
+  void goToTopic(Topic topic) {
+    goNamed(Routes.topic.name, pathParameters: {'topicId': topic.name});
   }
 
   void goToChat(Topic topic) {
     goNamed(
       Routes.chat.name,
-      pathParameters: {'topicId': topic.id},
+      pathParameters: {'topicId': topic.name},
       extra: topic,
     );
   }
@@ -75,7 +75,7 @@ class AppRouter {
             builder: (context, state) {
               final topicId = state.pathParameters['topicId']!;
               return BlocProvider(
-                create: (context) => getIt<SelectedTopicCubit>(param1: topicId),
+                create: (context) => getIt<TopicCubit>(param1: topicId),
                 child: const TopicScreen(),
               );
             },

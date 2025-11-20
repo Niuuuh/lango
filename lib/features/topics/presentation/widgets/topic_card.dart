@@ -22,7 +22,7 @@ class TopicCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(topic.name),
+            Text(topic.title),
             if (topic.description != null) Text(topic.description!),
           ],
         ),

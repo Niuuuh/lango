@@ -6,8 +6,6 @@ import 'package:lango/features/chat/data/repository/chat_repository.dart';
 import 'package:lango/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:lango/features/language/presentation/bloc/language_search_cubit.dart';
 import 'package:lango/features/onboarding/presentation/bloc/typing_cubit.dart';
-import 'package:lango/features/topics/data/repository/mock_topic_repository.dart';
-import 'package:lango/features/topics/data/repository/topic_repository.dart';
 
 import '../core/data/data_sources/preferences_api.dart';
 import '../core/presentation/cubit/user_cubit.dart';
@@ -19,8 +17,7 @@ import '../features/history/data/respository/history_repository.dart';
 import '../features/language/domain/entities/language.dart';
 import '../features/onboarding/presentation/bloc/onboarding_cubit.dart';
 import '../features/topics/domain/topic.dart';
-import '../features/topics/presentation/bloc/selected_topic_cubit.dart';
-import '../features/topics/presentation/bloc/topics_cubit.dart';
+import '../features/topics/presentation/bloc/topic_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -39,12 +36,7 @@ void setupServiceLocator() {
     topic: topic,
   ));
   getIt.registerLazySingleton(() => PreferencesApi());
-  getIt.registerLazySingleton(() => MockTopicRepository() ?? TopicRepository(preferencesApi: getIt()));
-  getIt.registerLazySingleton(() => TopicsCubit(topicRepository: getIt()));
-  getIt.registerFactoryParam((String topicId, _) => SelectedTopicCubit(
-    topicsCubit: getIt(),
-    topicId: topicId,
-  ));
+  getIt.registerFactoryParam((String topicId, _) => TopicCubit(topicId: topicId));
   getIt.registerLazySingleton(() => MockHistoryRepository() ?? HistoryRepository(preferencesApi: getIt()));
   getIt.registerLazySingleton(() => ChatHistoryCubit(historyRepository: getIt()));
   getIt.registerFactory(() => LanguageSearchCubit());
