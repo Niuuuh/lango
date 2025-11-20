@@ -5,4 +5,9 @@ extension StringUtils on String {
           (match) => '_${match.group(0)}',
     ).replaceAll(' ', '_').toLowerCase();
   }
+
+  String toSentenceCase() {
+    if (isEmpty) return this;
+    return this[0].toUpperCase() + substring(1).toLowerCase();
+  }
 }
