@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:lango/app/router.dart';
-import 'package:lango/features/topics/presentation/bloc/topic_cubit.dart';
 
-import '../../../history/presentation/widgets/chat_history_list.dart';
+import '../../../../app/router.dart';
 import '../../../chat/presentation/widgets/chat_start_button.dart';
+import '../../../history/presentation/widgets/chat_history_list.dart';
+import '../bloc/topic_cubit.dart';
 import '../widgets/topic_details.dart';
 
 class TopicScreen extends StatelessWidget {

@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:lango/features/history/domain/entities/chat_history_entry.dart';
-
 import '../../../../core/data/data_sources/preferences_api.dart';
 import '../../domain/entities/chat_history.dart';
+import '../../domain/entities/chat_history_entry.dart';
 
 class HistoryRepository {
   final PreferencesApi preferencesApi;

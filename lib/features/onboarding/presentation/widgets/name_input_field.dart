@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/features/onboarding/presentation/bloc/onboarding_cubit.dart';
 
+import '../bloc/onboarding_cubit.dart';
 import '../bloc/onboarding_state.dart';
 import '../bloc/typing_cubit.dart';
 import '../bloc/typing_event.dart';

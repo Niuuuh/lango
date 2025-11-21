@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lango/features/chat/domain/entities/chat_message.dart';
+
+import '../../domain/entities/chat_message.dart';
 
 class UserMessageBubble extends StatelessWidget {
   const UserMessageBubble({super.key, required this.message});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/app/router.dart';
-import 'package:lango/features/onboarding/presentation/bloc/onboarding_state.dart';
 
+import '../../../../app/router.dart';
 import '../../../../app/service_locator.dart';
 import '../bloc/onboarding_cubit.dart';
+import '../bloc/onboarding_state.dart';
 import '../bloc/typing_cubit.dart';
 import '../bloc/typing_state.dart';
 import '../widgets/name_input_field.dart';

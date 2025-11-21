@@ -1,6 +1,5 @@
-import 'package:lango/core/data/data_sources/preferences_api.dart';
-
 import '../../domain/entities/user.dart';
+import '../data_sources/preferences_api.dart';
 
 class UserRepository {
   final PreferencesApi preferencesApi;

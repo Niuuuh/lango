@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/features/chat/domain/entities/chat_message.dart';
-import 'package:lango/features/chat/presentation/widgets/user_message_bubble.dart';
 
+import '../../domain/entities/chat_message.dart';
 import '../bloc/chat_bloc.dart';
 import '../bloc/chat_state.dart';
 import 'assistant_message_bubble.dart';
+import 'user_message_bubble.dart';
 
 class ChatListView extends StatefulWidget {
   const ChatListView({super.key});

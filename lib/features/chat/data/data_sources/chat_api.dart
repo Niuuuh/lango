@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:lango/features/chat/data/models/chat_api_input.dart';
 
+import '../models/chat_api_input.dart';
 import '../models/chat_api_response.dart';
 import 'chat_api_constants.dart';
 

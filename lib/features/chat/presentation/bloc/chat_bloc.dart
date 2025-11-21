@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
-import 'package:lango/features/chat/data/repository/chat_repository.dart';
-import 'package:lango/features/chat/domain/entities/chat_stage.dart';
 
 import '../../../history/data/respository/history_repository.dart';
+import '../../../history/domain/entities/chat_history_entry.dart';
 import '../../../language/domain/entities/language.dart';
 import '../../../topics/domain/topic.dart';
-import '../../../history/domain/entities/chat_history_entry.dart';
+import '../../data/repository/chat_repository.dart';
 import '../../domain/entities/chat_message.dart';
+import '../../domain/entities/chat_stage.dart';
 import 'chat_event.dart';
 import 'chat_state.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/app/router.dart';
-import 'package:lango/app/service_locator.dart';
-import 'package:lango/core/presentation/cubit/user_cubit.dart';
 
+import '../core/presentation/cubit/user_cubit.dart';
 import '../features/history/presentation/cubit/chat_history_cubit.dart';
+import 'router.dart';
+import 'service_locator.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

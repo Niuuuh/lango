@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/app/router.dart';
-import 'package:lango/core/utils/context_extension.dart';
-import 'package:lango/features/history/presentation/cubit/chat_history_cubit.dart';
-import 'package:lango/features/history/presentation/cubit/chat_history_state.dart';
 
+import '../../../../app/router.dart';
+import '../../../../core/utils/context_extension.dart';
 import '../../../topics/domain/topic.dart';
 import '../../domain/entities/chat_history_entry.dart';
+import '../cubit/chat_history_cubit.dart';
+import '../cubit/chat_history_state.dart';
 
 class ChatHistoryList extends StatelessWidget {
   const ChatHistoryList({super.key, required this.topic});

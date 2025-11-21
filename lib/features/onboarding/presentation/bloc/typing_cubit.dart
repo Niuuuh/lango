@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:lango/features/onboarding/presentation/bloc/typing_event.dart';
-import 'package:lango/features/onboarding/presentation/bloc/typing_state.dart';
 
 import '../../../../core/utils/debouncer.dart';
+import 'typing_event.dart';
+import 'typing_state.dart';
 
 class TypingBloc extends Bloc<TypingEvent, TypingState> {
   final debouncer = Debouncer(Duration(milliseconds: 1000));

@@ -1,5 +1,4 @@
-import 'package:lango/features/chat/data/models/chat_api_format.dart';
-
+import '../data/models/chat_api_format.dart';
 import 'entities/chat_stage.dart';
 import 'entities/message_type.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/app/router.dart';
-import 'package:lango/core/presentation/cubit/user_cubit.dart';
-import 'package:lango/core/utils/string_utils.dart';
 
+import '../../../../app/router.dart';
+import '../../../../core/presentation/cubit/user_cubit.dart';
+import '../../../../core/utils/string_utils.dart';
 import '../bloc/language_search_cubit.dart';
 import '../bloc/language_search_state.dart';
 import 'language_icon.dart';

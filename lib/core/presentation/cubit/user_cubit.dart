@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:lango/core/data/repository/user_repository.dart';
-import 'package:lango/core/presentation/cubit/user_state.dart';
 
 import '../../../features/language/domain/entities/language.dart';
+import '../../data/repository/user_repository.dart';
 import '../../domain/entities/user.dart';
+import 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
   final UserRepository userRepository;

@@ -1,15 +1,14 @@
-import 'package:lango/features/chat/data/models/chat_api_input.dart';
-import 'package:lango/features/chat/data/models/chat_api_role.dart';
-import 'package:lango/features/chat/data/models/chat_api_text.dart';
-import 'package:lango/features/chat/data/utils/chat_api_response_extension.dart';
-import 'package:lango/features/chat/domain/chat_json_schemes.dart';
-import 'package:lango/features/chat/domain/chat_prompts.dart';
-import 'package:lango/features/chat/domain/entities/chat_reply.dart';
-
+import '../../domain/chat_json_schemes.dart';
+import '../../domain/chat_prompts.dart';
 import '../../domain/entities/chat_message.dart';
+import '../../domain/entities/chat_reply.dart';
 import '../data_sources/chat_api.dart';
+import '../models/chat_api_input.dart';
 import '../models/chat_api_input_message.dart';
 import '../models/chat_api_model.dart';
+import '../models/chat_api_role.dart';
+import '../models/chat_api_text.dart';
+import '../utils/chat_api_response_extension.dart';
 
 class ChatRepository {
   final ChatApi chatApi;

@@ -9,8 +9,7 @@ class LanguageSearchCubit extends Cubit<LanguageSearchState> {
   void search(String query) {
     final normalized = query.toLowerCase().trim();
     final matching = Language.values.where((language) {
-      return language.name.toLowerCase().contains(normalized)
-          || language.native.toLowerCase().contains(normalized);
+      return language.name.toLowerCase().contains(normalized);
     }).toList();
     return emit(LanguageSearchState(query: query, result: matching));
   }

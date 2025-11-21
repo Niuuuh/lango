@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:lango/features/language/domain/entities/language.dart';
+
+import '../../domain/entities/language.dart';
 
 part 'language_search_state.freezed.dart';
 

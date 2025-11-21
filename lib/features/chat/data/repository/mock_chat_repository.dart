@@ -1,10 +1,9 @@
-import 'package:lango/features/chat/data/data_sources/chat_api.dart';
-import 'package:lango/features/chat/data/data_sources/mock_messages.dart';
-import 'package:lango/features/chat/data/repository/chat_repository.dart';
-import 'package:lango/features/chat/domain/entities/chat_reply.dart';
-
 import '../../domain/entities/chat_message.dart';
+import '../../domain/entities/chat_reply.dart';
 import '../../domain/entities/chat_stage.dart';
+import '../data_sources/chat_api.dart';
+import '../data_sources/mock_messages.dart';
+import 'chat_repository.dart';
 
 class MockChatRepository implements ChatRepository {
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lango/features/topics/domain/topic.dart';
+
+import '../../domain/topic.dart';
 
 class TopicDetails extends StatelessWidget {
   const TopicDetails({super.key, required this.topic});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/core/presentation/cubit/user_state.dart';
 
 import '../../features/language/domain/entities/language.dart';
 import '../../features/topics/domain/topic.dart';
 import '../../features/topics/presentation/bloc/topic_cubit.dart';
 import '../presentation/cubit/user_cubit.dart';
+import '../presentation/cubit/user_state.dart';
 
 extension ContextExtension on BuildContext {
   Language? get targetLanguage => select<UserCubit, Language?>((cubit) {

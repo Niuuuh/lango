@@ -1,18 +1,17 @@
 enum Language {
-  english('English', '🇬🇧'),
-  spanish('Español', '🇪🇸'),
-  french('Français', '🇫🇷'),
-  german('Deutsch', '🇩🇪'),
-  russian('Русский', '🇷🇺'),
-  italian('Italiano', '🇮🇹'),
-  chinese('中文', '🇨🇳'),
-  japanese('日本語', '🇯🇵'),
-  portuguese('Português', '🇵🇹'),
-  arabic('العربية', '🇸🇦'),
-  hindi('हिन्दी', '🇮🇳');
+  english('🇬🇧'),
+  spanish('🇪🇸'),
+  french('🇫🇷'),
+  german('🇩🇪'),
+  russian('🇷🇺'),
+  italian('🇮🇹'),
+  chinese('🇨🇳'),
+  japanese('🇯🇵'),
+  portuguese('🇵🇹'),
+  arabic('🇸🇦'),
+  hindi('🇮🇳');
 
-  const Language(this.native, this.emoji);
+  const Language(this.emoji);
 
-  final String native;
   final String emoji;
 }

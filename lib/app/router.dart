@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lango/app/service_locator.dart';
-import 'package:lango/features/history/domain/entities/chat_history_entry.dart';
-import 'package:lango/features/language/presentation/screens/languages_screen.dart';
 
 import '../core/presentation/screens/splash_screen.dart';
 import '../features/chat/presentation/screens/chat_screen.dart';
+import '../features/history/domain/entities/chat_history_entry.dart';
 import '../features/history/presentation/screens/history_screen.dart';
+import '../features/language/presentation/screens/languages_screen.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../features/topics/domain/topic.dart';
 import '../features/topics/presentation/bloc/topic_cubit.dart';
 import '../features/topics/presentation/screens/topic_screen.dart';
 import '../features/topics/presentation/screens/topics_screen.dart';
+import 'service_locator.dart';
 
 enum Routes {
   onboarding,

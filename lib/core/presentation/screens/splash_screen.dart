@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/app/router.dart';
 
+import '../../../app/router.dart';
 import '../cubit/user_cubit.dart';
 import '../cubit/user_state.dart';
 

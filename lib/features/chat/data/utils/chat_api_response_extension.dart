@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:lango/features/chat/data/models/chat_api_output.dart';
-import 'package:lango/features/chat/data/models/chat_api_response.dart';
-import 'package:lango/features/chat/data/models/chat_api_status.dart';
 
 import '../models/chat_api_content.dart';
+import '../models/chat_api_output.dart';
+import '../models/chat_api_response.dart';
+import '../models/chat_api_status.dart';
 
 extension ChatApiResponseExtension on ChatApiResponse {
   dynamic get parsedOutput {

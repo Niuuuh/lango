@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:lango/app/router.dart';
-import 'package:lango/features/topics/presentation/widgets/topic_card.dart';
 
+import '../../../../app/router.dart';
 import '../../domain/topic.dart';
+import 'topic_card.dart';
 
 class TopicsGrid extends StatelessWidget {
   const TopicsGrid({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lango/core/utils/context_extension.dart';
-import 'package:lango/features/chat/domain/entities/chat_message.dart';
 
+import '../../../../core/utils/context_extension.dart';
+import '../../../chat/domain/entities/chat_message.dart';
 import '../../../chat/presentation/widgets/assistant_message_bubble.dart';
 import '../../../chat/presentation/widgets/user_message_bubble.dart';
 import '../../domain/entities/chat_history_entry.dart';

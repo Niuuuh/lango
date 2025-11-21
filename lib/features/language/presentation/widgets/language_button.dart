@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lango/app/router.dart';
-import 'package:lango/core/utils/string_utils.dart';
-import 'package:lango/features/language/presentation/widgets/language_icon.dart';
 
+import '../../../../app/router.dart';
 import '../../../../core/presentation/cubit/user_cubit.dart';
 import '../../../../core/presentation/cubit/user_state.dart';
+import '../../../../core/utils/string_utils.dart';
 import '../../domain/entities/language.dart';
+import 'language_icon.dart';
 
 class LanguageButton extends StatelessWidget {
   const LanguageButton({super.key});
