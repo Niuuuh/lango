@@ -8,7 +8,11 @@ part 'onboarding_state.freezed.dart';
 sealed class OnboardingState with _$OnboardingState {
   const factory OnboardingState.initial() = OnboardingInitial;
 
-  const factory OnboardingState.loading() = OnboardingLoading;
+  const factory OnboardingState.greeting() = OnboardingGreeting;
+
+  const factory OnboardingState.askingName() = OnboardingAskingName;
+
+  const factory OnboardingState.submittingName() = OnboardingSubmittingName;
 
   const factory OnboardingState.success(User user) = OnboardingSuccess;
 }

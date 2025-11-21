@@ -62,7 +62,7 @@ extension RoutingHelper on BuildContext {
 
 class AppRouter {
   final routerConfig = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/onboarding',
     routes: [
       GoRoute(
         path: '/',

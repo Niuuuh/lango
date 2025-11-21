@@ -64,7 +64,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       date: DateTime.now(),
       messages: messages,
     );
-    print(entry.toJson());
     await historyRepository.createHistoryEntry(entry);
   }
 }

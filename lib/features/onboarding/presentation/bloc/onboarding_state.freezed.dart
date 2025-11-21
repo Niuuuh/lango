@@ -55,12 +55,14 @@ extension OnboardingStatePatterns on OnboardingState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( OnboardingInitial value)?  initial,TResult Function( OnboardingLoading value)?  loading,TResult Function( OnboardingSuccess value)?  success,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( OnboardingInitial value)?  initial,TResult Function( OnboardingGreeting value)?  greeting,TResult Function( OnboardingAskingName value)?  askingName,TResult Function( OnboardingSubmittingName value)?  submittingName,TResult Function( OnboardingSuccess value)?  success,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case OnboardingInitial() when initial != null:
-return initial(_that);case OnboardingLoading() when loading != null:
-return loading(_that);case OnboardingSuccess() when success != null:
+return initial(_that);case OnboardingGreeting() when greeting != null:
+return greeting(_that);case OnboardingAskingName() when askingName != null:
+return askingName(_that);case OnboardingSubmittingName() when submittingName != null:
+return submittingName(_that);case OnboardingSuccess() when success != null:
 return success(_that);case _:
   return orElse();
 
@@ -79,12 +81,14 @@ return success(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( OnboardingInitial value)  initial,required TResult Function( OnboardingLoading value)  loading,required TResult Function( OnboardingSuccess value)  success,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( OnboardingInitial value)  initial,required TResult Function( OnboardingGreeting value)  greeting,required TResult Function( OnboardingAskingName value)  askingName,required TResult Function( OnboardingSubmittingName value)  submittingName,required TResult Function( OnboardingSuccess value)  success,}){
 final _that = this;
 switch (_that) {
 case OnboardingInitial():
-return initial(_that);case OnboardingLoading():
-return loading(_that);case OnboardingSuccess():
+return initial(_that);case OnboardingGreeting():
+return greeting(_that);case OnboardingAskingName():
+return askingName(_that);case OnboardingSubmittingName():
+return submittingName(_that);case OnboardingSuccess():
 return success(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -99,12 +103,14 @@ return success(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( OnboardingInitial value)?  initial,TResult? Function( OnboardingLoading value)?  loading,TResult? Function( OnboardingSuccess value)?  success,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( OnboardingInitial value)?  initial,TResult? Function( OnboardingGreeting value)?  greeting,TResult? Function( OnboardingAskingName value)?  askingName,TResult? Function( OnboardingSubmittingName value)?  submittingName,TResult? Function( OnboardingSuccess value)?  success,}){
 final _that = this;
 switch (_that) {
 case OnboardingInitial() when initial != null:
-return initial(_that);case OnboardingLoading() when loading != null:
-return loading(_that);case OnboardingSuccess() when success != null:
+return initial(_that);case OnboardingGreeting() when greeting != null:
+return greeting(_that);case OnboardingAskingName() when askingName != null:
+return askingName(_that);case OnboardingSubmittingName() when submittingName != null:
+return submittingName(_that);case OnboardingSuccess() when success != null:
 return success(_that);case _:
   return null;
 
@@ -122,11 +128,13 @@ return success(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( User user)?  success,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  greeting,TResult Function()?  askingName,TResult Function()?  submittingName,TResult Function( User user)?  success,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case OnboardingInitial() when initial != null:
-return initial();case OnboardingLoading() when loading != null:
-return loading();case OnboardingSuccess() when success != null:
+return initial();case OnboardingGreeting() when greeting != null:
+return greeting();case OnboardingAskingName() when askingName != null:
+return askingName();case OnboardingSubmittingName() when submittingName != null:
+return submittingName();case OnboardingSuccess() when success != null:
 return success(_that.user);case _:
   return orElse();
 
@@ -145,11 +153,13 @@ return success(_that.user);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( User user)  success,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  greeting,required TResult Function()  askingName,required TResult Function()  submittingName,required TResult Function( User user)  success,}) {final _that = this;
 switch (_that) {
 case OnboardingInitial():
-return initial();case OnboardingLoading():
-return loading();case OnboardingSuccess():
+return initial();case OnboardingGreeting():
+return greeting();case OnboardingAskingName():
+return askingName();case OnboardingSubmittingName():
+return submittingName();case OnboardingSuccess():
 return success(_that.user);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -164,11 +174,13 @@ return success(_that.user);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( User user)?  success,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  greeting,TResult? Function()?  askingName,TResult? Function()?  submittingName,TResult? Function( User user)?  success,}) {final _that = this;
 switch (_that) {
 case OnboardingInitial() when initial != null:
-return initial();case OnboardingLoading() when loading != null:
-return loading();case OnboardingSuccess() when success != null:
+return initial();case OnboardingGreeting() when greeting != null:
+return greeting();case OnboardingAskingName() when askingName != null:
+return askingName();case OnboardingSubmittingName() when submittingName != null:
+return submittingName();case OnboardingSuccess() when success != null:
 return success(_that.user);case _:
   return null;
 
@@ -212,8 +224,8 @@ String toString() {
 /// @nodoc
 
 
-class OnboardingLoading implements OnboardingState {
-  const OnboardingLoading();
+class OnboardingGreeting implements OnboardingState {
+  const OnboardingGreeting();
   
 
 
@@ -223,7 +235,7 @@ class OnboardingLoading implements OnboardingState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingLoading);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingGreeting);
 }
 
 
@@ -232,7 +244,71 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OnboardingState.loading()';
+  return 'OnboardingState.greeting()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class OnboardingAskingName implements OnboardingState {
+  const OnboardingAskingName();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingAskingName);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'OnboardingState.askingName()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class OnboardingSubmittingName implements OnboardingState {
+  const OnboardingSubmittingName();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingSubmittingName);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'OnboardingState.submittingName()';
 }
 
 

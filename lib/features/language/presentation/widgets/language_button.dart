@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../app/router.dart';
 import '../../../../core/presentation/cubit/user_cubit.dart';
 import '../../../../core/presentation/cubit/user_state.dart';
-import '../../../../core/utils/string_utils.dart';
+import '../../../../core/utils/string_extension.dart';
 import '../../domain/entities/language.dart';
 import 'language_icon.dart';
 

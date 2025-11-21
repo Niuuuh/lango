@@ -5,6 +5,7 @@ import '../core/presentation/cubit/user_cubit.dart';
 import '../features/history/presentation/cubit/chat_history_cubit.dart';
 import 'router.dart';
 import 'service_locator.dart';
+import 'theme.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -22,6 +23,7 @@ class MainApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         routerConfig: getIt<AppRouter>().routerConfig,
+        theme: theme(),
       ),
     );
   }

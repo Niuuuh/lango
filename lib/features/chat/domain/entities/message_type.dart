@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/utils/string_utils.dart';
+import '../../../../core/utils/string_extension.dart';
 
 @JsonEnum(fieldRename: FieldRename.snake)
 enum MessageType {

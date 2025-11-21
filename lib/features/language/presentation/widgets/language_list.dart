@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/router.dart';
 import '../../../../core/presentation/cubit/user_cubit.dart';
-import '../../../../core/utils/string_utils.dart';
+import '../../../../core/utils/string_extension.dart';
 import '../bloc/language_search_cubit.dart';
 import '../bloc/language_search_state.dart';
 import 'language_icon.dart';

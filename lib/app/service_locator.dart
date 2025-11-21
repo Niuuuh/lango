@@ -13,7 +13,7 @@ import '../features/history/data/respository/history_repository.dart';
 import '../features/history/data/respository/mock_history_repository.dart';
 import '../features/history/presentation/cubit/chat_history_cubit.dart';
 import '../features/language/presentation/bloc/language_search_cubit.dart';
-import '../features/onboarding/presentation/bloc/onboarding_cubit.dart';
+import '../features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import '../features/onboarding/presentation/bloc/typing_cubit.dart';
 import '../features/topics/domain/topic.dart';
 import '../features/topics/presentation/bloc/topic_cubit.dart';
@@ -25,7 +25,7 @@ void setupServiceLocator() {
   getIt.registerLazySingleton(() => AppRouter());
   getIt.registerLazySingleton(() => UserRepository(preferencesApi: getIt()));
   getIt.registerLazySingleton(() => UserCubit(userRepository: getIt()));
-  getIt.registerFactory(() => OnboardingCubit(userCubit: getIt()));
+  getIt.registerFactory(() => OnboardingBloc(userCubit: getIt()));
   getIt.registerFactory(() => TypingBloc());
   getIt.registerLazySingleton(() => ChatApi() ?? MockChatApi());
   getIt.registerLazySingleton(() => MockChatRepository() ?? ChatRepository(chatApi: getIt()));

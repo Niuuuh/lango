@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/onboarding_cubit.dart';
+import '../bloc/onboarding_bloc.dart';
+import '../bloc/onboarding_event.dart';
 import '../bloc/onboarding_state.dart';
 import '../bloc/typing_cubit.dart';
 import '../bloc/typing_event.dart';
@@ -11,7 +12,7 @@ class NameInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
+    return BlocBuilder<OnboardingBloc, OnboardingState>(
       builder: (context, state) {
         return TextField(
           decoration: const InputDecoration(
@@ -26,7 +27,8 @@ class NameInputField extends StatelessWidget {
             context.read<TypingBloc>().add(TypingEvent.changed(name));
           },
           onSubmitted: (name) {
-            context.read<OnboardingCubit>().submit(name);
+            context.read<OnboardingBloc>()
+                .add(OnboardingEvent.submitNamePressed(name));
           },
         );
       }
