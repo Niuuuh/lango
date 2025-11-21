@@ -6,10 +6,8 @@ enum TypingStatus { initial, idle, typing }
 
 @freezed
 sealed class TypingState with _$TypingState {
-  static const initial = TypingState(status: TypingStatus.initial, text: '');
-
   const factory TypingState({
-    required TypingStatus status,
-    required String text,
+    @Default(TypingStatus.initial) TypingStatus status,
+    @Default('') String text,
   }) = _TypingState;
 }

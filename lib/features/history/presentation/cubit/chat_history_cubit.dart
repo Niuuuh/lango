@@ -33,12 +33,14 @@ class ChatHistoryCubit extends Cubit<ChatHistoryState> {
 
   List<ChatHistoryEntry> select(Language language, Topic topic) {
     assert(state is ChatHistorySuccess);
-    if (state is! ChatHistorySuccess) return [];
-
-    final history = (state as ChatHistorySuccess).history;
-    return history.entries.where(
-      (entry) => entry.languageId == language.name && entry.topicId == topic.name,
-    ).toList();
+    return state.maybeWhen(
+      success: (history) {
+        return history.entries.where(
+          (entry) => entry.languageId == language.name && entry.topicId == topic.name,
+        ).toList();
+      },
+      orElse: () => [],
+    );
   }
 
   @override

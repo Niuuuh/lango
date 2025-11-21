@@ -201,11 +201,11 @@ return $default(_that.status,_that.text);case _:
 
 
 class _TypingState implements TypingState {
-  const _TypingState({required this.status, required this.text});
+  const _TypingState({this.status = TypingStatus.initial, this.text = ''});
   
 
-@override final  TypingStatus status;
-@override final  String text;
+@override@JsonKey() final  TypingStatus status;
+@override@JsonKey() final  String text;
 
 /// Create a copy of TypingState
 /// with the given fields replaced by the non-null parameter values.

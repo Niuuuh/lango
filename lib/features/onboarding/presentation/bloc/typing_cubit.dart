@@ -7,7 +7,7 @@ import 'typing_state.dart';
 class TypingBloc extends Bloc<TypingEvent, TypingState> {
   final debouncer = Debouncer(Duration(milliseconds: 1000));
 
-  TypingBloc() : super(TypingState.initial) {
+  TypingBloc() : super(const TypingState()) {
     on<TypingStarted>((event, emit) {
       if (state.status != TypingStatus.initial) return;
       emit(state.copyWith(status: TypingStatus.idle));

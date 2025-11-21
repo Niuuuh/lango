@@ -41,8 +41,10 @@ class UserCubit extends Cubit<UserState> {
   }
 
   Future<void> updateLanguage(Language language) async {
-    if (state is! UserSuccess) return;
-    final user = (state as UserSuccess).user;
-    await update(user.copyWith(targetLanguage: language));
+    await state.whenOrNull(
+      success: (user) async {
+        await update(user.copyWith(targetLanguage: language));
+      },
+    );
   }
 }

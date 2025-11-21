@@ -19,7 +19,7 @@ class _InputBarState extends State<InputBar> {
   void _onSubmitted(String value) {
     final message = value.trim();
     if (message.isEmpty) return;
-    context.read<ChatBloc>().add(ChatMessageSent(message));
+    context.read<ChatBloc>().add(ChatEvent.messageSent(message));
   }
 
   @override

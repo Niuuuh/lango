@@ -18,7 +18,7 @@ class ChatScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) {
         return getIt<ChatBloc>(param1: language, param2: topic)
-          ..add(const ChatStarted());
+          ..add(const ChatEvent.started());
       },
       child: Scaffold(
         appBar: AppBar(

@@ -14,29 +14,29 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<OnboardingCubit>(),
-      child: BlocProvider(
-        create: (context) => getIt<TypingBloc>(),
-        child: BlocListener<OnboardingCubit, OnboardingState>(
-          listener: (context, state) {
-            if (state is OnboardingSuccess) {
-              context.goToLanguages();
-            }
-          },
-          child: Scaffold(
-            body: SafeArea(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  BlocBuilder<TypingBloc, TypingState>(
-                    builder: (context, state) {
-                      return Text(state.toString());
-                    },
-                  ),
-                  NameInputField(),
-                ],
-              ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt<OnboardingCubit>()),
+        BlocProvider(create: (context) => getIt<TypingBloc>()),
+      ],
+      child: BlocListener<OnboardingCubit, OnboardingState>(
+        listener: (context, state) {
+          if (state is OnboardingSuccess) {
+            context.goToLanguages();
+          }
+        },
+        child: Scaffold(
+          body: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                BlocBuilder<TypingBloc, TypingState>(
+                  builder: (context, state) {
+                    return Text(state.toString());
+                  },
+                ),
+                NameInputField(),
+              ],
             ),
           ),
         ),

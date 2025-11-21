@@ -1,13 +1,9 @@
-sealed class ChatEvent {
-  const ChatEvent();
-}
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-final class ChatStarted extends ChatEvent {
-  const ChatStarted();
-}
+part 'chat_event.freezed.dart';
 
-final class ChatMessageSent extends ChatEvent {
-  final String message;
-
-  const ChatMessageSent(this.message);
+@freezed
+sealed class ChatEvent with _$ChatEvent {
+  const factory ChatEvent.started() = ChatStarted;
+  const factory ChatEvent.messageSent(String message) = ChatMessageSent;
 }

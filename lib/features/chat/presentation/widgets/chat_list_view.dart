@@ -35,14 +35,15 @@ class _ChatListViewState extends State<ChatListView> {
     final screenSize = MediaQuery.of(context).size;
     return BlocConsumer<ChatBloc, ChatState>(
       listener: (context, state) {
-        if (state is ChatSuccess) {
-          _scrollToBottom();
-        } else if (state is ChatFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error sending message.')),
-          );
-          if (kDebugMode) throw state.error;
-        }
+        state.whenOrNull(
+          success: (messages) => _scrollToBottom(),
+          failure: (messages, error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Error sending message.')),
+            );
+            if (kDebugMode) throw error;
+          },
+        );
       },
       builder: (context, state) {
         return ListView.builder(
@@ -52,8 +53,12 @@ class _ChatListViewState extends State<ChatListView> {
           itemBuilder: (context, index) {
             final message = state.messages[index];
             return message.map(
-              user: (userMessage) => UserMessageBubble(message: userMessage),
-              assistant: (assistantMessage) => AssistantMessageBubble(message: assistantMessage),
+              user: (userMessage) {
+                return UserMessageBubble(message: userMessage);
+              },
+              assistant: (assistantMessage) {
+                return AssistantMessageBubble(message: assistantMessage);
+              },
             );
           },
         );
