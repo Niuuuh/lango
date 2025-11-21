@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$User implements DiagnosticableTreeMixin {
 
- String get user; Language get sourceLanguage; Language? get targetLanguage;
+ String get name; String get level; Language get sourceLanguage; Language? get targetLanguage;
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +29,21 @@ $UserCopyWith<User> get copyWith => _$UserCopyWithImpl<User>(this as User, _$ide
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'User'))
-    ..add(DiagnosticsProperty('user', user))..add(DiagnosticsProperty('sourceLanguage', sourceLanguage))..add(DiagnosticsProperty('targetLanguage', targetLanguage));
+    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('sourceLanguage', sourceLanguage))..add(DiagnosticsProperty('targetLanguage', targetLanguage));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is User&&(identical(other.user, user) || other.user == user)&&(identical(other.sourceLanguage, sourceLanguage) || other.sourceLanguage == sourceLanguage)&&(identical(other.targetLanguage, targetLanguage) || other.targetLanguage == targetLanguage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is User&&(identical(other.name, name) || other.name == name)&&(identical(other.level, level) || other.level == level)&&(identical(other.sourceLanguage, sourceLanguage) || other.sourceLanguage == sourceLanguage)&&(identical(other.targetLanguage, targetLanguage) || other.targetLanguage == targetLanguage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,user,sourceLanguage,targetLanguage);
+int get hashCode => Object.hash(runtimeType,name,level,sourceLanguage,targetLanguage);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'User(user: $user, sourceLanguage: $sourceLanguage, targetLanguage: $targetLanguage)';
+  return 'User(name: $name, level: $level, sourceLanguage: $sourceLanguage, targetLanguage: $targetLanguage)';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $UserCopyWith<$Res>  {
   factory $UserCopyWith(User value, $Res Function(User) _then) = _$UserCopyWithImpl;
 @useResult
 $Res call({
- String user, Language sourceLanguage, Language? targetLanguage
+ String name, String level, Language sourceLanguage, Language? targetLanguage
 });
 
 
@@ -71,9 +71,10 @@ class _$UserCopyWithImpl<$Res>
 
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? user = null,Object? sourceLanguage = null,Object? targetLanguage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? level = null,Object? sourceLanguage = null,Object? targetLanguage = freezed,}) {
   return _then(_self.copyWith(
-user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
 as String,sourceLanguage: null == sourceLanguage ? _self.sourceLanguage : sourceLanguage // ignore: cast_nullable_to_non_nullable
 as Language,targetLanguage: freezed == targetLanguage ? _self.targetLanguage : targetLanguage // ignore: cast_nullable_to_non_nullable
 as Language?,
@@ -161,10 +162,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String user,  Language sourceLanguage,  Language? targetLanguage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String level,  Language sourceLanguage,  Language? targetLanguage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _User() when $default != null:
-return $default(_that.user,_that.sourceLanguage,_that.targetLanguage);case _:
+return $default(_that.name,_that.level,_that.sourceLanguage,_that.targetLanguage);case _:
   return orElse();
 
 }
@@ -182,10 +183,10 @@ return $default(_that.user,_that.sourceLanguage,_that.targetLanguage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String user,  Language sourceLanguage,  Language? targetLanguage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String level,  Language sourceLanguage,  Language? targetLanguage)  $default,) {final _that = this;
 switch (_that) {
 case _User():
-return $default(_that.user,_that.sourceLanguage,_that.targetLanguage);case _:
+return $default(_that.name,_that.level,_that.sourceLanguage,_that.targetLanguage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -202,10 +203,10 @@ return $default(_that.user,_that.sourceLanguage,_that.targetLanguage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String user,  Language sourceLanguage,  Language? targetLanguage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String level,  Language sourceLanguage,  Language? targetLanguage)?  $default,) {final _that = this;
 switch (_that) {
 case _User() when $default != null:
-return $default(_that.user,_that.sourceLanguage,_that.targetLanguage);case _:
+return $default(_that.name,_that.level,_that.sourceLanguage,_that.targetLanguage);case _:
   return null;
 
 }
@@ -217,10 +218,11 @@ return $default(_that.user,_that.sourceLanguage,_that.targetLanguage);case _:
 @JsonSerializable()
 
 class _User with DiagnosticableTreeMixin implements User {
-  const _User({required this.user, this.sourceLanguage = Language.english, this.targetLanguage});
+  const _User({required this.name, this.level = "C1", this.sourceLanguage = Language.english, this.targetLanguage});
   factory _User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-@override final  String user;
+@override final  String name;
+@override@JsonKey() final  String level;
 @override@JsonKey() final  Language sourceLanguage;
 @override final  Language? targetLanguage;
 
@@ -238,21 +240,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'User'))
-    ..add(DiagnosticsProperty('user', user))..add(DiagnosticsProperty('sourceLanguage', sourceLanguage))..add(DiagnosticsProperty('targetLanguage', targetLanguage));
+    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('sourceLanguage', sourceLanguage))..add(DiagnosticsProperty('targetLanguage', targetLanguage));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _User&&(identical(other.user, user) || other.user == user)&&(identical(other.sourceLanguage, sourceLanguage) || other.sourceLanguage == sourceLanguage)&&(identical(other.targetLanguage, targetLanguage) || other.targetLanguage == targetLanguage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _User&&(identical(other.name, name) || other.name == name)&&(identical(other.level, level) || other.level == level)&&(identical(other.sourceLanguage, sourceLanguage) || other.sourceLanguage == sourceLanguage)&&(identical(other.targetLanguage, targetLanguage) || other.targetLanguage == targetLanguage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,user,sourceLanguage,targetLanguage);
+int get hashCode => Object.hash(runtimeType,name,level,sourceLanguage,targetLanguage);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'User(user: $user, sourceLanguage: $sourceLanguage, targetLanguage: $targetLanguage)';
+  return 'User(name: $name, level: $level, sourceLanguage: $sourceLanguage, targetLanguage: $targetLanguage)';
 }
 
 
@@ -263,7 +265,7 @@ abstract mixin class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) _then) = __$UserCopyWithImpl;
 @override @useResult
 $Res call({
- String user, Language sourceLanguage, Language? targetLanguage
+ String name, String level, Language sourceLanguage, Language? targetLanguage
 });
 
 
@@ -280,9 +282,10 @@ class __$UserCopyWithImpl<$Res>
 
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? user = null,Object? sourceLanguage = null,Object? targetLanguage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? level = null,Object? sourceLanguage = null,Object? targetLanguage = freezed,}) {
   return _then(_User(
-user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
 as String,sourceLanguage: null == sourceLanguage ? _self.sourceLanguage : sourceLanguage // ignore: cast_nullable_to_non_nullable
 as Language,targetLanguage: freezed == targetLanguage ? _self.targetLanguage : targetLanguage // ignore: cast_nullable_to_non_nullable
 as Language?,

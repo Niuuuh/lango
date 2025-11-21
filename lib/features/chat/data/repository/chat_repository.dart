@@ -1,3 +1,5 @@
+import '../../../../core/domain/entities/user.dart';
+import '../../../topics/domain/topic.dart';
 import '../../domain/chat_json_schemes.dart';
 import '../../domain/chat_prompts.dart';
 import '../../domain/entities/chat_message.dart';
@@ -15,7 +17,11 @@ class ChatRepository {
 
   ChatRepository({required this.chatApi});
 
-  Future<ChatReply> replyMessages(List<ChatMessage> messages) async {
+  Future<ChatReply> replyMessages({
+    required User user,
+    required Topic topic,
+    required List<ChatMessage> messages,
+  }) async {
     assert(messages.isEmpty || messages.last is UserChatMessage,
         "The last message should be from the user.");
 
@@ -26,12 +32,12 @@ class ChatRepository {
           ChatApiInputMessage(
             role: ChatApiRole.developer,
             content: ChatPrompts.roleplaySystemPrompt(
-              userName: "Leon",
-              userLevel: "C1",
-              sourceLanguage: "English",
-              targetLanguage: "German",
-              topicName: "Traveling",
-              topicDescription: "Discussing travel experiences and plans.",
+              userName: user.name,
+              userLevel: user.level,
+              sourceLanguage: user.sourceLanguage.name,
+              targetLanguage: user.targetLanguage!.name,
+              topicName: topic.title,
+              topicDescription: topic.description ?? "",
               minTurns: 4,
               maxTurns: 8,
             ),

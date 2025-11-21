@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 
+import '../../../../core/domain/entities/user.dart';
 import '../../../history/data/respository/history_repository.dart';
 import '../../../history/domain/entities/chat_history_entry.dart';
-import '../../../language/domain/entities/language.dart';
 import '../../../topics/domain/topic.dart';
 import '../../data/repository/chat_repository.dart';
 import '../../domain/entities/chat_message.dart';
@@ -13,13 +13,13 @@ import 'chat_state.dart';
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final ChatRepository chatRepository;
   final HistoryRepository historyRepository;
-  final Language language;
+  final User user;
   final Topic topic;
 
   ChatBloc({
     required this.chatRepository,
     required this.historyRepository,
-    required this.language,
+    required this.user,
     required this.topic,
   }) : super(const ChatState.initial()) {
     on<ChatStarted>(_onChatStarted);
@@ -39,7 +39,11 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   Future<void> _replyToMessages(List<ChatMessage> messages, Emitter<ChatState> emit) async {
     try {
       emit(ChatState.loading(messages: messages));
-      final reply = await chatRepository.replyMessages(messages);
+      final reply = await chatRepository.replyMessages(
+        user: user,
+        topic: topic,
+        messages: messages,
+      );
       final updatedMessages = [...messages, ...reply.messages];
       if (reply.stage == ChatStage.closing) {
         await _createHistoryEntry(updatedMessages);
@@ -55,11 +59,12 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   Future<void> _createHistoryEntry(List<ChatMessage> messages) async {
     final entry = ChatHistoryEntry(
-      languageId: language.name,
+      languageId: user.targetLanguage!.name,
       topicId: topic.name,
       date: DateTime.now(),
       messages: messages,
     );
+    print(entry.toJson());
     await historyRepository.createHistoryEntry(entry);
   }
 }

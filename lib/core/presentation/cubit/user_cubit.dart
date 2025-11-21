@@ -25,7 +25,7 @@ class UserCubit extends Cubit<UserState> {
   }
 
   Future<User> create(String name) async {
-    final user = User(user: name);
+    final user = User(name: name);
     await update(user);
     return user;
   }

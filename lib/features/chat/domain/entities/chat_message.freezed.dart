@@ -19,17 +19,10 @@ ChatMessage _$ChatMessageFromJson(
           return UserChatMessage.fromJson(
             json
           );
-                case 'assistant':
-          return AssistantChatMessage.fromJson(
-            json
-          );
         
           default:
-            throw CheckedFromJsonException(
-  json,
-  'runtimeType',
-  'ChatMessage',
-  'Invalid union type "${json['runtimeType']}"!'
+            return AssistantChatMessage.fromJson(
+  json
 );
         }
       

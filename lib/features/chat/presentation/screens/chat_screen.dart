@@ -13,11 +13,11 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final language = context.targetLanguage!;
+    final user = context.user!;
     final topic = context.topic!;
     return BlocProvider(
       create: (context) {
-        return getIt<ChatBloc>(param1: language, param2: topic)
+        return getIt<ChatBloc>(param1: user, param2: topic)
           ..add(const ChatEvent.started());
       },
       child: Scaffold(

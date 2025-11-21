@@ -7,7 +7,8 @@ part of 'user.dart';
 // **************************************************************************
 
 _User _$UserFromJson(Map<String, dynamic> json) => _User(
-  user: json['user'] as String,
+  name: json['name'] as String,
+  level: json['level'] as String? ?? "C1",
   sourceLanguage:
       $enumDecodeNullable(_$LanguageEnumMap, json['sourceLanguage']) ??
       Language.english,
@@ -18,7 +19,8 @@ _User _$UserFromJson(Map<String, dynamic> json) => _User(
 );
 
 Map<String, dynamic> _$UserToJson(_User instance) => <String, dynamic>{
-  'user': instance.user,
+  'name': instance.name,
+  'level': instance.level,
   'sourceLanguage': _$LanguageEnumMap[instance.sourceLanguage]!,
   'targetLanguage': _$LanguageEnumMap[instance.targetLanguage],
 };

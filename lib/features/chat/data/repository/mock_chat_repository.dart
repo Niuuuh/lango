@@ -1,3 +1,5 @@
+import '../../../../core/domain/entities/user.dart';
+import '../../../topics/domain/topic.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/entities/chat_reply.dart';
 import '../../domain/entities/chat_stage.dart';
@@ -10,7 +12,11 @@ class MockChatRepository implements ChatRepository {
   ChatApi get chatApi => throw UnimplementedError();
 
   @override
-  Future<ChatReply> replyMessages(List<ChatMessage> messages) async {
+  Future<ChatReply> replyMessages({
+    required User user,
+    required Topic topic,
+    required List<ChatMessage> messages,
+  }) async {
     await Future.delayed(const Duration(milliseconds: 3000));
     final userReplyCount = messages
         .whereType<UserChatMessage>()

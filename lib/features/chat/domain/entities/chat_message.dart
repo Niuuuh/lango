@@ -7,7 +7,7 @@ import 'message_type.dart';
 part 'chat_message.freezed.dart';
 part 'chat_message.g.dart';
 
-@freezed
+@Freezed(fallbackUnion: 'assistant')
 abstract class ChatMessage with _$ChatMessage {
   const factory ChatMessage.user({
     required String text,
