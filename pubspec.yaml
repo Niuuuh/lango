@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   bloc: ^9.1.0
+  bubble: ^1.2.1
   collection: ^1.19.1
   dio: ^5.9.0
   flutter:
@@ -34,3 +35,7 @@ flutter:
   assets:
     - .env
     - assets/character/
+  fonts:
+    - family: Itim
+      fonts:
+        - asset: assets/fonts/itim/Itim-Regular.ttf
