@@ -1,19 +1,17 @@
-import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/router.dart';
 import '../../../../app/service_locator.dart';
-import '../../../../app/theme.dart';
-import '../../../../core/presentation/widgets/button.dart';
 import '../../../../core/presentation/widgets/character.dart';
-import '../../../../core/presentation/widgets/sharp_shadow_bubble.dart';
 import '../bloc/onboarding_bloc.dart';
 import '../bloc/onboarding_event.dart';
 import '../bloc/onboarding_state.dart';
 import '../bloc/typing_cubit.dart';
-import '../bloc/typing_state.dart';
+import '../widgets/greeting_back_button.dart';
+import '../widgets/greeting_character.dart';
 import '../widgets/name_input_field.dart';
+import '../widgets/typing_character.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -47,61 +45,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     Center(
                       child: state.maybeWhen(
-                        greeting: () {
-                          return Column(
-                            mainAxisSize: MainAxisSize.min,
-                            spacing: 24,
-                            children: [
-                              SharpShadowBubble(
-                                color: LingoColors.secondaryContainer,
-                                nip: BubbleNip.leftTop,
-                                child: Text(
-                                  "Hii, I'm Lingo",
-                                  style: TextStyle(
-                                    fontSize: 24,
-                                  ),
-                                ),
-                              ),
-                              Character(
-                                action: CharacterAction.rollingTowardsAndGreetingYou,
-                              ),
-                            ],
-                          );
-                        },
-                        askingName: () {
-                          return BlocBuilder<TypingBloc, TypingState>(
-                            builder: (context, typing) {
-                              return Character(
-                                action: typing.status == TypingStatus.typing
-                                    ? CharacterAction.writingOnPaper
-                                    : CharacterAction.idle
-                              );
-                            },
-                          );
-                        },
-                        orElse: () {
-                          return Character(
-                            action: CharacterAction.idle,
-                          );
-                        },
+                        greeting: () => GreetingCharacter(
+                          greeting: Text("Hii, I'm Lingo"),
+                        ),
+                        askingName: () => TypingCharacter(
+                          prompt: Text("What's your name?"),
+                        ),
+                        orElse: () => Character(),
                       ),
                     ),
                     ?state.whenOrNull(
-                      greeting: () {
-                        return SizedBox(
-                          width: 300,
-                          child: Button.primary(
-                            onPressed: () {
-                              context.read<OnboardingBloc>()
-                                  .add(OnboardingEvent.greetBackPressed());
-                            },
-                            child: const Text('Greet back'),
-                          ),
-                        );
-                      },
-                      askingName: () {
-                        return NameInputField();
-                      },
+                      greeting: () => GreetBackButton(),
+                      askingName: () => NameInputField(),
                     ),
                   ],
                 ),

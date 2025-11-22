@@ -14,7 +14,7 @@ enum CharacterAction {
 class Character extends StatelessWidget {
   const Character({
     super.key,
-    required this.action,
+    this.action = CharacterAction.idle,
     this.width = 200,
   });
 
