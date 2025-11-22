@@ -17,7 +17,7 @@ class SplashScreen extends StatelessWidget {
             state.whenOrNull(
               success: (user) {
                 if (user.targetLanguage == null) {
-                  context.goToLanguages();
+                  context.goToLanguageSearch();
                 } else {
                   context.goToTopics();
                 }

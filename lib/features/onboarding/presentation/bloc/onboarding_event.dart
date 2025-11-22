@@ -8,7 +8,9 @@ sealed class OnboardingEvent with _$OnboardingEvent {
 
   const factory OnboardingEvent.greetBackPressed() = OnboardingGreetBackPressed;
 
-  const factory OnboardingEvent.submitNamePressed(
-    String name,
-  ) = OnboardingSubmitNamePressed;
+  const factory OnboardingEvent.submitNamePressed(String name)
+    = OnboardingSubmitNamePressed;
+
+  const factory OnboardingEvent.searchLanguagePressed()
+    = OnboardingSearchLanguagePressed;
 }

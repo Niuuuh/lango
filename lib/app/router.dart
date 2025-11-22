@@ -6,7 +6,7 @@ import '../core/presentation/screens/splash_screen.dart';
 import '../features/chat/presentation/screens/chat_screen.dart';
 import '../features/history/domain/entities/chat_history_entry.dart';
 import '../features/history/presentation/screens/history_screen.dart';
-import '../features/language/presentation/screens/languages_screen.dart';
+import '../features/language/presentation/screens/language_search_screen.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../features/topics/domain/topic.dart';
 import '../features/topics/presentation/bloc/topic_cubit.dart';
@@ -16,7 +16,7 @@ import 'service_locator.dart';
 
 enum Routes {
   onboarding,
-  languages,
+  languageSearch,
   topics,
   topic,
   chat,
@@ -28,8 +28,8 @@ extension RoutingHelper on BuildContext {
     goNamed(Routes.onboarding.name);
   }
 
-  void goToLanguages() {
-    goNamed(Routes.languages.name);
+  void goToLanguageSearch() {
+    goNamed(Routes.languageSearch.name);
   }
 
   void goToTopics() {
@@ -74,9 +74,9 @@ class AppRouter {
         builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
-        name: Routes.languages.name,
-        path: '/languages',
-        builder: (context, state) => const LanguagesScreen(),
+        name: Routes.languageSearch.name,
+        path: '/language',
+        builder: (context, state) => const LanguageSearchScreen(),
       ),
       GoRoute(
         name: Routes.topics.name,

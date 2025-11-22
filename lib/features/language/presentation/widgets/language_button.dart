@@ -23,14 +23,14 @@ class LanguageButton extends StatelessWidget {
         if (language == null) {
           return ElevatedButton(
             onPressed: () {
-              context.goToLanguages();
+              context.goToLanguageSearch();
             },
             child: const Text('Select Language'),
           );
         }
         return ElevatedButton.icon(
           onPressed: () {
-            context.goToLanguages();
+            context.goToLanguageSearch();
           },
           icon: LanguageIcon(language: language),
           label: Text(language.name.toSentenceCase()),

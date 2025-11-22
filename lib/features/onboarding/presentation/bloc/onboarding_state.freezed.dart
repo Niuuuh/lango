@@ -55,14 +55,15 @@ extension OnboardingStatePatterns on OnboardingState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( OnboardingInitial value)?  initial,TResult Function( OnboardingGreeting value)?  greeting,TResult Function( OnboardingAskingName value)?  askingName,TResult Function( OnboardingSubmittingName value)?  submittingName,TResult Function( OnboardingSuccess value)?  success,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( OnboardingInitial value)?  initial,TResult Function( OnboardingGreeting value)?  greeting,TResult Function( OnboardingAskingName value)?  askingName,TResult Function( OnboardingSubmittingName value)?  submittingName,TResult Function( OnboardingAskingLanguage value)?  askingLanguage,TResult Function( OnboardingSuccess value)?  success,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case OnboardingInitial() when initial != null:
 return initial(_that);case OnboardingGreeting() when greeting != null:
 return greeting(_that);case OnboardingAskingName() when askingName != null:
 return askingName(_that);case OnboardingSubmittingName() when submittingName != null:
-return submittingName(_that);case OnboardingSuccess() when success != null:
+return submittingName(_that);case OnboardingAskingLanguage() when askingLanguage != null:
+return askingLanguage(_that);case OnboardingSuccess() when success != null:
 return success(_that);case _:
   return orElse();
 
@@ -81,14 +82,15 @@ return success(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( OnboardingInitial value)  initial,required TResult Function( OnboardingGreeting value)  greeting,required TResult Function( OnboardingAskingName value)  askingName,required TResult Function( OnboardingSubmittingName value)  submittingName,required TResult Function( OnboardingSuccess value)  success,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( OnboardingInitial value)  initial,required TResult Function( OnboardingGreeting value)  greeting,required TResult Function( OnboardingAskingName value)  askingName,required TResult Function( OnboardingSubmittingName value)  submittingName,required TResult Function( OnboardingAskingLanguage value)  askingLanguage,required TResult Function( OnboardingSuccess value)  success,}){
 final _that = this;
 switch (_that) {
 case OnboardingInitial():
 return initial(_that);case OnboardingGreeting():
 return greeting(_that);case OnboardingAskingName():
 return askingName(_that);case OnboardingSubmittingName():
-return submittingName(_that);case OnboardingSuccess():
+return submittingName(_that);case OnboardingAskingLanguage():
+return askingLanguage(_that);case OnboardingSuccess():
 return success(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -103,14 +105,15 @@ return success(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( OnboardingInitial value)?  initial,TResult? Function( OnboardingGreeting value)?  greeting,TResult? Function( OnboardingAskingName value)?  askingName,TResult? Function( OnboardingSubmittingName value)?  submittingName,TResult? Function( OnboardingSuccess value)?  success,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( OnboardingInitial value)?  initial,TResult? Function( OnboardingGreeting value)?  greeting,TResult? Function( OnboardingAskingName value)?  askingName,TResult? Function( OnboardingSubmittingName value)?  submittingName,TResult? Function( OnboardingAskingLanguage value)?  askingLanguage,TResult? Function( OnboardingSuccess value)?  success,}){
 final _that = this;
 switch (_that) {
 case OnboardingInitial() when initial != null:
 return initial(_that);case OnboardingGreeting() when greeting != null:
 return greeting(_that);case OnboardingAskingName() when askingName != null:
 return askingName(_that);case OnboardingSubmittingName() when submittingName != null:
-return submittingName(_that);case OnboardingSuccess() when success != null:
+return submittingName(_that);case OnboardingAskingLanguage() when askingLanguage != null:
+return askingLanguage(_that);case OnboardingSuccess() when success != null:
 return success(_that);case _:
   return null;
 
@@ -128,14 +131,15 @@ return success(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  greeting,TResult Function()?  askingName,TResult Function()?  submittingName,TResult Function( User user)?  success,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  greeting,TResult Function()?  askingName,TResult Function()?  submittingName,TResult Function()?  askingLanguage,TResult Function()?  success,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case OnboardingInitial() when initial != null:
 return initial();case OnboardingGreeting() when greeting != null:
 return greeting();case OnboardingAskingName() when askingName != null:
 return askingName();case OnboardingSubmittingName() when submittingName != null:
-return submittingName();case OnboardingSuccess() when success != null:
-return success(_that.user);case _:
+return submittingName();case OnboardingAskingLanguage() when askingLanguage != null:
+return askingLanguage();case OnboardingSuccess() when success != null:
+return success();case _:
   return orElse();
 
 }
@@ -153,14 +157,15 @@ return success(_that.user);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  greeting,required TResult Function()  askingName,required TResult Function()  submittingName,required TResult Function( User user)  success,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  greeting,required TResult Function()  askingName,required TResult Function()  submittingName,required TResult Function()  askingLanguage,required TResult Function()  success,}) {final _that = this;
 switch (_that) {
 case OnboardingInitial():
 return initial();case OnboardingGreeting():
 return greeting();case OnboardingAskingName():
 return askingName();case OnboardingSubmittingName():
-return submittingName();case OnboardingSuccess():
-return success(_that.user);}
+return submittingName();case OnboardingAskingLanguage():
+return askingLanguage();case OnboardingSuccess():
+return success();}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -174,14 +179,15 @@ return success(_that.user);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  greeting,TResult? Function()?  askingName,TResult? Function()?  submittingName,TResult? Function( User user)?  success,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  greeting,TResult? Function()?  askingName,TResult? Function()?  submittingName,TResult? Function()?  askingLanguage,TResult? Function()?  success,}) {final _that = this;
 switch (_that) {
 case OnboardingInitial() when initial != null:
 return initial();case OnboardingGreeting() when greeting != null:
 return greeting();case OnboardingAskingName() when askingName != null:
 return askingName();case OnboardingSubmittingName() when submittingName != null:
-return submittingName();case OnboardingSuccess() when success != null:
-return success(_that.user);case _:
+return submittingName();case OnboardingAskingLanguage() when askingLanguage != null:
+return askingLanguage();case OnboardingSuccess() when success != null:
+return success();case _:
   return null;
 
 }
@@ -320,76 +326,65 @@ String toString() {
 /// @nodoc
 
 
-class OnboardingSuccess implements OnboardingState {
-  const OnboardingSuccess(this.user);
+class OnboardingAskingLanguage implements OnboardingState {
+  const OnboardingAskingLanguage();
   
 
- final  User user;
 
-/// Create a copy of OnboardingState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$OnboardingSuccessCopyWith<OnboardingSuccess> get copyWith => _$OnboardingSuccessCopyWithImpl<OnboardingSuccess>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingSuccess&&(identical(other.user, user) || other.user == user));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingAskingLanguage);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,user);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OnboardingState.success(user: $user)';
+  return 'OnboardingState.askingLanguage()';
 }
 
 
 }
+
+
+
 
 /// @nodoc
-abstract mixin class $OnboardingSuccessCopyWith<$Res> implements $OnboardingStateCopyWith<$Res> {
-  factory $OnboardingSuccessCopyWith(OnboardingSuccess value, $Res Function(OnboardingSuccess) _then) = _$OnboardingSuccessCopyWithImpl;
-@useResult
-$Res call({
- User user
-});
 
 
-$UserCopyWith<$Res> get user;
-
-}
-/// @nodoc
-class _$OnboardingSuccessCopyWithImpl<$Res>
-    implements $OnboardingSuccessCopyWith<$Res> {
-  _$OnboardingSuccessCopyWithImpl(this._self, this._then);
-
-  final OnboardingSuccess _self;
-  final $Res Function(OnboardingSuccess) _then;
-
-/// Create a copy of OnboardingState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? user = null,}) {
-  return _then(OnboardingSuccess(
-null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as User,
-  ));
-}
-
-/// Create a copy of OnboardingState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$UserCopyWith<$Res> get user {
+class OnboardingSuccess implements OnboardingState {
+  const OnboardingSuccess();
   
-  return $UserCopyWith<$Res>(_self.user, (value) {
-    return _then(_self.copyWith(user: value));
-  });
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingSuccess);
 }
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'OnboardingState.success()';
 }
+
+
+}
+
+
+
 
 // dart format on

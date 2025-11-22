@@ -12,6 +12,11 @@ sealed class LanguageSearchState with _$LanguageSearchState {
     result: Language.values,
   );
 
+  static const none = LanguageSearchState(
+    query: '',
+    result: [],
+  );
+
   const factory LanguageSearchState({
     required String query,
     required List<Language> result,

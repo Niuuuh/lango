@@ -20,8 +20,12 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       final name = event.name.trim();
       if (name.isEmpty) return;
       emit(OnboardingState.submittingName());
-      final user = await userCubit.create(name);
-      emit(OnboardingState.success(user));
+      await userCubit.create(name);
+      emit(OnboardingState.askingLanguage());
+    });
+
+    on<OnboardingSearchLanguagePressed>((event, emit) async {
+      emit(OnboardingState.success());
     });
   }
 }

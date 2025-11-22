@@ -55,13 +55,14 @@ extension OnboardingEventPatterns on OnboardingEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( OnboardingStarted value)?  started,TResult Function( OnboardingGreetBackPressed value)?  greetBackPressed,TResult Function( OnboardingSubmitNamePressed value)?  submitNamePressed,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( OnboardingStarted value)?  started,TResult Function( OnboardingGreetBackPressed value)?  greetBackPressed,TResult Function( OnboardingSubmitNamePressed value)?  submitNamePressed,TResult Function( OnboardingSearchLanguagePressed value)?  searchLanguagePressed,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case OnboardingStarted() when started != null:
 return started(_that);case OnboardingGreetBackPressed() when greetBackPressed != null:
 return greetBackPressed(_that);case OnboardingSubmitNamePressed() when submitNamePressed != null:
-return submitNamePressed(_that);case _:
+return submitNamePressed(_that);case OnboardingSearchLanguagePressed() when searchLanguagePressed != null:
+return searchLanguagePressed(_that);case _:
   return orElse();
 
 }
@@ -79,13 +80,14 @@ return submitNamePressed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( OnboardingStarted value)  started,required TResult Function( OnboardingGreetBackPressed value)  greetBackPressed,required TResult Function( OnboardingSubmitNamePressed value)  submitNamePressed,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( OnboardingStarted value)  started,required TResult Function( OnboardingGreetBackPressed value)  greetBackPressed,required TResult Function( OnboardingSubmitNamePressed value)  submitNamePressed,required TResult Function( OnboardingSearchLanguagePressed value)  searchLanguagePressed,}){
 final _that = this;
 switch (_that) {
 case OnboardingStarted():
 return started(_that);case OnboardingGreetBackPressed():
 return greetBackPressed(_that);case OnboardingSubmitNamePressed():
-return submitNamePressed(_that);}
+return submitNamePressed(_that);case OnboardingSearchLanguagePressed():
+return searchLanguagePressed(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -99,13 +101,14 @@ return submitNamePressed(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( OnboardingStarted value)?  started,TResult? Function( OnboardingGreetBackPressed value)?  greetBackPressed,TResult? Function( OnboardingSubmitNamePressed value)?  submitNamePressed,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( OnboardingStarted value)?  started,TResult? Function( OnboardingGreetBackPressed value)?  greetBackPressed,TResult? Function( OnboardingSubmitNamePressed value)?  submitNamePressed,TResult? Function( OnboardingSearchLanguagePressed value)?  searchLanguagePressed,}){
 final _that = this;
 switch (_that) {
 case OnboardingStarted() when started != null:
 return started(_that);case OnboardingGreetBackPressed() when greetBackPressed != null:
 return greetBackPressed(_that);case OnboardingSubmitNamePressed() when submitNamePressed != null:
-return submitNamePressed(_that);case _:
+return submitNamePressed(_that);case OnboardingSearchLanguagePressed() when searchLanguagePressed != null:
+return searchLanguagePressed(_that);case _:
   return null;
 
 }
@@ -122,12 +125,13 @@ return submitNamePressed(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  greetBackPressed,TResult Function( String name)?  submitNamePressed,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  greetBackPressed,TResult Function( String name)?  submitNamePressed,TResult Function()?  searchLanguagePressed,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case OnboardingStarted() when started != null:
 return started();case OnboardingGreetBackPressed() when greetBackPressed != null:
 return greetBackPressed();case OnboardingSubmitNamePressed() when submitNamePressed != null:
-return submitNamePressed(_that.name);case _:
+return submitNamePressed(_that.name);case OnboardingSearchLanguagePressed() when searchLanguagePressed != null:
+return searchLanguagePressed();case _:
   return orElse();
 
 }
@@ -145,12 +149,13 @@ return submitNamePressed(_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  greetBackPressed,required TResult Function( String name)  submitNamePressed,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  greetBackPressed,required TResult Function( String name)  submitNamePressed,required TResult Function()  searchLanguagePressed,}) {final _that = this;
 switch (_that) {
 case OnboardingStarted():
 return started();case OnboardingGreetBackPressed():
 return greetBackPressed();case OnboardingSubmitNamePressed():
-return submitNamePressed(_that.name);}
+return submitNamePressed(_that.name);case OnboardingSearchLanguagePressed():
+return searchLanguagePressed();}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -164,12 +169,13 @@ return submitNamePressed(_that.name);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  greetBackPressed,TResult? Function( String name)?  submitNamePressed,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  greetBackPressed,TResult? Function( String name)?  submitNamePressed,TResult? Function()?  searchLanguagePressed,}) {final _that = this;
 switch (_that) {
 case OnboardingStarted() when started != null:
 return started();case OnboardingGreetBackPressed() when greetBackPressed != null:
 return greetBackPressed();case OnboardingSubmitNamePressed() when submitNamePressed != null:
-return submitNamePressed(_that.name);case _:
+return submitNamePressed(_that.name);case OnboardingSearchLanguagePressed() when searchLanguagePressed != null:
+return searchLanguagePressed();case _:
   return null;
 
 }
@@ -306,5 +312,37 @@ as String,
 
 
 }
+
+/// @nodoc
+
+
+class OnboardingSearchLanguagePressed implements OnboardingEvent {
+  const OnboardingSearchLanguagePressed();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingSearchLanguagePressed);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'OnboardingEvent.searchLanguagePressed()';
+}
+
+
+}
+
+
+
 
 // dart format on

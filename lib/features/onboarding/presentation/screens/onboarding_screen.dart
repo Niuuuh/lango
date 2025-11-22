@@ -3,14 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/router.dart';
 import '../../../../app/service_locator.dart';
+import '../../../../core/presentation/widgets/button.dart';
 import '../../../../core/presentation/widgets/character.dart';
+import '../../../language/presentation/bloc/language_search_cubit.dart';
+import '../../../language/presentation/widgets/language_search_field.dart';
 import '../bloc/onboarding_bloc.dart';
 import '../bloc/onboarding_event.dart';
 import '../bloc/onboarding_state.dart';
 import '../bloc/typing_cubit.dart';
-import '../widgets/greeting_back_button.dart';
-import '../widgets/greeting_character.dart';
 import '../widgets/name_input_field.dart';
+import '../widgets/talking_character.dart';
 import '../widgets/typing_character.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -28,11 +30,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         BlocProvider(create: (context) => getIt<OnboardingBloc>()
           ..add(OnboardingEvent.started())),
         BlocProvider(create: (context) => getIt<TypingBloc>()),
+        BlocProvider(create: (context) => getIt<LanguageSearchCubit>()),
       ],
       child: BlocConsumer<OnboardingBloc, OnboardingState>(
         listener: (context, state) {
           if (state is OnboardingSuccess) {
-            context.goToLanguages();
+            context.goToLanguageSearch();
           }
         },
         builder: (context, state) {
@@ -45,18 +48,40 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     Center(
                       child: state.maybeWhen(
-                        greeting: () => GreetingCharacter(
-                          greeting: Text("Hii, I'm Lingo"),
+                        greeting: () => TalkingCharacter(
+                          text: Text("Hii, I'm Lingo"),
+                          action: CharacterAction.rollingTowardsAndGreetingYou,
                         ),
                         askingName: () => TypingCharacter(
                           prompt: Text("What's your name?"),
+                        ),
+                        askingLanguage: () => TalkingCharacter(
+                          text: Text("Which language do you want to learn?"),
                         ),
                         orElse: () => Character(),
                       ),
                     ),
                     ?state.whenOrNull(
-                      greeting: () => GreetBackButton(),
-                      askingName: () => NameInputField(),
+                      greeting: () => Button.primary(
+                        width: 300,
+                        onPressed: () {
+                          context.read<OnboardingBloc>()
+                              .add(OnboardingEvent.greetBackPressed());
+                        },
+                        child: Text('Greet back'),
+                      ),
+                      askingName: () => NameInputField(
+                        onSubmitted: (name) {
+                          context.read<OnboardingBloc>()
+                            .add(OnboardingEvent.submitNamePressed(name));
+                        },
+                      ),
+                      askingLanguage: () => LanguageSearchField(
+                        onTap: () {
+                          context.read<OnboardingBloc>()
+                            .add(OnboardingEvent.searchLanguagePressed());
+                        },
+                      ),
                     ),
                   ],
                 ),

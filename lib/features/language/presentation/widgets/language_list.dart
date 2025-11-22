@@ -15,7 +15,7 @@ class LanguageList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LanguageSearchCubit, LanguageSearchState>(
       builder: (context, state) {
-        return SliverList.builder(
+        return ListView.builder(
           itemCount: state.result.length,
           itemBuilder: (context, index) {
             final language = state.result[index];

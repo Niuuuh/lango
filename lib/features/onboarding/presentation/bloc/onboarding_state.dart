@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/domain/entities/user.dart';
-
 part 'onboarding_state.freezed.dart';
 
 @freezed
@@ -14,5 +12,7 @@ sealed class OnboardingState with _$OnboardingState {
 
   const factory OnboardingState.submittingName() = OnboardingSubmittingName;
 
-  const factory OnboardingState.success(User user) = OnboardingSuccess;
+  const factory OnboardingState.askingLanguage() = OnboardingAskingLanguage;
+
+  const factory OnboardingState.success() = OnboardingSuccess;
 }

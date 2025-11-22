@@ -37,6 +37,28 @@ ThemeData theme() {
     useMaterial3: true,
     colorScheme: colorScheme,
     fontFamily: "Itim",
-  ).copyWith(
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: LingoColors.onSurfaceContainer,
+    ),
+    inputDecorationTheme: InputDecorationThemeData(
+      filled: true,
+      fillColor: LingoColors.surfaceContainer,
+      hintStyle: TextStyle(
+        color: LingoColors.onSurfaceContainerVariant,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide.none,
+      ),
+      // focusedBorder: OutlineInputBorder(
+      //   borderRadius: BorderRadius.circular(14),
+      //   borderSide: BorderSide(
+      //     color: LingoColors.onSurfaceContainerVariant,
+      //     width: 2,
+      //   ),
+      // ),
+      prefixIconColor: LingoColors.onSurfaceContainerVariant,
+      suffixIconColor: LingoColors.onSurfaceContainerVariant,
+    ),
   );
 }
