@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../language/presentation/widgets/language_button.dart';
+import '../../../onboarding/presentation/widgets/speaking_character.dart';
 import '../widgets/topics_grid.dart';
 
 class TopicsScreen extends StatelessWidget {
@@ -8,14 +10,32 @@ class TopicsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: LanguageButton(),
-      ),
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            TopicsGrid(),
-          ],
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 16,
+            children: [
+              LanguageButton(),
+              Expanded(
+                child: CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Transform.scale(
+                        scale: 0.8,
+                        child: SpeakingCharacter(
+                          spacing: 30,
+                          text: Text("Let's talk about..."),
+                        ),
+                      ),
+                    ),
+                    TopicsGrid(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

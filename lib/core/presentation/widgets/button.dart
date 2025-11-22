@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../app/theme.dart';
-import 'bold.dart';
 
 class Button extends StatefulWidget {
   const Button.primary({
@@ -75,8 +74,9 @@ class _ButtonState extends State<Button> {
                   style: TextStyle(
                     color: LingoColors.onPrimaryContainer,
                     fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
-                  child: Bold(child: widget.child),
+                  child: widget.child,
                 ),
               ),
             ),

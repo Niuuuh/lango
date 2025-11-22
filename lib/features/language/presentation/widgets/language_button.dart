@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../app/router.dart';
-import '../../../../core/presentation/cubit/user_cubit.dart';
-import '../../../../core/presentation/cubit/user_state.dart';
+import '../../../../app/theme.dart';
+import '../../../../core/utils/context_extension.dart';
 import '../../../../core/utils/string_extension.dart';
-import '../../domain/entities/language.dart';
 import 'language_icon.dart';
 
 class LanguageButton extends StatelessWidget {
@@ -13,29 +10,37 @@ class LanguageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<UserCubit, UserState, Language?>(
-      selector: (state) {
-        return state.whenOrNull(
-          success: (user) => user.targetLanguage,
-        );
-      },
-      builder: (context, language) {
-        if (language == null) {
-          return ElevatedButton(
-            onPressed: () {
-              context.goToLanguageSearch();
-            },
-            child: const Text('Select Language'),
-          );
-        }
-        return ElevatedButton.icon(
-          onPressed: () {
-            context.goToLanguageSearch();
-          },
-          icon: LanguageIcon(language: language),
-          label: Text(language.name.toSentenceCase()),
-        );
-      }
+    final language = context.targetLanguage;
+    return DecoratedBox(
+      decoration: ShapeDecoration(
+        color: LingoColors.primaryContainer,
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        shadows: [
+          BoxShadow(
+            color: LingoColors.shadow,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 10,
+          children: [
+            if (language != null) LanguageIcon(language: language),
+            Text(
+              language?.name.toSentenceCase() ?? "Select language",
+              style: TextStyle(
+                color: LingoColors.onPrimaryContainer,
+                fontSize: 20,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

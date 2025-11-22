@@ -16,6 +16,7 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => getIt<UserCubit>()..load(),
+          lazy: false,
         ),
         BlocProvider(
           create: (context) => getIt<ChatHistoryCubit>()..load(),

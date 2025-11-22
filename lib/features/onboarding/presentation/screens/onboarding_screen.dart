@@ -12,7 +12,7 @@ import '../bloc/onboarding_event.dart';
 import '../bloc/onboarding_state.dart';
 import '../bloc/typing_cubit.dart';
 import '../widgets/name_input_field.dart';
-import '../widgets/talking_character.dart';
+import '../widgets/speaking_character.dart';
 import '../widgets/typing_character.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -48,14 +48,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     Center(
                       child: state.maybeWhen(
-                        greeting: () => TalkingCharacter(
+                        greeting: () => SpeakingCharacter(
                           text: Text("Hii, I'm Lingo"),
                           action: CharacterAction.rollingTowardsAndGreetingYou,
                         ),
                         askingName: () => TypingCharacter(
                           prompt: Text("What's your name?"),
                         ),
-                        askingLanguage: () => TalkingCharacter(
+                        askingLanguage: () => SpeakingCharacter(
                           text: Text("Which language do you want to learn?"),
                         ),
                         orElse: () => Character(),
