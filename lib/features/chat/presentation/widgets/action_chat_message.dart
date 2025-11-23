@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
 import '../../domain/entities/chat_message.dart';
+import 'text_with_translations.dart';
 
 class ActionChatMessage extends StatelessWidget {
   const ActionChatMessage({
@@ -17,8 +18,8 @@ class ActionChatMessage extends StatelessWidget {
       padding: EdgeInsets.all(16),
       child: Align(
         alignment: Alignment.center,
-        child: Text(
-          message.segments.map((segment) => segment.text).join(' '),
+        child: TextWithTranslations(
+          segments: message.segments,
           style: TextStyle(
             color: LingoColors.onSurfaceVariant,
             fontSize: 18,

@@ -75,5 +75,22 @@ ThemeData theme() {
       prefixIconColor: LingoColors.onSurfaceContainerVariant,
       suffixIconColor: LingoColors.onSurfaceContainerVariant,
     ),
+    tooltipTheme: TooltipThemeData(
+      decoration: ShapeDecoration(
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(
+            color: LingoColors.shadow,
+            width: 2,
+          ),
+        ),
+        color: LingoColors.primaryContainer,
+      ),
+      textStyle: TextStyle(
+        color: LingoColors.onPrimaryContainer,
+        fontFamily: "Itim",
+        fontSize: 20,
+      ),
+    ),
   );
 }
