@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SharpShadowBubblePainter extends CustomPainter {
-  SharpShadowBubblePainter({
+class ShadedBubblePainter extends CustomPainter {
+  ShadedBubblePainter({
     required this.clipper,
     required Color color,
     required Color borderColor,
@@ -47,5 +47,5 @@ class SharpShadowBubblePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant SharpShadowBubblePainter oldDelegate) => false;
+  bool shouldRepaint(covariant ShadedBubblePainter oldDelegate) => false;
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/router.dart';
 import '../../../../app/theme.dart';
+import '../../../../core/presentation/widgets/shaded_container.dart';
 import '../../../../core/utils/context_extension.dart';
 import '../../../../core/utils/string_extension.dart';
 import 'language_icon.dart';
@@ -11,21 +13,12 @@ class LanguageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final language = context.targetLanguage;
-    return DecoratedBox(
-      decoration: ShapeDecoration(
-        color: LingoColors.primaryContainer,
-        shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        shadows: [
-          BoxShadow(
-            color: LingoColors.shadow,
-            offset: Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    return GestureDetector(
+      onTap: () => context.goToLanguageSearch(),
+      child: ShadedContainer(
+        borderRadius: BorderRadius.circular(30),
+        borderWidth: 0,
+        elevation: 2,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           spacing: 10,

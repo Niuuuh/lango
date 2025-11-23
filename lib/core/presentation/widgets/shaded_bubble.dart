@@ -2,10 +2,10 @@ import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/theme.dart';
-import 'sharp_shadow_bubble_painter.dart';
+import 'shaded_bubble_painter.dart';
 
-class SharpShadowBubble extends StatelessWidget {
-  const SharpShadowBubble({
+class ShadedBubble extends StatelessWidget {
+  const ShadedBubble({
     super.key,
     required this.child,
     this.padding = const EdgeInsets.all(12),
@@ -22,7 +22,7 @@ class SharpShadowBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final double nipWidth = 20;
     return CustomPaint(
-      painter: SharpShadowBubblePainter(
+      painter: ShadedBubblePainter(
         clipper: BubbleClipper(
           radius: Radius.circular(12),
           showNip: true,

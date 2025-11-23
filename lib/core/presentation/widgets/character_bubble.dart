@@ -2,7 +2,7 @@ import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/theme.dart';
-import 'sharp_shadow_bubble.dart';
+import 'shaded_bubble.dart';
 
 class CharacterBubble extends StatelessWidget {
   const CharacterBubble({super.key, required this.child});
@@ -11,7 +11,7 @@ class CharacterBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SharpShadowBubble(
+    return ShadedBubble(
       color: LingoColors.secondaryContainer,
       nip: BubbleNip.leftTop,
       child: DefaultTextStyle.merge(

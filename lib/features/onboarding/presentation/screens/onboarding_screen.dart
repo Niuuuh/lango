@@ -68,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           context.read<OnboardingBloc>()
                               .add(OnboardingEvent.greetBackPressed());
                         },
-                        child: Text('Greet back'),
+                        child: Center(child: Text('Greet back')),
                       ),
                       askingName: () => NameInputField(
                         onSubmitted: (name) {
