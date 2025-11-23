@@ -31,7 +31,7 @@ class TopicDetails extends StatelessWidget {
                     shadows: [
                       Shadow(
                         color: LingoColors.shadow,
-                        offset: Offset(1, 6),
+                        offset: Offset(1, 4),
                       ),
                     ],
                   ),

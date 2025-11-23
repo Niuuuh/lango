@@ -16,12 +16,12 @@ ChatMessage _$ChatMessageFromJson(
 ) {
         switch (json['runtimeType']) {
                   case 'user':
-          return UserChatMessage.fromJson(
+          return ChatMessageUser.fromJson(
             json
           );
         
           default:
-            return AssistantChatMessage.fromJson(
+            return ChatMessageAssistant.fromJson(
   json
 );
         }
@@ -80,11 +80,11 @@ extension ChatMessagePatterns on ChatMessage {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( UserChatMessage value)?  user,TResult Function( AssistantChatMessage value)?  assistant,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChatMessageUser value)?  user,TResult Function( ChatMessageAssistant value)?  assistant,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case UserChatMessage() when user != null:
-return user(_that);case AssistantChatMessage() when assistant != null:
+case ChatMessageUser() when user != null:
+return user(_that);case ChatMessageAssistant() when assistant != null:
 return assistant(_that);case _:
   return orElse();
 
@@ -103,11 +103,11 @@ return assistant(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( UserChatMessage value)  user,required TResult Function( AssistantChatMessage value)  assistant,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChatMessageUser value)  user,required TResult Function( ChatMessageAssistant value)  assistant,}){
 final _that = this;
 switch (_that) {
-case UserChatMessage():
-return user(_that);case AssistantChatMessage():
+case ChatMessageUser():
+return user(_that);case ChatMessageAssistant():
 return assistant(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -125,11 +125,11 @@ return assistant(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( UserChatMessage value)?  user,TResult? Function( AssistantChatMessage value)?  assistant,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChatMessageUser value)?  user,TResult? Function( ChatMessageAssistant value)?  assistant,}){
 final _that = this;
 switch (_that) {
-case UserChatMessage() when user != null:
-return user(_that);case AssistantChatMessage() when assistant != null:
+case ChatMessageUser() when user != null:
+return user(_that);case ChatMessageAssistant() when assistant != null:
 return assistant(_that);case _:
   return null;
 
@@ -149,8 +149,8 @@ return assistant(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text)?  user,TResult Function( MessageType type,  List<MessageSegment> segments)?  assistant,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case UserChatMessage() when user != null:
-return user(_that.text);case AssistantChatMessage() when assistant != null:
+case ChatMessageUser() when user != null:
+return user(_that.text);case ChatMessageAssistant() when assistant != null:
 return assistant(_that.type,_that.segments);case _:
   return orElse();
 
@@ -171,8 +171,8 @@ return assistant(_that.type,_that.segments);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text)  user,required TResult Function( MessageType type,  List<MessageSegment> segments)  assistant,}) {final _that = this;
 switch (_that) {
-case UserChatMessage():
-return user(_that.text);case AssistantChatMessage():
+case ChatMessageUser():
+return user(_that.text);case ChatMessageAssistant():
 return assistant(_that.type,_that.segments);case _:
   throw StateError('Unexpected subclass');
 
@@ -192,8 +192,8 @@ return assistant(_that.type,_that.segments);case _:
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text)?  user,TResult? Function( MessageType type,  List<MessageSegment> segments)?  assistant,}) {final _that = this;
 switch (_that) {
-case UserChatMessage() when user != null:
-return user(_that.text);case AssistantChatMessage() when assistant != null:
+case ChatMessageUser() when user != null:
+return user(_that.text);case ChatMessageAssistant() when assistant != null:
 return assistant(_that.type,_that.segments);case _:
   return null;
 
@@ -205,9 +205,9 @@ return assistant(_that.type,_that.segments);case _:
 /// @nodoc
 @JsonSerializable()
 
-class UserChatMessage with DiagnosticableTreeMixin implements ChatMessage {
-  const UserChatMessage({required this.text, final  String? $type}): $type = $type ?? 'user';
-  factory UserChatMessage.fromJson(Map<String, dynamic> json) => _$UserChatMessageFromJson(json);
+class ChatMessageUser with DiagnosticableTreeMixin implements ChatMessage {
+  const ChatMessageUser({required this.text, final  String? $type}): $type = $type ?? 'user';
+  factory ChatMessageUser.fromJson(Map<String, dynamic> json) => _$ChatMessageUserFromJson(json);
 
  final  String text;
 
@@ -219,11 +219,11 @@ final String $type;
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$UserChatMessageCopyWith<UserChatMessage> get copyWith => _$UserChatMessageCopyWithImpl<UserChatMessage>(this, _$identity);
+$ChatMessageUserCopyWith<ChatMessageUser> get copyWith => _$ChatMessageUserCopyWithImpl<ChatMessageUser>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$UserChatMessageToJson(this, );
+  return _$ChatMessageUserToJson(this, );
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -234,7 +234,7 @@ void debugFillProperties(DiagnosticPropertiesBuilder properties) {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserChatMessage&&(identical(other.text, text) || other.text == text));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatMessageUser&&(identical(other.text, text) || other.text == text));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -250,8 +250,8 @@ String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
 }
 
 /// @nodoc
-abstract mixin class $UserChatMessageCopyWith<$Res> implements $ChatMessageCopyWith<$Res> {
-  factory $UserChatMessageCopyWith(UserChatMessage value, $Res Function(UserChatMessage) _then) = _$UserChatMessageCopyWithImpl;
+abstract mixin class $ChatMessageUserCopyWith<$Res> implements $ChatMessageCopyWith<$Res> {
+  factory $ChatMessageUserCopyWith(ChatMessageUser value, $Res Function(ChatMessageUser) _then) = _$ChatMessageUserCopyWithImpl;
 @useResult
 $Res call({
  String text
@@ -262,17 +262,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$UserChatMessageCopyWithImpl<$Res>
-    implements $UserChatMessageCopyWith<$Res> {
-  _$UserChatMessageCopyWithImpl(this._self, this._then);
+class _$ChatMessageUserCopyWithImpl<$Res>
+    implements $ChatMessageUserCopyWith<$Res> {
+  _$ChatMessageUserCopyWithImpl(this._self, this._then);
 
-  final UserChatMessage _self;
-  final $Res Function(UserChatMessage) _then;
+  final ChatMessageUser _self;
+  final $Res Function(ChatMessageUser) _then;
 
 /// Create a copy of ChatMessage
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? text = null,}) {
-  return _then(UserChatMessage(
+  return _then(ChatMessageUser(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -284,9 +284,9 @@ as String,
 /// @nodoc
 @JsonSerializable()
 
-class AssistantChatMessage with DiagnosticableTreeMixin implements ChatMessage {
-  const AssistantChatMessage({required this.type, required final  List<MessageSegment> segments, final  String? $type}): _segments = segments,$type = $type ?? 'assistant';
-  factory AssistantChatMessage.fromJson(Map<String, dynamic> json) => _$AssistantChatMessageFromJson(json);
+class ChatMessageAssistant with DiagnosticableTreeMixin implements ChatMessage {
+  const ChatMessageAssistant({required this.type, required final  List<MessageSegment> segments, final  String? $type}): _segments = segments,$type = $type ?? 'assistant';
+  factory ChatMessageAssistant.fromJson(Map<String, dynamic> json) => _$ChatMessageAssistantFromJson(json);
 
  final  MessageType type;
  final  List<MessageSegment> _segments;
@@ -305,11 +305,11 @@ final String $type;
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$AssistantChatMessageCopyWith<AssistantChatMessage> get copyWith => _$AssistantChatMessageCopyWithImpl<AssistantChatMessage>(this, _$identity);
+$ChatMessageAssistantCopyWith<ChatMessageAssistant> get copyWith => _$ChatMessageAssistantCopyWithImpl<ChatMessageAssistant>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$AssistantChatMessageToJson(this, );
+  return _$ChatMessageAssistantToJson(this, );
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -320,7 +320,7 @@ void debugFillProperties(DiagnosticPropertiesBuilder properties) {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AssistantChatMessage&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._segments, _segments));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatMessageAssistant&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._segments, _segments));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -336,8 +336,8 @@ String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
 }
 
 /// @nodoc
-abstract mixin class $AssistantChatMessageCopyWith<$Res> implements $ChatMessageCopyWith<$Res> {
-  factory $AssistantChatMessageCopyWith(AssistantChatMessage value, $Res Function(AssistantChatMessage) _then) = _$AssistantChatMessageCopyWithImpl;
+abstract mixin class $ChatMessageAssistantCopyWith<$Res> implements $ChatMessageCopyWith<$Res> {
+  factory $ChatMessageAssistantCopyWith(ChatMessageAssistant value, $Res Function(ChatMessageAssistant) _then) = _$ChatMessageAssistantCopyWithImpl;
 @useResult
 $Res call({
  MessageType type, List<MessageSegment> segments
@@ -348,17 +348,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$AssistantChatMessageCopyWithImpl<$Res>
-    implements $AssistantChatMessageCopyWith<$Res> {
-  _$AssistantChatMessageCopyWithImpl(this._self, this._then);
+class _$ChatMessageAssistantCopyWithImpl<$Res>
+    implements $ChatMessageAssistantCopyWith<$Res> {
+  _$ChatMessageAssistantCopyWithImpl(this._self, this._then);
 
-  final AssistantChatMessage _self;
-  final $Res Function(AssistantChatMessage) _then;
+  final ChatMessageAssistant _self;
+  final $Res Function(ChatMessageAssistant) _then;
 
 /// Create a copy of ChatMessage
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? type = null,Object? segments = null,}) {
-  return _then(AssistantChatMessage(
+  return _then(ChatMessageAssistant(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as MessageType,segments: null == segments ? _self._segments : segments // ignore: cast_nullable_to_non_nullable
 as List<MessageSegment>,

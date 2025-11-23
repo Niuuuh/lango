@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../app/service_locator.dart';
 import '../../../../core/utils/context_extension.dart';
@@ -16,21 +17,23 @@ class ChatScreen extends StatelessWidget {
     final user = context.user!;
     final topic = context.topic!;
     return BlocProvider(
-      create: (context) {
-        return getIt<ChatBloc>(param1: user, param2: topic)
-          ..add(const ChatEvent.started());
-      },
+      create: (context) => getIt<ChatBloc>(param1: user, param2: topic)
+          ..add(const ChatEvent.started()),
       child: Scaffold(
         appBar: AppBar(
           leading: CloseButton(),
           title: Text(topic.title),
         ),
         body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(child: ChatListView()),
-              InputBar(),
-            ],
+          child: Padding(
+            padding: EdgeInsets.all(8).copyWith(top: 0),
+            child: Column(
+              children: [
+                Expanded(child: ChatListView()),
+                Gap(8),
+                InputBar(),
+              ],
+            ),
           ),
         ),
       ),

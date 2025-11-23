@@ -2,11 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/entities/chat_message.dart';
 import '../bloc/chat_bloc.dart';
 import '../bloc/chat_state.dart';
-import 'assistant_message_bubble.dart';
-import 'user_message_bubble.dart';
+import 'chat_message_list_skeleton.dart';
+import 'chat_message_list_view.dart';
 
 class ChatListView extends StatefulWidget {
   const ChatListView({super.key});
@@ -46,21 +45,13 @@ class _ChatListViewState extends State<ChatListView> {
         );
       },
       builder: (context, state) {
-        return ListView.builder(
-          controller: _scrollController,
+        if (state.messages.isEmpty) {
+          return ChatMessageListSkeleton();
+        }
+        return ChatMessageListView(
+          messages: state.messages,
+          scrollController: _scrollController,
           padding: EdgeInsets.only(bottom: screenSize.width * 0.8),
-          itemCount: state.messages.length,
-          itemBuilder: (context, index) {
-            final message = state.messages[index];
-            return message.map(
-              user: (userMessage) {
-                return UserMessageBubble(message: userMessage);
-              },
-              assistant: (assistantMessage) {
-                return AssistantMessageBubble(message: assistantMessage);
-              },
-            );
-          },
         );
       }
     );

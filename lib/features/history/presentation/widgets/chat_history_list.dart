@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/router.dart';
+import '../../../../app/theme.dart';
 import '../../../../core/presentation/widgets/button.dart';
 import '../../../../core/presentation/widgets/sliver_grouped_list.dart';
 import '../../../../core/utils/context_extension.dart';
 import '../../../../core/utils/date_group.dart';
 import '../../../../core/utils/string_extension.dart';
 import '../../../topics/domain/topic.dart';
-import '../../domain/entities/chat_history_entry.dart';
 import '../cubit/chat_history_cubit.dart';
 import '../cubit/chat_history_state.dart';
 
@@ -23,9 +23,8 @@ class ChatHistoryList extends StatelessWidget {
     final state = context.watch<ChatHistoryCubit>().state;
     return state.maybeWhen(
       success: (history) {
-        final entries = context.select<ChatHistoryCubit, List<ChatHistoryEntry>>((cubit) {
-          return cubit.select(language, topic);
-        });
+        final entries = context.read<ChatHistoryCubit>()
+            .select(language, topic);
         return SliverGroupedList(
           items: entries,
           groupBy: (entry) => entry.date.group,
@@ -53,17 +52,33 @@ class ChatHistoryList extends StatelessWidget {
         );
       },
       orElse: () {
-        return SliverList.builder(
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: Material(
-                color: Colors.grey,
+        return SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 50,
+                height: 20,
+                margin: EdgeInsets.symmetric(horizontal: 8, vertical: 14),
+                decoration: ShapeDecoration(
+                  color: LingoColors.secondaryContainer,
+                  shape: ContinuousRectangleBorder(
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                )
               ),
-            );
-          },
+              Container(
+                height: 61,
+                margin: EdgeInsets.only(bottom: 8),
+                decoration: ShapeDecoration(
+                  color: LingoColors.secondaryContainer,
+                  shape: ContinuousRectangleBorder(
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                )
+              ),
+            ],
+          ),
         );
       },
     );

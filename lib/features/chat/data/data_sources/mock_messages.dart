@@ -20,7 +20,7 @@ abstract class MockMessages {
       type: MessageType.action,
       segments: [
         MessageSegment(
-          text: "Bugcat jumps into a suitcase.",
+          text: "Lingo jumps into a suitcase.",
           translation: null,
         ),
       ],
@@ -55,7 +55,7 @@ abstract class MockMessages {
       type: MessageType.action,
       segments: [
         MessageSegment(
-          text: "Bugcat spins a globe wildly.",
+          text: "Lingo spins a globe wildly.",
           translation: null,
         ),
       ],

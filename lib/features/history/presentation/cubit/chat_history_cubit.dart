@@ -21,6 +21,7 @@ class ChatHistoryCubit extends Cubit<ChatHistoryState> {
     emit(ChatHistoryState.loading());
     try {
       final history = await historyRepository.getHistory();
+      await Future.delayed(Duration(milliseconds: 1000));
       emit(ChatHistoryState.success(history: history));
       _subscription = historyRepository.watchHistory().listen(
         (history) => emit(ChatHistoryState.success(history: history)),

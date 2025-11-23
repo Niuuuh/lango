@@ -28,7 +28,7 @@ class TopicScreen extends StatelessWidget {
               SliverToBoxAdapter(
                 child: TopicDetails(topic: topic),
               ),
-              SliverGap(32),
+              SliverGap(48),
               SliverToBoxAdapter(
                 child: StartButton(
                   onPressed: () => context.goToChat(topic),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/presentation/widgets/emoji.dart';
 import '../../../../core/presentation/widgets/shaded_container.dart';
 import '../../domain/topic.dart';
 
@@ -27,7 +28,7 @@ class TopicCard extends StatelessWidget {
             if (topic.emoji != null) AspectRatio(
               aspectRatio: 1.5,
               child: Center(
-                child: Text(
+                child: Emoji(
                   topic.emoji!,
                   style: TextStyle(fontSize: 48),
                 ),

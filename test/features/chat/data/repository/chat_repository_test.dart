@@ -15,8 +15,8 @@ void main() {
       messages: [],
     );
     expect(reply.messages, isNotEmpty);
-    expect(reply.messages, everyElement(isA<AssistantChatMessage>()));
-    final assistantMessages = reply.messages.cast<AssistantChatMessage>();
+    expect(reply.messages, everyElement(isA<ChatMessageAssistant>()));
+    final assistantMessages = reply.messages.cast<ChatMessageAssistant>();
     expect(assistantMessages[0].type, equals(MessageType.action));
     expect(assistantMessages[1].type, equals(MessageType.inCharacter));
   });

@@ -19,7 +19,7 @@ class MockChatRepository implements ChatRepository {
   }) async {
     await Future.delayed(const Duration(milliseconds: 3000));
     final userReplyCount = messages
-        .whereType<UserChatMessage>()
+        .whereType<ChatMessageUser>()
         .length;
 
     if (userReplyCount == 0) {

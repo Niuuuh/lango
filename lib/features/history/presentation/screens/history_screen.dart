@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/context_extension.dart';
-import '../../../chat/domain/entities/chat_message.dart';
-import '../../../chat/presentation/widgets/assistant_message_bubble.dart';
-import '../../../chat/presentation/widgets/user_message_bubble.dart';
+import '../../../chat/presentation/widgets/chat_message_list_view.dart';
 import '../../domain/entities/chat_history_entry.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -20,19 +18,11 @@ class HistoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(topic.title)),
       body: SafeArea(
-        child: ListView.builder(
-          itemCount: entry.messages.length,
-          itemBuilder: (context, index) {
-            final message = entry.messages[index];
-            return message.map(
-              user: (userMessage) {
-                return UserMessageBubble(message: userMessage);
-              },
-              assistant: (assistantMessage) {
-                return AssistantMessageBubble(message: assistantMessage);
-              },
-            );
-          },
+        child: Padding(
+          padding: EdgeInsets.all(8),
+          child: ChatMessageListView(
+            messages: entry.messages,
+          ),
         ),
       ),
     );

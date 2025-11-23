@@ -22,7 +22,7 @@ class ChatRepository {
     required Topic topic,
     required List<ChatMessage> messages,
   }) async {
-    assert(messages.isEmpty || messages.last is UserChatMessage,
+    assert(messages.isEmpty || messages.last is ChatMessageUser,
         "The last message should be from the user.");
 
     final response = await chatApi.createResponse(

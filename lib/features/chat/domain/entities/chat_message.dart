@@ -11,12 +11,12 @@ part 'chat_message.g.dart';
 abstract class ChatMessage with _$ChatMessage {
   const factory ChatMessage.user({
     required String text,
-  }) = UserChatMessage;
+  }) = ChatMessageUser;
 
   const factory ChatMessage.assistant({
     required MessageType type,
     required List<MessageSegment> segments,
-  }) = AssistantChatMessage;
+  }) = ChatMessageAssistant;
 
   factory ChatMessage.fromJson(Map<String, Object?> json) =>
       _$ChatMessageFromJson(json);

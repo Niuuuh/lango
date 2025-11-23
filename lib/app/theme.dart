@@ -4,6 +4,7 @@ abstract class LingoColors {
   static const secondary = Color(0xff59c9e8);
   static const onSecondary = Color(0xff000000);
   static const surface = Color(0xfffff3de);
+  static const surfaceVariant = Color(0xfff0debf);
   static const onSurface = Color(0xff4c3000);
   static const onSurfaceVariant = Color(0xff545049);
   static const surfaceContainer = Color(0xffeedf9b);
@@ -37,6 +38,20 @@ ThemeData theme() {
     useMaterial3: true,
     colorScheme: colorScheme,
     fontFamily: "Itim",
+    appBarTheme: AppBarThemeData(
+      iconTheme: IconThemeData(
+        color: LingoColors.onSurface,
+        size: 30,
+      ),
+      titleTextStyle: TextStyle(
+        color: LingoColors.onSurface,
+        fontFamily: "Itim",
+        fontSize: 28,
+      ),
+      backgroundColor: LingoColors.surface,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+    ),
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: LingoColors.onSurfaceContainer,
     ),
