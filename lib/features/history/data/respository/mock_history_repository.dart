@@ -15,7 +15,7 @@ class MockHistoryRepository implements HistoryRepository {
     entries: [
       ChatHistoryEntry(
         languageId: Language.german.name,
-        topicId: Topic.art.name,
+        topicId: Topic.travel.name,
         date: DateTime.parse('2025-11-20 14:30:00'),
         messages: MockMessages.messages,
       ),

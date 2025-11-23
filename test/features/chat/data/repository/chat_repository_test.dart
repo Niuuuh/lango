@@ -11,7 +11,7 @@ void main() {
     final chatRepository = MockChatRepository();
     final reply = await chatRepository.replyMessages(
       user: User(name: "Leon", targetLanguage: Language.german),
-      topic: Topic.art,
+      topic: Topic.travel,
       messages: [],
     );
     expect(reply.messages, isNotEmpty);

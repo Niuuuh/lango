@@ -24,6 +24,15 @@ class TopicCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 8,
           children: [
+            if (topic.emoji != null) AspectRatio(
+              aspectRatio: 1.5,
+              child: Center(
+                child: Text(
+                  topic.emoji!,
+                  style: TextStyle(fontSize: 48),
+                ),
+              ),
+            ),
             Text(
               topic.title,
               style: TextStyle(

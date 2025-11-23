@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../../app/router.dart';
+import '../../../../core/presentation/widgets/button.dart';
 import '../../../../core/utils/context_extension.dart';
 import '../../../topics/domain/topic.dart';
 import '../../domain/entities/chat_history_entry.dart';
@@ -26,9 +28,16 @@ class ChatHistoryList extends StatelessWidget {
           itemCount: entries.length,
           itemBuilder: (context, index) {
             final entry = entries[index];
-            return ListTile(
-              title: Text(entry.date.toIso8601String()),
-              onTap: () => context.goToHistory(topic, entry),
+            return Button.primary(
+              elevation: 2,
+              onPressed: () => context.goToHistory(topic, entry),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Title'),
+                  Text(timeago.format(entry.date)),
+                ],
+              ),
             );
           },
         );

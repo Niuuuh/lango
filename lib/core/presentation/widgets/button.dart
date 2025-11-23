@@ -7,6 +7,7 @@ class Button extends StatefulWidget {
   const Button.primary({
     super.key,
     this.width,
+    this.elevation = 4,
     this.onPressed,
     required this.child,
   }) : color = LingoColors.primaryContainer;
@@ -14,12 +15,14 @@ class Button extends StatefulWidget {
   const Button.secondary({
     super.key,
     this.width,
+    this.elevation = 4,
     this.onPressed,
     required this.child,
   }) : color = LingoColors.secondary;
 
   final Color color;
   final double? width;
+  final double elevation;
   final VoidCallback? onPressed;
   final Widget child;
 
@@ -46,17 +49,21 @@ class _ButtonState extends State<Button> {
           _isPressed = false;
         }),
         child: Transform.translate(
-          offset: Offset(0, _isPressed ? 4 : 0),
-          child: ShadedContainer(
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-            elevation: _isPressed ? 0 : 4,
-            child: DefaultTextStyle.merge(
-              style: TextStyle(
-                color: LingoColors.onPrimaryContainer,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+          offset: Offset(0, _isPressed ? widget.elevation : 0),
+          child: Padding(
+            padding: EdgeInsets.only(bottom: _isPressed ? widget.elevation : 0),
+            child: ShadedContainer(
+              color: widget.color,
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              elevation: _isPressed ? 0 : widget.elevation,
+              child: DefaultTextStyle.merge(
+                style: TextStyle(
+                  color: LingoColors.onPrimaryContainer,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                child: widget.child,
               ),
-              child: widget.child,
             ),
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../../language/presentation/widgets/language_button.dart';
 import '../../../onboarding/presentation/widgets/speaking_character.dart';
@@ -30,6 +31,7 @@ class TopicsScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SliverGap(16),
                     TopicsGrid(),
                   ],
                 ),
