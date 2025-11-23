@@ -18,7 +18,7 @@ class LanguageButton extends StatelessWidget {
       child: ShadedContainer(
         borderRadius: BorderRadius.circular(30),
         borderWidth: 0,
-        elevation: 2,
+        elevation: 3,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           spacing: 10,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/theme.dart';
+import '../../../../core/presentation/widgets/emoji.dart';
 import '../../domain/topic.dart';
 
 class TopicDetails extends StatelessWidget {
@@ -14,9 +16,28 @@ class TopicDetails extends StatelessWidget {
       spacing: 16,
       children: [
         if (topic.emoji != null)
-          Text(
-            topic.emoji!,
-            style: TextStyle(fontSize: 80),
+          SizedBox.square(
+            dimension: 230,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: LingoColors.secondaryContainer,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Emoji(
+                  topic.emoji!,
+                  style: TextStyle(
+                    fontSize: 110,
+                    shadows: [
+                      Shadow(
+                        color: LingoColors.shadow,
+                        offset: Offset(1, 6),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
         Text(
           topic.title,
@@ -24,6 +45,7 @@ class TopicDetails extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 40,
           ),
+          textAlign: TextAlign.center,
         ),
         if (topic.description != null)
           Text(
@@ -31,6 +53,7 @@ class TopicDetails extends StatelessWidget {
             style: TextStyle(
               fontSize: 22,
             ),
+            textAlign: TextAlign.center,
           ),
       ],
     );

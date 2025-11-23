@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../../app/router.dart';
 import '../../../../core/presentation/widgets/button.dart';
+import '../../../../core/presentation/widgets/sliver_grouped_list.dart';
 import '../../../../core/utils/context_extension.dart';
+import '../../../../core/utils/date_group.dart';
+import '../../../../core/utils/string_extension.dart';
 import '../../../topics/domain/topic.dart';
 import '../../domain/entities/chat_history_entry.dart';
 import '../cubit/chat_history_cubit.dart';
@@ -24,19 +26,27 @@ class ChatHistoryList extends StatelessWidget {
         final entries = context.select<ChatHistoryCubit, List<ChatHistoryEntry>>((cubit) {
           return cubit.select(language, topic);
         });
-        return SliverList.builder(
-          itemCount: entries.length,
-          itemBuilder: (context, index) {
-            final entry = entries[index];
-            return Button.primary(
-              elevation: 2,
-              onPressed: () => context.goToHistory(topic, entry),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Title'),
-                  Text(timeago.format(entry.date)),
-                ],
+        return SliverGroupedList(
+          items: entries,
+          groupBy: (entry) => entry.date.group,
+          labelBuilder: (context, group) {
+            return Padding(
+              padding: EdgeInsets.all(8),
+              child: Text(
+                group.name.toSentenceCase(),
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            );
+          },
+          itemBuilder: (context, item) {
+            return Padding(
+              padding: EdgeInsets.only(bottom: 8),
+              child: Button.primary(
+                elevation: 2,
+                onPressed: () => context.goToHistory(topic, item),
+                child: Text('Title'),
               ),
             );
           },

@@ -4,9 +4,9 @@ import 'package:gap/gap.dart';
 
 import '../../../../app/router.dart';
 import '../../../../app/theme.dart';
-import '../../../../core/presentation/widgets/button.dart';
 import '../../../history/presentation/widgets/chat_history_list.dart';
 import '../bloc/topic_cubit.dart';
+import '../widgets/start_button.dart';
 import '../widgets/topic_details.dart';
 
 class TopicScreen extends StatelessWidget {
@@ -22,28 +22,21 @@ class TopicScreen extends StatelessWidget {
       backgroundColor: LingoColors.primaryContainer,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(24),
+          padding: EdgeInsets.symmetric(horizontal: 32),
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(
                 child: TopicDetails(topic: topic),
               ),
-              SliverGap(60),
+              SliverGap(32),
               SliverToBoxAdapter(
-                child: Button.secondary(
+                child: StartButton(
                   onPressed: () => context.goToChat(topic),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Start', style: TextStyle(fontSize: 24)),
-                      Gap(6),
-                      Icon(Icons.play_arrow_rounded, size: 30),
-                    ],
-                  ),
                 ),
               ),
               SliverGap(16),
               ChatHistoryList(topic: topic),
+              SliverGap(32),
             ],
           ),
         ),
