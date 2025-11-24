@@ -5,8 +5,12 @@ void main() {
   test('converting to snake case', () {
     expect('stageNote'.toSnakeCase(), 'stage_note');
   });
-  test('converting to sentence case', () {
-    expect('hello WORLD'.toSentenceCase(), 'Hello world');
-    expect('a'.toSentenceCase(), 'A');
+  test('converting to kebab case', () {
+    expect('writingOnPaper'.toKebabCase(), 'writing-on-paper');
+  });
+  test('converting to title case', () {
+    expect('hello world'.toTitleCase(), 'Hello World');
+    expect('dailyLife'.toTitleCase(), 'Daily Life');
+    expect('a'.toTitleCase(), 'A');
   });
 }

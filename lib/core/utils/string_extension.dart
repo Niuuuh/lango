@@ -1,7 +1,12 @@
 extension StringExtension on String {
-  String toSentenceCase() {
-    if (isEmpty) return this;
-    return this[0].toUpperCase() + substring(1).toLowerCase();
+  String toTitleCase() {
+    return replaceAllMapped(
+      RegExp(r'([A-Z])'),
+      (match) => ' ${match.group(0)}',
+    ).split(' ').map((word) {
+      if (word.isEmpty) return word;
+      return word[0].toUpperCase() + word.substring(1).toLowerCase();
+    }).join(' ').trim();
   }
 
   String toSnakeCase() {

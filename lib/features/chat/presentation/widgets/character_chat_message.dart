@@ -37,6 +37,7 @@ class CharacterChatMessage extends StatelessWidget {
                 ? message.animation ?? CharacterAnimation.idle
                 : CharacterAnimation.idle,
             direction: CharacterDirection.right,
+            loop: false,
             width: 64,
           ),
           Expanded(

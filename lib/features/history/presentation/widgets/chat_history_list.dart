@@ -32,7 +32,7 @@ class ChatHistoryList extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.all(8),
               child: Text(
-                group.name.toSentenceCase(),
+                group.name.toTitleCase(),
                 style: TextStyle(
                   fontSize: 20,
                 ),

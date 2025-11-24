@@ -25,7 +25,7 @@ class LanguageButton extends StatelessWidget {
           children: [
             if (language != null) LanguageIcon(language: language),
             Text(
-              language?.name.toSentenceCase() ?? "Select language",
+              language?.name.toTitleCase() ?? "Select language",
               style: TextStyle(
                 color: LingoColors.onPrimaryContainer,
                 fontSize: 20,

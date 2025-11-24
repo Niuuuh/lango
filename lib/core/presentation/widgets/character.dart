@@ -14,11 +14,13 @@ class Character extends StatelessWidget {
     super.key,
     this.action = CharacterAnimation.idle,
     this.direction = CharacterDirection.left,
+    this.loop = true,
     this.width = 200,
   });
 
   final CharacterAnimation action;
   final CharacterDirection direction;
+  final bool loop;
   final double? width;
 
   @override
@@ -29,6 +31,7 @@ class Character extends StatelessWidget {
         width: width,
         child: GifView.asset(
           'assets/character/${action.name.toKebabCase()}.gif',
+          loop: loop,
           filterQuality: FilterQuality.none,
           fit: BoxFit.fitWidth,
           frameRate: 10,

@@ -20,7 +20,7 @@ class LanguageListTile extends StatelessWidget {
     return ListTile(
       leading: LanguageIcon(language: language, size: 30),
       title: Text(
-        language.name.toSentenceCase(),
+        language.name.toTitleCase(),
         style: TextStyle(
           fontSize: 20,
         ),
