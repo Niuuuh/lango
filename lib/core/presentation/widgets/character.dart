@@ -1,35 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:gif_view/gif_view.dart';
 
+import '../../domain/entities/character_animation.dart';
 import '../../utils/string_extension.dart';
 
-enum CharacterAction {
-  idle,
-  rollingTowardsAndGreetingYou,
-  writingOnPaper;
-
-  @override
-  String toString() => name.toKebabCase();
+enum CharacterDirection {
+  left,
+  right,
 }
 
 class Character extends StatelessWidget {
   const Character({
     super.key,
-    this.action = CharacterAction.idle,
+    this.action = CharacterAnimation.idle,
+    this.direction = CharacterDirection.left,
     this.width = 200,
   });
 
-  final CharacterAction action;
+  final CharacterAnimation action;
+  final CharacterDirection direction;
   final double? width;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      child: Image.asset(
-        'assets/character/$action.gif',
-        gaplessPlayback: true,
-        filterQuality: FilterQuality.none,
-        scale: 0.1,
+    return Transform.scale(
+      scaleX: direction == CharacterDirection.left ? 1 : -1,
+      child: SizedBox(
+        width: width,
+        child: GifView.asset(
+          'assets/character/${action.name.toKebabCase()}.gif',
+          filterQuality: FilterQuality.none,
+          fit: BoxFit.fitWidth,
+          frameRate: 10,
+        ),
       ),
     );
   }

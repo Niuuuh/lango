@@ -1,13 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/utils/string_extension.dart';
+part 'message_type.g.dart';
 
-@JsonEnum(fieldRename: FieldRename.snake)
+@JsonEnum(alwaysCreate: true, fieldRename: FieldRename.snake)
 enum MessageType {
   action,
   inCharacter,
   outOfCharacter;
 
+  String toJson() => _$MessageTypeEnumMap[this]!;
+
   @override
-  String toString() => name.toSnakeCase();
+  String toString() => toJson();
 }

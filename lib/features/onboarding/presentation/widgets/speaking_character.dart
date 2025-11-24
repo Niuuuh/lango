@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/domain/entities/character_animation.dart';
 import '../../../../core/presentation/widgets/character.dart';
 import '../../../../core/presentation/widgets/character_bubble.dart';
 
@@ -7,12 +8,12 @@ class SpeakingCharacter extends StatelessWidget {
   const SpeakingCharacter({
     super.key,
     this.text,
-    this.action = CharacterAction.idle,
+    this.action = CharacterAnimation.idle,
     this.spacing = 40,
   });
 
   final Widget? text;
-  final CharacterAction action;
+  final CharacterAnimation action;
   final double spacing;
 
   @override

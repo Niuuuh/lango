@@ -85,6 +85,12 @@ ThemeData theme() {
           ),
         ),
         color: LingoColors.primaryContainer,
+        shadows: [
+          BoxShadow(
+            color: LingoColors.shadow,
+            offset: Offset(0, 2.5),
+          ),
+        ],
       ),
       textStyle: TextStyle(
         color: LingoColors.onPrimaryContainer,

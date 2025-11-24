@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/domain/entities/character_animation.dart';
 import '../../../../core/presentation/widgets/character.dart';
 import '../../../../core/presentation/widgets/character_bubble.dart';
 import '../bloc/typing_cubit.dart';
@@ -28,11 +29,11 @@ class TypingCharacter extends StatelessWidget {
               children: [
                 Opacity(
                   opacity: state.status == TypingStatus.typing ? 1 : 0,
-                  child: Character(action: CharacterAction.writingOnPaper),
+                  child: Character(action: CharacterAnimation.writingOnPaper),
                 ),
                 Opacity(
                   opacity: state.status == TypingStatus.typing ? 0 : 1,
-                  child: Character(action: CharacterAction.idle),
+                  child: Character(action: CharacterAnimation.idle),
                 ),
               ],
             ),

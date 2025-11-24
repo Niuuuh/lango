@@ -16,7 +16,7 @@ class UserChatMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 4, bottom: 8, left: 60),
+      padding: EdgeInsets.only(top: 16, bottom: 16, left: 60),
       child: Align(
         alignment: Alignment.centerRight,
         child: ShadedBubble(

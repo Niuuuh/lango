@@ -1,14 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/utils/string_extension.dart';
+part 'chat_stage.g.dart';
 
-@JsonEnum(fieldRename: FieldRename.snake)
+@JsonEnum(alwaysCreate: true, fieldRename: FieldRename.snake)
 enum ChatStage {
   intro,
   warmup,
   main,
   closing;
 
+  String toJson() => _$ChatStageEnumMap[this]!;
+
   @override
-  String toString() => name.toSnakeCase();
+  String toString() => toJson();
 }

@@ -1,3 +1,4 @@
+import '../../../../core/domain/entities/character_animation.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/entities/message_segment.dart';
 import '../../domain/entities/message_type.dart';
@@ -27,6 +28,7 @@ abstract class MockMessages {
     ),
     ChatMessage.assistant(
       type: MessageType.inCharacter,
+      animation: CharacterAnimation.waving,
       segments: [
         MessageSegment(text: "Hallo,", translation: "Hello,"),
         MessageSegment(text: "Leon!", translation: "Leon!"),
@@ -90,6 +92,7 @@ abstract class MockMessages {
     ),
     ChatMessage.assistant(
       type: MessageType.inCharacter,
+      animation: CharacterAnimation.excited,
       segments: [
         MessageSegment(
           text: "Hast",

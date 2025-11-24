@@ -14,10 +14,7 @@ _ChatReply _$ChatReplyFromJson(Map<String, dynamic> json) => _ChatReply(
 );
 
 Map<String, dynamic> _$ChatReplyToJson(_ChatReply instance) =>
-    <String, dynamic>{
-      'stage': _$ChatStageEnumMap[instance.stage]!,
-      'messages': instance.messages,
-    };
+    <String, dynamic>{'stage': instance.stage, 'messages': instance.messages};
 
 const _$ChatStageEnumMap = {
   ChatStage.intro: 'intro',

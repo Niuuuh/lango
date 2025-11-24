@@ -147,11 +147,11 @@ return assistant(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text)?  user,TResult Function( MessageType type,  List<MessageSegment> segments)?  assistant,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text)?  user,TResult Function( MessageType type,  CharacterAnimation? animation,  List<MessageSegment> segments)?  assistant,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChatMessageUser() when user != null:
 return user(_that.text);case ChatMessageAssistant() when assistant != null:
-return assistant(_that.type,_that.segments);case _:
+return assistant(_that.type,_that.animation,_that.segments);case _:
   return orElse();
 
 }
@@ -169,11 +169,11 @@ return assistant(_that.type,_that.segments);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text)  user,required TResult Function( MessageType type,  List<MessageSegment> segments)  assistant,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text)  user,required TResult Function( MessageType type,  CharacterAnimation? animation,  List<MessageSegment> segments)  assistant,}) {final _that = this;
 switch (_that) {
 case ChatMessageUser():
 return user(_that.text);case ChatMessageAssistant():
-return assistant(_that.type,_that.segments);case _:
+return assistant(_that.type,_that.animation,_that.segments);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -190,11 +190,11 @@ return assistant(_that.type,_that.segments);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text)?  user,TResult? Function( MessageType type,  List<MessageSegment> segments)?  assistant,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text)?  user,TResult? Function( MessageType type,  CharacterAnimation? animation,  List<MessageSegment> segments)?  assistant,}) {final _that = this;
 switch (_that) {
 case ChatMessageUser() when user != null:
 return user(_that.text);case ChatMessageAssistant() when assistant != null:
-return assistant(_that.type,_that.segments);case _:
+return assistant(_that.type,_that.animation,_that.segments);case _:
   return null;
 
 }
@@ -285,10 +285,11 @@ as String,
 @JsonSerializable()
 
 class ChatMessageAssistant with DiagnosticableTreeMixin implements ChatMessage {
-  const ChatMessageAssistant({required this.type, required final  List<MessageSegment> segments, final  String? $type}): _segments = segments,$type = $type ?? 'assistant';
+  const ChatMessageAssistant({required this.type, this.animation, required final  List<MessageSegment> segments, final  String? $type}): _segments = segments,$type = $type ?? 'assistant';
   factory ChatMessageAssistant.fromJson(Map<String, dynamic> json) => _$ChatMessageAssistantFromJson(json);
 
  final  MessageType type;
+ final  CharacterAnimation? animation;
  final  List<MessageSegment> _segments;
  List<MessageSegment> get segments {
   if (_segments is EqualUnmodifiableListView) return _segments;
@@ -315,21 +316,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChatMessage.assistant'))
-    ..add(DiagnosticsProperty('type', type))..add(DiagnosticsProperty('segments', segments));
+    ..add(DiagnosticsProperty('type', type))..add(DiagnosticsProperty('animation', animation))..add(DiagnosticsProperty('segments', segments));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatMessageAssistant&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._segments, _segments));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatMessageAssistant&&(identical(other.type, type) || other.type == type)&&(identical(other.animation, animation) || other.animation == animation)&&const DeepCollectionEquality().equals(other._segments, _segments));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(_segments));
+int get hashCode => Object.hash(runtimeType,type,animation,const DeepCollectionEquality().hash(_segments));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatMessage.assistant(type: $type, segments: $segments)';
+  return 'ChatMessage.assistant(type: $type, animation: $animation, segments: $segments)';
 }
 
 
@@ -340,7 +341,7 @@ abstract mixin class $ChatMessageAssistantCopyWith<$Res> implements $ChatMessage
   factory $ChatMessageAssistantCopyWith(ChatMessageAssistant value, $Res Function(ChatMessageAssistant) _then) = _$ChatMessageAssistantCopyWithImpl;
 @useResult
 $Res call({
- MessageType type, List<MessageSegment> segments
+ MessageType type, CharacterAnimation? animation, List<MessageSegment> segments
 });
 
 
@@ -357,10 +358,11 @@ class _$ChatMessageAssistantCopyWithImpl<$Res>
 
 /// Create a copy of ChatMessage
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? type = null,Object? segments = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? type = null,Object? animation = freezed,Object? segments = null,}) {
   return _then(ChatMessageAssistant(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as MessageType,segments: null == segments ? _self._segments : segments // ignore: cast_nullable_to_non_nullable
+as MessageType,animation: freezed == animation ? _self.animation : animation // ignore: cast_nullable_to_non_nullable
+as CharacterAnimation?,segments: null == segments ? _self._segments : segments // ignore: cast_nullable_to_non_nullable
 as List<MessageSegment>,
   ));
 }

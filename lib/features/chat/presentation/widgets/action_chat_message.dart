@@ -15,7 +15,7 @@ class ActionChatMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.symmetric(horizontal: 50, vertical: 8),
       child: Align(
         alignment: Alignment.center,
         child: TextWithTranslations(

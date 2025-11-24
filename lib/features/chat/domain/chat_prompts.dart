@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import '../../../core/domain/entities/character_animation.dart';
 import 'entities/chat_stage.dart';
 import 'entities/message_type.dart';
 
@@ -28,12 +29,14 @@ For "${MessageType.inCharacter}" messages:
 - Keep the segments meaningful; each segment should be understandable on its own.
 - Never merge multiple phrases into one segment.
 
+A message of type "${MessageType.inCharacter}" can include an animation. Not every message needs one, keep them rare.
+
 Examples:
 {"type":"${MessageType.inCharacter}","segments":[
   {"text":"Guten","translation":"Good"},
   {"text":"Morgen","translation":"morning"},
   {"text":"Reisender!","translation":"Traveler!"}
-]},
+],"animation":"${CharacterAnimation.rollingTowardsAndGreetingYou}"},
 {"type":"${MessageType.outOfCharacter}","segments":[
   {"text":"You can say","translation":null},
   {"text":"'Hallo'","translation":"Hello"},

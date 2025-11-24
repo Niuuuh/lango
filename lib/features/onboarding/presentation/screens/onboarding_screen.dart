@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/router.dart';
 import '../../../../app/service_locator.dart';
+import '../../../../core/domain/entities/character_animation.dart';
 import '../../../../core/presentation/widgets/button.dart';
 import '../../../../core/presentation/widgets/character.dart';
 import '../../../language/presentation/bloc/language_search_cubit.dart';
@@ -50,7 +51,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: state.maybeWhen(
                         greeting: () => SpeakingCharacter(
                           text: Text("Hii, I'm Lingo"),
-                          action: CharacterAction.rollingTowardsAndGreetingYou,
+                          action: CharacterAnimation.rollingTowardsAndGreetingYou,
                         ),
                         askingName: () => TypingCharacter(
                           prompt: Text("What's your name?"),

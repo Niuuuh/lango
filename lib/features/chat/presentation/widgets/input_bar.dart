@@ -53,12 +53,10 @@ class _InputBarState extends State<InputBar> {
           ),
           decoration: InputDecoration(
             hintText: "Respond in German",
-            suffixIcon: state is ChatLoading
-                ? Transform.translate(
+            suffixIcon: state is ChatLoading ? Transform.translate(
               offset: Offset(-4, 0),
               child: LoadingIndicator(color: LingoColors.onSurfaceContainerVariant),
-            )
-                : Icon(Icons.send, color: LingoColors.onSurfaceContainerVariant),
+            ) : null,
           ),
           textInputAction: TextInputAction.send,
           keyboardType: TextInputType.text,

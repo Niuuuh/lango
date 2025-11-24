@@ -29,7 +29,7 @@ void setupServiceLocator() {
   getIt.registerFactory(() => TypingBloc());
   getIt.registerFactory(() => LanguageSearchCubit());
   getIt.registerLazySingleton(() => ChatApi() ?? MockChatApi());
-  getIt.registerLazySingleton(() => MockChatRepository() ?? ChatRepository(chatApi: getIt()));
+  getIt.registerLazySingleton(() => ChatRepository(chatApi: getIt()) ?? MockChatRepository());
   getIt.registerFactoryParam((User user, Topic topic) => ChatBloc(
     chatRepository: getIt(),
     historyRepository: getIt(),
@@ -38,6 +38,6 @@ void setupServiceLocator() {
   ));
   getIt.registerLazySingleton(() => PreferencesApi());
   getIt.registerFactoryParam((String topicId, _) => TopicCubit(topicId: topicId));
-  getIt.registerLazySingleton(() => MockHistoryRepository() ?? HistoryRepository(preferencesApi: getIt()));
+  getIt.registerLazySingleton(() => HistoryRepository(preferencesApi: getIt()) ?? MockHistoryRepository());
   getIt.registerLazySingleton(() => ChatHistoryCubit(historyRepository: getIt()));
 }

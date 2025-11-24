@@ -1,3 +1,4 @@
+import '../../../core/domain/entities/character_animation.dart';
 import '../data/models/chat_api_format.dart';
 import 'entities/chat_stage.dart';
 import 'entities/message_type.dart';
@@ -12,7 +13,7 @@ abstract class ChatJsonSchemes {
       "properties": {
         "stage": {
           "type": "string",
-          "enum": [...ChatStage.values.map((e) => "$e")],
+          "enum": [...ChatStage.values.map((e) => e.toJson())],
         },
         "messages": {
           "type": "array",
@@ -21,7 +22,11 @@ abstract class ChatJsonSchemes {
             "properties": {
               "type": {
                 "type": "string",
-                "enum": [...MessageType.values.map((e) => "$e")],
+                "enum": [...MessageType.values.map((e) => e.toJson())],
+              },
+              "animation": {
+                "type": ["string", "null"],
+                "enum": [...CharacterAnimation.values.map((e) => e.toJson())],
               },
               "segments": {
                 "type": "array",
@@ -40,7 +45,7 @@ abstract class ChatJsonSchemes {
                 },
               },
             },
-            "required": ["type", "segments"],
+            "required": ["type", "animation", "segments"],
             "additionalProperties": false,
           },
         },

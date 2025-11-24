@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/domain/entities/character_animation.dart';
 import 'message_segment.dart';
 import 'message_type.dart';
 
@@ -15,6 +16,7 @@ abstract class ChatMessage with _$ChatMessage {
 
   const factory ChatMessage.assistant({
     required MessageType type,
+    CharacterAnimation? animation,
     required List<MessageSegment> segments,
   }) = ChatMessageAssistant;
 
