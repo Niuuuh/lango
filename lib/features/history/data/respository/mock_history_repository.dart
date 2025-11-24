@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import '../../../../core/data/data_sources/preferences_api.dart';
-import '../../../chat/data/data_sources/mock_messages.dart';
+import '../../../chat/data/repository/mock_chat_messages.dart';
 import '../../../language/domain/entities/language.dart';
 import '../../../topics/domain/topic.dart';
 import '../../domain/entities/chat_history.dart';
@@ -17,19 +17,19 @@ class MockHistoryRepository implements HistoryRepository {
         languageId: Language.german.name,
         topicId: Topic.travel.name,
         date: DateTime.now(),
-        messages: MockMessages.messages,
+        messages: MockChatMessages.messages,
       ),
       ChatHistoryEntry(
         languageId: Language.german.name,
         topicId: Topic.travel.name,
         date: DateTime.parse('2025-11-20 14:30:00'),
-        messages: MockMessages.messages,
+        messages: MockChatMessages.messages,
       ),
       ChatHistoryEntry(
         languageId: Language.german.name,
         topicId: Topic.travel.name,
         date: DateTime.parse('2025-11-18 11:10:00'),
-        messages: MockMessages.messages,
+        messages: MockChatMessages.messages,
       ),
     ],
   );

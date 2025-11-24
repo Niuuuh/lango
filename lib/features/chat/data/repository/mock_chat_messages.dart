@@ -3,17 +3,17 @@ import '../../domain/entities/chat_message.dart';
 import '../../domain/entities/message_segment.dart';
 import '../../domain/entities/message_type.dart';
 
-abstract class MockMessages {
+abstract class MockChatMessages {
   static final messages = [
-    ...MockMessages.assistantIntroMessages,
+    ...MockChatMessages.assistantIntroMessages,
     ChatMessage.user(
       text: "Hey, ich würde total gerne mal nach Deutschland reisen!",
     ),
-    ...MockMessages.assistantWarmupMessages,
+    ...MockChatMessages.assistantWarmupMessages,
     ChatMessage.user(
       text: "Hast du Tipps, was ich in Deutschland machen kann?",
     ),
-    ...MockMessages.assistantClosingMessages,
+    ...MockChatMessages.assistantClosingMessages,
   ];
 
   static const assistantIntroMessages = [

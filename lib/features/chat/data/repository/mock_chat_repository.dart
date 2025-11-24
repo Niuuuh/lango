@@ -3,9 +3,11 @@ import '../../../topics/domain/topic.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/entities/chat_reply.dart';
 import '../../domain/entities/chat_stage.dart';
+import '../../domain/entities/session_summary.dart';
 import '../data_sources/chat_api.dart';
-import '../data_sources/mock_messages.dart';
 import 'chat_repository.dart';
+import 'mock_chat_messages.dart';
+import 'mock_session_summary.dart';
 
 class MockChatRepository implements ChatRepository {
   @override
@@ -25,18 +27,28 @@ class MockChatRepository implements ChatRepository {
     if (userReplyCount == 0) {
       return ChatReply(
         stage: ChatStage.intro,
-        messages: MockMessages.assistantIntroMessages,
+        messages: MockChatMessages.assistantIntroMessages,
       );
     } else if (userReplyCount == 1) {
       return ChatReply(
         stage: ChatStage.warmup,
-        messages: MockMessages.assistantWarmupMessages,
+        messages: MockChatMessages.assistantWarmupMessages,
       );
     } else {
       return ChatReply(
         stage: ChatStage.closing,
-        messages: MockMessages.assistantClosingMessages,
+        messages: MockChatMessages.assistantClosingMessages,
       );
     }
+  }
+
+  @override
+  Future<SessionSummary> summarizeSession({
+    required User user,
+    required Topic topic,
+    required List<ChatMessage> messages,
+  }) async {
+    await Future.delayed(const Duration(milliseconds: 2000));
+    return MockSessionSummaries.example;
   }
 }

@@ -3,7 +3,7 @@ import 'package:lango/features/chat/domain/chat_prompts.dart';
 
 void main() {
   test("create system prompt", () {
-    final systemPrompt = ChatPrompts.roleplaySystemPrompt(
+    final systemPrompt = ChatPrompts.replyMessages(
       userName: "Leon",
       userLevel: "C1",
       sourceLanguage: "English",
