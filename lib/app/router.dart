@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../core/presentation/screens/splash_screen.dart';
+import '../features/chat/domain/entities/chat_message.dart';
 import '../features/chat/presentation/screens/chat_screen.dart';
 import '../features/history/domain/entities/chat_history_entry.dart';
 import '../features/history/presentation/screens/history_screen.dart';
 import '../features/language/presentation/screens/language_search_screen.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
+import '../features/summary/presentation/screens/summary_screen.dart';
 import '../features/topics/domain/topic.dart';
 import '../features/topics/presentation/bloc/topic_cubit.dart';
 import '../features/topics/presentation/screens/topic_screen.dart';
@@ -20,6 +22,7 @@ enum Routes {
   topics,
   topic,
   chat,
+  summary,
   history,
 }
 
@@ -47,7 +50,14 @@ extension RoutingHelper on BuildContext {
     goNamed(
       Routes.chat.name,
       pathParameters: {'topicId': topic.name},
-      extra: topic,
+    );
+  }
+
+  void goToSummary(Topic topic, List<ChatMessage> messages) {
+    goNamed(
+      Routes.summary.name,
+      pathParameters: {'topicId': topic.name},
+      extra: messages,
     );
   }
 
@@ -102,6 +112,18 @@ class AppRouter {
                   return BlocProvider(
                     create: (context) => getIt<TopicCubit>(param1: topicId),
                     child: const ChatScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                name: Routes.summary.name,
+                path: 'summary',
+                builder: (context, state) {
+                  final topicId = state.pathParameters['topicId']!;
+                  final messages = state.extra as List<ChatMessage>;
+                  return BlocProvider(
+                    create: (context) => getIt<TopicCubit>(param1: topicId),
+                    child: SummaryScreen(messages: messages),
                   );
                 },
               ),

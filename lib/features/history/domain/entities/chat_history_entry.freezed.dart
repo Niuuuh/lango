@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChatHistoryEntry implements DiagnosticableTreeMixin {
 
- String get languageId; String get topicId; DateTime get date; List<ChatMessage> get messages;
+ String get languageId; String get topicId; DateTime get date; List<ChatMessage> get messages; SessionSummary get summary;
 /// Create a copy of ChatHistoryEntry
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +29,21 @@ $ChatHistoryEntryCopyWith<ChatHistoryEntry> get copyWith => _$ChatHistoryEntryCo
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChatHistoryEntry'))
-    ..add(DiagnosticsProperty('languageId', languageId))..add(DiagnosticsProperty('topicId', topicId))..add(DiagnosticsProperty('date', date))..add(DiagnosticsProperty('messages', messages));
+    ..add(DiagnosticsProperty('languageId', languageId))..add(DiagnosticsProperty('topicId', topicId))..add(DiagnosticsProperty('date', date))..add(DiagnosticsProperty('messages', messages))..add(DiagnosticsProperty('summary', summary));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatHistoryEntry&&(identical(other.languageId, languageId) || other.languageId == languageId)&&(identical(other.topicId, topicId) || other.topicId == topicId)&&(identical(other.date, date) || other.date == date)&&const DeepCollectionEquality().equals(other.messages, messages));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatHistoryEntry&&(identical(other.languageId, languageId) || other.languageId == languageId)&&(identical(other.topicId, topicId) || other.topicId == topicId)&&(identical(other.date, date) || other.date == date)&&const DeepCollectionEquality().equals(other.messages, messages)&&(identical(other.summary, summary) || other.summary == summary));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,languageId,topicId,date,const DeepCollectionEquality().hash(messages));
+int get hashCode => Object.hash(runtimeType,languageId,topicId,date,const DeepCollectionEquality().hash(messages),summary);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatHistoryEntry(languageId: $languageId, topicId: $topicId, date: $date, messages: $messages)';
+  return 'ChatHistoryEntry(languageId: $languageId, topicId: $topicId, date: $date, messages: $messages, summary: $summary)';
 }
 
 
@@ -54,11 +54,11 @@ abstract mixin class $ChatHistoryEntryCopyWith<$Res>  {
   factory $ChatHistoryEntryCopyWith(ChatHistoryEntry value, $Res Function(ChatHistoryEntry) _then) = _$ChatHistoryEntryCopyWithImpl;
 @useResult
 $Res call({
- String languageId, String topicId, DateTime date, List<ChatMessage> messages
+ String languageId, String topicId, DateTime date, List<ChatMessage> messages, SessionSummary summary
 });
 
 
-
+$SessionSummaryCopyWith<$Res> get summary;
 
 }
 /// @nodoc
@@ -71,16 +71,26 @@ class _$ChatHistoryEntryCopyWithImpl<$Res>
 
 /// Create a copy of ChatHistoryEntry
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? languageId = null,Object? topicId = null,Object? date = null,Object? messages = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? languageId = null,Object? topicId = null,Object? date = null,Object? messages = null,Object? summary = null,}) {
   return _then(_self.copyWith(
 languageId: null == languageId ? _self.languageId : languageId // ignore: cast_nullable_to_non_nullable
 as String,topicId: null == topicId ? _self.topicId : topicId // ignore: cast_nullable_to_non_nullable
 as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as DateTime,messages: null == messages ? _self.messages : messages // ignore: cast_nullable_to_non_nullable
-as List<ChatMessage>,
+as List<ChatMessage>,summary: null == summary ? _self.summary : summary // ignore: cast_nullable_to_non_nullable
+as SessionSummary,
   ));
 }
-
+/// Create a copy of ChatHistoryEntry
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SessionSummaryCopyWith<$Res> get summary {
+  
+  return $SessionSummaryCopyWith<$Res>(_self.summary, (value) {
+    return _then(_self.copyWith(summary: value));
+  });
+}
 }
 
 
@@ -162,10 +172,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String languageId,  String topicId,  DateTime date,  List<ChatMessage> messages)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String languageId,  String topicId,  DateTime date,  List<ChatMessage> messages,  SessionSummary summary)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChatHistoryEntry() when $default != null:
-return $default(_that.languageId,_that.topicId,_that.date,_that.messages);case _:
+return $default(_that.languageId,_that.topicId,_that.date,_that.messages,_that.summary);case _:
   return orElse();
 
 }
@@ -183,10 +193,10 @@ return $default(_that.languageId,_that.topicId,_that.date,_that.messages);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String languageId,  String topicId,  DateTime date,  List<ChatMessage> messages)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String languageId,  String topicId,  DateTime date,  List<ChatMessage> messages,  SessionSummary summary)  $default,) {final _that = this;
 switch (_that) {
 case _ChatHistoryEntry():
-return $default(_that.languageId,_that.topicId,_that.date,_that.messages);case _:
+return $default(_that.languageId,_that.topicId,_that.date,_that.messages,_that.summary);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -203,10 +213,10 @@ return $default(_that.languageId,_that.topicId,_that.date,_that.messages);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String languageId,  String topicId,  DateTime date,  List<ChatMessage> messages)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String languageId,  String topicId,  DateTime date,  List<ChatMessage> messages,  SessionSummary summary)?  $default,) {final _that = this;
 switch (_that) {
 case _ChatHistoryEntry() when $default != null:
-return $default(_that.languageId,_that.topicId,_that.date,_that.messages);case _:
+return $default(_that.languageId,_that.topicId,_that.date,_that.messages,_that.summary);case _:
   return null;
 
 }
@@ -218,7 +228,7 @@ return $default(_that.languageId,_that.topicId,_that.date,_that.messages);case _
 @JsonSerializable()
 
 class _ChatHistoryEntry with DiagnosticableTreeMixin implements ChatHistoryEntry {
-  const _ChatHistoryEntry({required this.languageId, required this.topicId, required this.date, required final  List<ChatMessage> messages}): _messages = messages;
+  const _ChatHistoryEntry({required this.languageId, required this.topicId, required this.date, required final  List<ChatMessage> messages, required this.summary}): _messages = messages;
   factory _ChatHistoryEntry.fromJson(Map<String, dynamic> json) => _$ChatHistoryEntryFromJson(json);
 
 @override final  String languageId;
@@ -231,6 +241,7 @@ class _ChatHistoryEntry with DiagnosticableTreeMixin implements ChatHistoryEntry
   return EqualUnmodifiableListView(_messages);
 }
 
+@override final  SessionSummary summary;
 
 /// Create a copy of ChatHistoryEntry
 /// with the given fields replaced by the non-null parameter values.
@@ -246,21 +257,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChatHistoryEntry'))
-    ..add(DiagnosticsProperty('languageId', languageId))..add(DiagnosticsProperty('topicId', topicId))..add(DiagnosticsProperty('date', date))..add(DiagnosticsProperty('messages', messages));
+    ..add(DiagnosticsProperty('languageId', languageId))..add(DiagnosticsProperty('topicId', topicId))..add(DiagnosticsProperty('date', date))..add(DiagnosticsProperty('messages', messages))..add(DiagnosticsProperty('summary', summary));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatHistoryEntry&&(identical(other.languageId, languageId) || other.languageId == languageId)&&(identical(other.topicId, topicId) || other.topicId == topicId)&&(identical(other.date, date) || other.date == date)&&const DeepCollectionEquality().equals(other._messages, _messages));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatHistoryEntry&&(identical(other.languageId, languageId) || other.languageId == languageId)&&(identical(other.topicId, topicId) || other.topicId == topicId)&&(identical(other.date, date) || other.date == date)&&const DeepCollectionEquality().equals(other._messages, _messages)&&(identical(other.summary, summary) || other.summary == summary));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,languageId,topicId,date,const DeepCollectionEquality().hash(_messages));
+int get hashCode => Object.hash(runtimeType,languageId,topicId,date,const DeepCollectionEquality().hash(_messages),summary);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChatHistoryEntry(languageId: $languageId, topicId: $topicId, date: $date, messages: $messages)';
+  return 'ChatHistoryEntry(languageId: $languageId, topicId: $topicId, date: $date, messages: $messages, summary: $summary)';
 }
 
 
@@ -271,11 +282,11 @@ abstract mixin class _$ChatHistoryEntryCopyWith<$Res> implements $ChatHistoryEnt
   factory _$ChatHistoryEntryCopyWith(_ChatHistoryEntry value, $Res Function(_ChatHistoryEntry) _then) = __$ChatHistoryEntryCopyWithImpl;
 @override @useResult
 $Res call({
- String languageId, String topicId, DateTime date, List<ChatMessage> messages
+ String languageId, String topicId, DateTime date, List<ChatMessage> messages, SessionSummary summary
 });
 
 
-
+@override $SessionSummaryCopyWith<$Res> get summary;
 
 }
 /// @nodoc
@@ -288,17 +299,27 @@ class __$ChatHistoryEntryCopyWithImpl<$Res>
 
 /// Create a copy of ChatHistoryEntry
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? languageId = null,Object? topicId = null,Object? date = null,Object? messages = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? languageId = null,Object? topicId = null,Object? date = null,Object? messages = null,Object? summary = null,}) {
   return _then(_ChatHistoryEntry(
 languageId: null == languageId ? _self.languageId : languageId // ignore: cast_nullable_to_non_nullable
 as String,topicId: null == topicId ? _self.topicId : topicId // ignore: cast_nullable_to_non_nullable
 as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as DateTime,messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
-as List<ChatMessage>,
+as List<ChatMessage>,summary: null == summary ? _self.summary : summary // ignore: cast_nullable_to_non_nullable
+as SessionSummary,
   ));
 }
 
-
+/// Create a copy of ChatHistoryEntry
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SessionSummaryCopyWith<$Res> get summary {
+  
+  return $SessionSummaryCopyWith<$Res>(_self.summary, (value) {
+    return _then(_self.copyWith(summary: value));
+  });
+}
 }
 
 // dart format on

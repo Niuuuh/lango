@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/context_extension.dart';
 import '../../../chat/presentation/widgets/chat_message_list_view.dart';
 import '../../domain/entities/chat_history_entry.dart';
 
@@ -14,9 +13,8 @@ class HistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final topic = context.topic!;
     return Scaffold(
-      appBar: AppBar(title: Text(topic.title)),
+      appBar: AppBar(title: Text(entry.summary.name)),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(8),

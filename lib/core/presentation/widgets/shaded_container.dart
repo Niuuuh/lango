@@ -36,7 +36,7 @@ class ShadedContainer extends StatelessWidget {
             ) : BorderSide.none,
           ),
           shadows: [
-            BoxShadow(
+            if (elevation > 0) BoxShadow(
               color: LingoColors.shadow,
               offset: Offset(0, elevation),
             ),

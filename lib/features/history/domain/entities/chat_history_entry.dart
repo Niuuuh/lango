@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../chat/domain/entities/chat_message.dart';
+import '../../../summary/domain/entities/session_summary.dart';
 
 part 'chat_history_entry.freezed.dart';
 part 'chat_history_entry.g.dart';
@@ -13,6 +14,7 @@ abstract class ChatHistoryEntry with _$ChatHistoryEntry {
     required String topicId,
     required DateTime date,
     required List<ChatMessage> messages,
+    required SessionSummary summary,
   }) = _ChatHistoryEntry;
 
   factory ChatHistoryEntry.fromJson(Map<String, Object?> json) =>

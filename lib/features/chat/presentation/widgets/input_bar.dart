@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
+import '../../../../app/router.dart';
 import '../../../../app/theme.dart';
 import '../../../../core/presentation/widgets/button.dart';
 import '../../../../core/utils/context_extension.dart';
@@ -30,6 +30,7 @@ class _InputBarState extends State<InputBar> {
   @override
   Widget build(BuildContext context) {
     final language = context.targetLanguage!;
+    final topic = context.topic!;
 
     return BlocConsumer<ChatBloc, ChatState>(
       listener: (context, state) {
@@ -43,7 +44,9 @@ class _InputBarState extends State<InputBar> {
             padding: EdgeInsets.all(16),
             child: Button.primary(
               width: double.infinity,
-              onPressed: () => context.pop(),
+              onPressed: () {
+                context.goToSummary(topic, state.messages);
+              },
               child: Center(child: Text("Continue")),
             ),
           );

@@ -1,9 +1,9 @@
 import '../../../../core/domain/entities/user.dart';
+import '../../../summary/domain/entities/session_summary.dart';
 import '../../../topics/domain/topic.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/entities/chat_reply.dart';
 import '../../domain/entities/chat_stage.dart';
-import '../../domain/entities/session_summary.dart';
 import '../data_sources/chat_api.dart';
 import 'chat_repository.dart';
 import 'mock_chat_messages.dart';

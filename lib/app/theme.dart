@@ -38,6 +38,9 @@ ThemeData theme() {
     useMaterial3: true,
     colorScheme: colorScheme,
     fontFamily: "Itim",
+    iconTheme: IconThemeData(
+      color: LingoColors.onSurface,
+    ),
     appBarTheme: AppBarThemeData(
       iconTheme: IconThemeData(
         color: LingoColors.onSurface,

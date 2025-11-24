@@ -1,4 +1,4 @@
-import '../../domain/entities/session_summary.dart';
+import '../../../summary/domain/entities/session_summary.dart';
 
 abstract class MockSessionSummaries {
   static const example = SessionSummary(

@@ -14,6 +14,7 @@ _ChatHistoryEntry _$ChatHistoryEntryFromJson(Map<String, dynamic> json) =>
       messages: (json['messages'] as List<dynamic>)
           .map((e) => ChatMessage.fromJson(e as Map<String, dynamic>))
           .toList(),
+      summary: SessionSummary.fromJson(json['summary'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ChatHistoryEntryToJson(_ChatHistoryEntry instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$ChatHistoryEntryToJson(_ChatHistoryEntry instance) =>
       'topicId': instance.topicId,
       'date': instance.date.toIso8601String(),
       'messages': instance.messages,
+      'summary': instance.summary,
     };

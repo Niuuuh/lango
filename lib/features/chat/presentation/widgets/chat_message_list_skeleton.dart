@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
+import '../../../../core/presentation/widgets/skeleton.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/entities/message_segment.dart';
 import '../../domain/entities/message_type.dart';
@@ -11,11 +12,7 @@ class ChatMessageListSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColorFiltered(
-      colorFilter: ColorFilter.mode(
-        LingoColors.surfaceVariant,
-        BlendMode.srcATop
-      ),
+    return Skeleton(
       child: Column(
         children: [
           Center(

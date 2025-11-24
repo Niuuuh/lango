@@ -15,6 +15,7 @@ import '../features/history/presentation/cubit/chat_history_cubit.dart';
 import '../features/language/presentation/bloc/language_search_cubit.dart';
 import '../features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import '../features/onboarding/presentation/bloc/typing_cubit.dart';
+import '../features/summary/presentation/bloc/summary_bloc.dart';
 import '../features/topics/domain/topic.dart';
 import '../features/topics/presentation/bloc/topic_cubit.dart';
 import 'router.dart';
@@ -29,13 +30,9 @@ void setupServiceLocator() {
   getIt.registerFactory(() => TypingBloc());
   getIt.registerFactory(() => LanguageSearchCubit());
   getIt.registerLazySingleton(() => ChatApi() ?? MockChatApi());
-  getIt.registerLazySingleton(() => ChatRepository(chatApi: getIt()) ?? MockChatRepository());
-  getIt.registerFactoryParam((User user, Topic topic) => ChatBloc(
-    chatRepository: getIt(),
-    historyRepository: getIt(),
-    user: user,
-    topic: topic,
-  ));
+  getIt.registerLazySingleton(() => MockChatRepository() ?? ChatRepository(chatApi: getIt()));
+  getIt.registerFactoryParam((User user, Topic topic) => ChatBloc(chatRepository: getIt(), user: user, topic: topic));
+  getIt.registerFactory(() => SummaryBloc(chatRepository: getIt(), historyRepository: getIt()));
   getIt.registerLazySingleton(() => PreferencesApi());
   getIt.registerFactoryParam((String topicId, _) => TopicCubit(topicId: topicId));
   getIt.registerLazySingleton(() => HistoryRepository(preferencesApi: getIt()) ?? MockHistoryRepository());

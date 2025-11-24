@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 
 import '../../../../core/domain/entities/user.dart';
-import '../../../history/data/respository/history_repository.dart';
-import '../../../history/domain/entities/chat_history_entry.dart';
 import '../../../topics/domain/topic.dart';
 import '../../data/repository/chat_repository.dart';
 import '../../domain/entities/chat_message.dart';
@@ -12,13 +10,11 @@ import 'chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final ChatRepository chatRepository;
-  final HistoryRepository historyRepository;
   final User user;
   final Topic topic;
 
   ChatBloc({
     required this.chatRepository,
-    required this.historyRepository,
     required this.user,
     required this.topic,
   }) : super(const ChatState.initial()) {
@@ -46,7 +42,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       );
       final updatedMessages = [...messages, ...reply.messages];
       if (reply.stage == ChatStage.closing) {
-        await _createHistoryEntry(updatedMessages);
         emit(ChatState.closing(messages: updatedMessages));
       } else {
         emit(ChatState.success(messages: updatedMessages));
@@ -55,15 +50,5 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       final error = e is Exception ? e : Exception('Unknown error: $e');
       emit(ChatState.failure(messages: state.messages, error: error));
     }
-  }
-
-  Future<void> _createHistoryEntry(List<ChatMessage> messages) async {
-    final entry = ChatHistoryEntry(
-      languageId: user.targetLanguage!.name,
-      topicId: topic.name,
-      date: DateTime.now(),
-      messages: messages,
-    );
-    await historyRepository.createHistoryEntry(entry);
   }
 }

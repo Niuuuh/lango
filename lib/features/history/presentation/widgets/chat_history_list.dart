@@ -45,7 +45,7 @@ class ChatHistoryList extends StatelessWidget {
               child: Button.primary(
                 elevation: 2,
                 onPressed: () => context.goToHistory(topic, item),
-                child: Text('Title'),
+                child: Text(item.summary.name),
               ),
             );
           },
