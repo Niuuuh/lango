@@ -23,3 +23,33 @@ class Skeleton extends StatelessWidget {
     );
   }
 }
+
+class Bone extends StatelessWidget {
+  const Bone({
+    super.key,
+    this.width,
+    this.height,
+    this.margin = EdgeInsets.zero,
+  });
+
+  final double? width;
+  final double? height;
+  final EdgeInsets margin;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: margin,
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: LingoColors.surfaceVariant,
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+      ),
+    );
+  }
+}

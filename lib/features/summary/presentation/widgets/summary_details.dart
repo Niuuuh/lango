@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../core/presentation/widgets/skeleton.dart';
 import '../../domain/entities/session_summary.dart';
 import 'bullet_list_section.dart';
 import 'language_level_section.dart';
@@ -45,6 +46,34 @@ class SummaryDetails extends StatelessWidget {
         Gap(24),
         TipSection(
           tip: summary.tip,
+        ),
+      ],
+    );
+  }
+}
+
+class SummaryDetailsSkeleton extends StatelessWidget {
+  const SummaryDetailsSkeleton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Gap(32),
+        Center(
+          child: Bone(width: 100, height: 40),
+        ),
+        Gap(32),
+        Bone(width: double.infinity, height: 80),
+        Gap(24),
+        Bone(width: double.infinity, height: 120),
+        Gap(16),
+        Bone(width: double.infinity, height: 120),
+        Gap(24),
+        Bone(
+          width: double.infinity,
+          height: 30,
+          margin: EdgeInsets.only(right: 60),
         ),
       ],
     );

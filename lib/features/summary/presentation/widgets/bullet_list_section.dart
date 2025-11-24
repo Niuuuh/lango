@@ -23,7 +23,6 @@ class BulletListSection extends StatelessWidget {
         color: Color.lerp(Colors.black, color, 0.5),
       ),
       child: ShadedContainer(
-        elevation: 0,
         padding: EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 24),
         color: color.withValues(alpha: 0.3),
         child: Column(

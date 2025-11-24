@@ -9,7 +9,7 @@ class ShadedContainer extends StatelessWidget {
     this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     this.borderRadius = const BorderRadius.all(Radius.circular(40)),
     this.borderWidth = 2,
-    this.elevation = 4,
+    this.elevation = 0,
     required this.child,
   });
 

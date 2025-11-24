@@ -20,6 +20,7 @@ class TopicCard extends StatelessWidget {
       onTap: onTap,
       child: ShadedContainer(
         padding: EdgeInsets.all(16),
+        elevation: 4,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,

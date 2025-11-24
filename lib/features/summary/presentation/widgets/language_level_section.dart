@@ -20,7 +20,6 @@ class LanguageLevelSection extends StatelessWidget {
         SizedBox.square(
           dimension: 80,
           child: ShadedContainer(
-            elevation: 0,
             color: Colors.transparent,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

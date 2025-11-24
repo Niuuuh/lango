@@ -4,9 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../app/service_locator.dart';
 import '../../../../core/presentation/widgets/button.dart';
-import '../../../../core/presentation/widgets/skeleton.dart';
 import '../../../../core/utils/context_extension.dart';
-import '../../../chat/data/repository/mock_session_summary.dart';
 import '../../../chat/domain/entities/chat_message.dart';
 import '../bloc/summary_bloc.dart';
 import '../bloc/summary_event.dart';
@@ -41,27 +39,17 @@ class SummaryScreen extends StatelessWidget {
               builder: (context, state) {
                 return Column(
                   children: [
-                    state.maybeWhen(
-                      success: (summary) {
-                        return Expanded(
-                          child: SingleChildScrollView(
-                            child: SummaryDetails(
-                              summary: summary,
-                            ),
-                          ),
-                        );
-                      },
-                      orElse: () {
-                        return Expanded(
-                          child: SingleChildScrollView(
-                            child: Skeleton(
-                              child: SummaryDetails(
-                                summary: MockSessionSummaries.example,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: state.maybeWhen(
+                          success: (summary) {
+                            return SummaryDetails(summary: summary);
+                          },
+                          orElse: () {
+                            return SummaryDetailsSkeleton();
+                          },
+                        ),
+                      ),
                     ),
                     if (state is SummarySuccess)
                       Padding(
