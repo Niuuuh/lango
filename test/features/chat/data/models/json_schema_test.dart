@@ -1,14 +1,40 @@
-import '../../../core/domain/entities/character_animation.dart';
-import '../data/models/chat_api_format.dart';
-import 'entities/chat_stage.dart';
-import 'entities/message_type.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:lango/core/domain/entities/character_animation.dart';
+import 'package:lango/features/chat/data/models/json_schema.dart';
+import 'package:lango/features/chat/domain/entities/chat_stage.dart';
+import 'package:lango/features/chat/domain/entities/message_type.dart';
 
-abstract class ChatJsonSchemes {
-  static final chatReply = ChatApiFormatJsonSchema(
-    name: "chat_reply",
-    description: "Assistant reply for the language learning roleplay",
-    strict: true,
-    schema: {
+void main() {
+  test('creating json schema for chat reply', () {
+    final schema = JsonSchema(
+      properties: {
+        "stage": EnumProperty(
+          values: [...ChatStage.values.map((e) => e.toJson())],
+        ),
+        "messages": ArrayProperty(
+          items: ObjectProperty(
+            properties: {
+              "type": EnumProperty(
+                values: [...MessageType.values.map((e) => e.toJson())],
+              ),
+              "animation": NullableEnumProperty(
+                values: [...CharacterAnimation.values.map((e) => e.toJson())],
+              ),
+              "segments": ArrayProperty(
+                items: ObjectProperty(
+                  properties: {
+                    "text": StringProperty(),
+                    "translation": NullableStringProperty(),
+                  },
+                ),
+              ),
+            },
+          ),
+        ),
+      },
+    );
+
+    final hardcodedSchema = {
       "type": "object",
       "properties": {
         "stage": {
@@ -52,13 +78,29 @@ abstract class ChatJsonSchemes {
       },
       "required": ["stage", "messages"],
       "additionalProperties": false,
-    },
-  );
+    };
 
-  static final sessionSummary = ChatApiFormatJsonSchema(
-    name: "session_summary",
-    strict: true,
-    schema: {
+    expect(schema.toJson(), hardcodedSchema);
+  });
+  test("creating json schema for session summary", () {
+    final schema = JsonSchema(
+      properties: {
+        "name": StringProperty(),
+        "vibe": StringProperty(),
+        "cefr": EnumProperty(
+          values: ["A1", "A2", "B1", "B2", "C1", "C2"],
+        ),
+        "reason": StringProperty(),
+        "strengths": ArrayProperty(
+          items: StringProperty(),
+        ),
+        "weaknesses": ArrayProperty(
+          items: StringProperty(),
+        ),
+      },
+    );
+
+    final hardcodedSchema = {
       "type": "object",
       "properties": {
         "name": {
@@ -69,7 +111,7 @@ abstract class ChatJsonSchemes {
         },
         "cefr": {
           "type": "string",
-          "enum": ["A1","A2","B1","B2","C1","C2"],
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"],
         },
         "reason": {
           "type": "string",
@@ -86,9 +128,6 @@ abstract class ChatJsonSchemes {
             "type": "string",
           },
         },
-        "tip": {
-          "type": "string",
-        }
       },
       "required": [
         "name",
@@ -96,10 +135,11 @@ abstract class ChatJsonSchemes {
         "cefr",
         "reason",
         "strengths",
-        "weaknesses",
-        "tip",
+        "weaknesses"
       ],
       "additionalProperties": false,
-    },
-  );
+    };
+
+    expect(schema.toJson(), hardcodedSchema);
+  });
 }

@@ -1,7 +1,5 @@
 import '../../../../core/domain/entities/user.dart';
 import '../../../topics/domain/topic.dart';
-import '../../domain/chat_json_schemes.dart';
-import '../../domain/chat_prompts.dart';
 import '../../domain/entities/chat_message.dart';
 import '../../domain/entities/chat_reply.dart';
 import '../data_sources/chat_api.dart';
@@ -11,6 +9,8 @@ import '../models/chat_api_model.dart';
 import '../models/chat_api_role.dart';
 import '../models/chat_api_text.dart';
 import '../utils/chat_api_response_extension.dart';
+import 'chat_json_schemes.dart';
+import 'chat_prompts.dart';
 
 class ChatRepository {
   final ChatApi chatApi;

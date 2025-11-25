@@ -1,13 +1,11 @@
 import 'dart:convert';
 
-import '../../../core/domain/entities/character_animation.dart';
-import '../../../core/domain/entities/user.dart';
-import '../../summary/data/repository/mock_summaries.dart';
-import '../../topics/domain/topic.dart';
-import 'entities/chat_message.dart';
-import 'entities/chat_stage.dart';
-import 'entities/message_type.dart';
-import 'utils/chat_message_extension.dart';
+import '../../../../core/domain/entities/character_animation.dart';
+import '../../../summary/data/repository/mock_summaries.dart';
+import '../../domain/entities/chat_message.dart';
+import '../../domain/entities/chat_stage.dart';
+import '../../domain/entities/message_segment.dart';
+import '../../domain/entities/message_type.dart';
 
 abstract class ChatPrompts {
   static String replyMessages({
@@ -37,19 +35,35 @@ For "${MessageType.inCharacter}" messages:
 A message of type "${MessageType.inCharacter}" can include an animation. Not every message needs one, keep them rare.
 
 Examples:
-{"type":"${MessageType.inCharacter}","segments":[
-  {"text":"Guten","translation":"Good"},
-  {"text":"Morgen","translation":"morning"},
-  {"text":"Reisender!","translation":"Traveler!"}
-],"animation":"${CharacterAnimation.rollingTowardsAndGreetingYou}"},
-{"type":"${MessageType.outOfCharacter}","segments":[
-  {"text":"You can say","translation":null},
-  {"text":"'Hallo'","translation":"Hello"},
-  {"text":"to greet someone.","translation":null}
-]},
-{"type":"${MessageType.action}","segments":[
-  {"text":"Lingo rolls across the floor.","translation":null}
-]},
+${
+  jsonEncode(ChatMessage.assistant(
+    type: MessageType.inCharacter,
+    animation: CharacterAnimation.rollingTowardsAndGreetingYou,
+    segments: [
+      MessageSegment(text: "Guten", translation: "Good"),
+      MessageSegment(text: "Morgen", translation: "morning"),
+      MessageSegment(text: "Reisender!", translation: "Traveler!"),
+    ],
+  ))
+},
+${
+  jsonEncode(ChatMessage.assistant(
+    type: MessageType.outOfCharacter,
+    segments: [
+      MessageSegment(text: "You can say"),
+      MessageSegment(text: "'Hallo'", translation: "Hello"),
+      MessageSegment(text: "to greet someone."),
+    ],
+  ))
+},
+${
+  jsonEncode(ChatMessage.assistant(
+    type: MessageType.action,
+    segments: [
+      MessageSegment(text: "Lingo rolls across the floor."),
+    ],
+  ))
+}
 
 Conversation stages:
 1. ${ChatStage.intro}: Start with an "${MessageType.action}" to set the scene, then an "${MessageType.inCharacter}" greeting referencing the topic.
@@ -102,22 +116,7 @@ One short improvement tip under 20 words.
 Your tone is casual, friendly, and modern.
 
 Example output:
-${MockSummaries.example.toJson()}
+${jsonEncode(MockSummaries.example)}
 """);
-  }
-
-  static String session({
-    required User user,
-    required Topic topic,
-    required List<ChatMessage> messages,
-  }) {
-    return jsonEncode({
-      "source_language": user.sourceLanguage.name,
-      "target_language": user.targetLanguage!.name,
-      "topic": topic.title,
-      "conversation": messages
-          .map((message) => "${message.role}: ${message.text}")
-          .toList(),
-    });
   }
 }

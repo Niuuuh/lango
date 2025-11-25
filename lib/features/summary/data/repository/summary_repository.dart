@@ -6,11 +6,11 @@ import '../../../chat/data/models/chat_api_model.dart';
 import '../../../chat/data/models/chat_api_role.dart';
 import '../../../chat/data/models/chat_api_text.dart';
 import '../../../chat/data/utils/chat_api_response_extension.dart';
-import '../../../chat/domain/chat_json_schemes.dart';
-import '../../../chat/domain/chat_prompts.dart';
 import '../../../chat/domain/entities/chat_message.dart';
 import '../../../summary/domain/entities/session_summary.dart';
 import '../../../topics/domain/topic.dart';
+import 'summary_json_schemes.dart';
+import 'summary_prompts.dart';
 
 class SummaryRepository {
   final ChatApi chatApi;
@@ -28,11 +28,11 @@ class SummaryRepository {
         input: [
           ChatApiInputMessage(
             role: ChatApiRole.developer,
-            content: ChatPrompts.summarizeSession(),
+            content: SummaryPrompts.summarizeSession(),
           ),
           ChatApiInputMessage(
             role: ChatApiRole.user,
-            content: ChatPrompts.session(
+            content: SummaryPrompts.session(
               user: user,
               topic: topic,
               messages: messages,
@@ -40,7 +40,7 @@ class SummaryRepository {
           ),
         ],
         text: ChatApiText(
-          format: ChatJsonSchemes.sessionSummary,
+          format: SummaryJsonSchemes.sessionSummary,
         ),
       ),
     );

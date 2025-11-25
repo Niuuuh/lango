@@ -216,7 +216,7 @@ return $default(_that.text,_that.translation);case _:
 @JsonSerializable()
 
 class _MessageSegment with DiagnosticableTreeMixin implements MessageSegment {
-  const _MessageSegment({required this.text, required this.translation});
+  const _MessageSegment({required this.text, this.translation});
   factory _MessageSegment.fromJson(Map<String, dynamic> json) => _$MessageSegmentFromJson(json);
 
 @override final  String text;

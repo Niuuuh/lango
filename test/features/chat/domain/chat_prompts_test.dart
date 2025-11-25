@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lango/features/chat/domain/chat_prompts.dart';
+import 'package:lango/features/chat/data/repository/chat_prompts.dart';
 
 void main() {
   test("create system prompt", () {
