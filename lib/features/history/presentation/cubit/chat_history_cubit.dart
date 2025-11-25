@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 
 import '../../../language/domain/entities/language.dart';
 import '../../../topics/domain/topic.dart';
-import '../../data/respository/history_repository.dart';
+import '../../data/repository/history_repository.dart';
 import '../../domain/entities/chat_history_entry.dart';
 import 'chat_history_state.dart';
 

@@ -1,6 +1,6 @@
-import '../../../summary/domain/entities/session_summary.dart';
+import '../../domain/entities/session_summary.dart';
 
-abstract class MockSessionSummaries {
+abstract class MockSummaries {
   static const example = SessionSummary(
     name: "Lost Map Vibes",
     vibe: "Nice work!",

@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import '../../../core/domain/entities/character_animation.dart';
 import '../../../core/domain/entities/user.dart';
+import '../../summary/data/repository/mock_summaries.dart';
 import '../../topics/domain/topic.dart';
-import '../data/repository/mock_session_summary.dart';
 import 'entities/chat_message.dart';
 import 'entities/chat_stage.dart';
 import 'entities/message_type.dart';
@@ -102,7 +102,7 @@ One short improvement tip under 20 words.
 Your tone is casual, friendly, and modern.
 
 Example output:
-${MockSessionSummaries.example.toJson()}
+${MockSummaries.example.toJson()}
 """);
   }
 

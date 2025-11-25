@@ -1,17 +1,17 @@
 import 'package:bloc/bloc.dart';
 
-import '../../../chat/data/repository/chat_repository.dart';
-import '../../../history/data/respository/history_repository.dart';
+import '../../../history/data/repository/history_repository.dart';
 import '../../../history/domain/entities/chat_history_entry.dart';
+import '../../data/repository/summary_repository.dart';
 import 'summary_event.dart';
 import 'summary_state.dart';
 
 class SummaryBloc extends Bloc<SummaryEvent, SummaryState> {
-  final ChatRepository chatRepository;
+  final SummaryRepository summaryRepository;
   final HistoryRepository historyRepository;
 
   SummaryBloc({
-    required this.chatRepository,
+    required this.summaryRepository,
     required this.historyRepository,
   }) : super(const SummaryState.initial()) {
     on<SummaryStarted>(_onSummaryStarted);
@@ -20,7 +20,7 @@ class SummaryBloc extends Bloc<SummaryEvent, SummaryState> {
   Future<void> _onSummaryStarted(SummaryStarted event, Emitter<SummaryState> emit) async {
     try {
       emit(SummaryState.loading());
-      final summary = await chatRepository.summarizeSession(
+      final summary = await summaryRepository.summarizeSession(
         user: event.user,
         topic: event.topic,
         messages: event.messages,

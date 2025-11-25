@@ -1,9 +1,5 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lango/core/domain/entities/user.dart';
-import 'package:lango/features/chat/data/data_sources/chat_api.dart';
-import 'package:lango/features/chat/data/repository/chat_repository.dart';
-import 'package:lango/features/chat/data/repository/mock_chat_messages.dart';
 import 'package:lango/features/chat/data/repository/mock_chat_repository.dart';
 import 'package:lango/features/chat/domain/entities/chat_message.dart';
 import 'package:lango/features/chat/domain/entities/message_type.dart';
@@ -23,15 +19,5 @@ void main() {
     final assistantMessages = reply.messages.cast<ChatMessageAssistant>();
     expect(assistantMessages[0].type, equals(MessageType.action));
     expect(assistantMessages[1].type, equals(MessageType.inCharacter));
-  });
-  test("chat summary is generated correctly", () async {
-    await dotenv.load();
-    final chatRepository = MockChatRepository() ?? ChatRepository(chatApi: ChatApi());
-    final summary = await chatRepository.summarizeSession(
-      user: User(name: "Leon", targetLanguage: Language.german),
-      topic: Topic.travel,
-      messages: MockChatMessages.messages,
-    );
-    expect(summary, isNotNull);
   });
 }
