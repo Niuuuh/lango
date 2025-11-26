@@ -56,13 +56,18 @@ class _ButtonState extends State<Button> {
               color: widget.color,
               padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               elevation: _isPressed ? 0 : widget.elevation,
-              child: DefaultTextStyle.merge(
-                style: TextStyle(
+              child: IconTheme.merge(
+                data: IconThemeData(
                   color: LingoColors.onPrimaryContainer,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
                 ),
-                child: widget.child,
+                child: DefaultTextStyle.merge(
+                  style: TextStyle(
+                    color: LingoColors.onPrimaryContainer,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  child: widget.child,
+                ),
               ),
             ),
           ),

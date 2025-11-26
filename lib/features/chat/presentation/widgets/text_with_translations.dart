@@ -8,10 +8,12 @@ class TextWithTranslations extends StatelessWidget {
     super.key,
     required this.segments,
     required this.style,
+    this.textAlign,
   });
 
   final List<MessageSegment> segments;
   final TextStyle? style;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class TextWithTranslations extends StatelessWidget {
 
     return Text.rich(
       style: effectiveStyle,
+      textAlign: textAlign,
       TextSpan(
         children: [
           for (final segment in segments)

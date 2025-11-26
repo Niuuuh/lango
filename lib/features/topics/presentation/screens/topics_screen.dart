@@ -12,18 +12,21 @@ class TopicsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Gap(16),
-              LanguageButton(),
-              Gap(16),
-              Expanded(
-                child: CustomScrollView(
-                  slivers: [
-                    SliverToBoxAdapter(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Gap(16),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: LanguageButton(),
+            ),
+            Gap(16),
+            Expanded(
+              child: CustomScrollView(
+                slivers: [
+                  SliverPadding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    sliver: SliverToBoxAdapter(
                       child: Transform.scale(
                         scale: 0.9,
                         child: SpeakingCharacter(
@@ -32,14 +35,17 @@ class TopicsScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SliverGap(16),
-                    TopicsGrid(),
-                    SliverGap(24),
-                  ],
-                ),
+                  ),
+                  SliverGap(16),
+                  SliverPadding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    sliver: TopicsGrid(),
+                  ),
+                  SliverGap(24),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

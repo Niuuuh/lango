@@ -21,24 +21,30 @@ class TopicScreen extends StatelessWidget {
       ),
       backgroundColor: LingoColors.primaryContainer,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32),
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
+        child: CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              sliver: SliverToBoxAdapter(
                 child: TopicDetails(topic: topic),
               ),
-              SliverGap(48),
-              SliverToBoxAdapter(
+            ),
+            SliverGap(48),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              sliver: SliverToBoxAdapter(
                 child: StartButton(
                   onPressed: () => context.goToChat(topic),
                 ),
               ),
-              SliverGap(16),
-              ChatHistoryList(topic: topic),
-              SliverGap(32),
-            ],
-          ),
+            ),
+            SliverGap(16),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              sliver: ChatHistoryList(topic: topic),
+            ),
+            SliverGap(32),
+          ],
         ),
       ),
     );
